@@ -1,8 +1,8 @@
+import "../../../utils/variables.css";
 import s from "./Card.module.css";
 const Card = () => {
   return (
     <>
-      <h1>Today</h1>
       <ul className={s.cardSet}>
         <li className={s.card}>
           <p className={s.cardCategoryName}>

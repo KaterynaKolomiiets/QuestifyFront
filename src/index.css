@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--background-main);
 }
 
 code {
@@ -48,71 +49,74 @@ button {
   cursor: pointer;
 }
 
-
 /* 300 */
 @font-face {
-  font-family: 'HelveticaNeueCyr-Light';
-  src: url('./fonts/helveticaneuecyr-light.eot');
+  font-family: "HelveticaNeueCyr-Light";
+  src: url("./fonts/helveticaneuecyr-light.eot");
   /* IE 9 Compatibility Mode */
-  src: url('./fonts/helveticaneuecyr-light.eot?#iefix') format('embedded-opentype'),
-    /* IE < 9 */
-    url('./fonts/helveticaneuecyr-light.woff2') format('woff2'),
-    /* Super Modern Browsers */
-    url('./fonts/helveticaneuecyr-light.woff') format('woff'),
+  src: url("./fonts/helveticaneuecyr-light.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE < 9 */ url("./fonts/helveticaneuecyr-light.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("./fonts/helveticaneuecyr-light.woff")
+      format("woff"),
     /* Firefox >= 3.6, any other modern browser */
-    url('./fonts/helveticaneuecyr-light.ttf') format('truetype'),
+      url("./fonts/helveticaneuecyr-light.ttf") format("truetype"),
     /* Safari, Android, iOS */
-    url('./fonts/helveticaneuecyr-light.svg#helveticaneuecyr-light') format('svg');
+      url("./fonts/helveticaneuecyr-light.svg#helveticaneuecyr-light")
+      format("svg");
   /* Chrome < 4, Legacy iOS */
 }
 
 /* 400 */
 @font-face {
-  font-family: 'HelveticaNeueCyr-Medium';
-  src: url('./fonts/helveticaneuecyr-medium.eot');
+  font-family: "HelveticaNeueCyr-Medium";
+  src: url("./fonts/helveticaneuecyr-medium.eot");
   /* IE 9 Compatibility Mode */
-  src: url('./fonts/helveticaneuecyr-medium.eot?#iefix') format('embedded-opentype'),
-    /* IE < 9 */
-    url('./fonts/helveticaneuecyr-medium.woff2') format('woff2'),
-    /* Super Modern Browsers */
-    url('./fonts/helveticaneuecyr-medium.woff') format('woff'),
+  src: url("./fonts/helveticaneuecyr-medium.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE < 9 */ url("./fonts/helveticaneuecyr-medium.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("./fonts/helveticaneuecyr-medium.woff")
+      format("woff"),
     /* Firefox >= 3.6, any other modern browser */
-    url('./fonts/helveticaneuecyr-medium.ttf') format('truetype'),
+      url("./fonts/helveticaneuecyr-medium.ttf") format("truetype"),
     /* Safari, Android, iOS */
-    url('./fonts/helveticaneuecyr-medium.svg#helveticaneuecyr-medium') format('svg');
+      url("./fonts/helveticaneuecyr-medium.svg#helveticaneuecyr-medium")
+      format("svg");
   /* Chrome < 4, Legacy iOS */
 }
 
 /* 700 */
 @font-face {
-  font-family: 'HelveticaNeueCyr-Bold';
-  src: url('./fonts/helveticaneuecyr-bold.eot');
+  font-family: "HelveticaNeueCyr-Bold";
+  src: url("./fonts/helveticaneuecyr-bold.eot");
   /* IE 9 Compatibility Mode */
-  src: url('./fonts/helveticaneuecyr-bold.eot?#iefix') format('embedded-opentype'),
-    /* IE < 9 */
-    url('./fonts/helveticaneuecyr-bold.woff2') format('woff2'),
-    /* Super Modern Browsers */
-    url('./fonts/helveticaneuecyr-bold.woff') format('woff'),
+  src: url("./fonts/helveticaneuecyr-bold.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE < 9 */ url("./fonts/helveticaneuecyr-bold.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("./fonts/helveticaneuecyr-bold.woff")
+      format("woff"),
     /* Firefox >= 3.6, any other modern browser */
-    url('./fonts/helveticaneuecyr-bold.ttf') format('truetype'),
+      url("./fonts/helveticaneuecyr-bold.ttf") format("truetype"),
     /* Safari, Android, iOS */
-    url('./fonts/helveticaneuecyr-bold.svg#helveticaneuecyr-bold') format('svg');
+      url("./fonts/helveticaneuecyr-bold.svg#helveticaneuecyr-bold")
+      format("svg");
   /* Chrome < 4, Legacy iOS */
 }
 
 /* 900 */
 @font-face {
-  font-family: 'HelveticaNeueCyr-Black';
-  src: url('./fonts/helveticaneuecyr-black.eot');
+  font-family: "HelveticaNeueCyr-Black";
+  src: url("./fonts/helveticaneuecyr-black.eot");
   /* IE 9 Compatibility Mode */
-  src: url('./fonts/helveticaneuecyr-black.eot?#iefix') format('embedded-opentype'),
-    /* IE < 9 */
-    url('./fonts/helveticaneuecyr-black.woff2') format('woff2'),
-    /* Super Modern Browsers */
-    url('./fonts/helveticaneuecyr-black.woff') format('woff'),
+  src: url("./fonts/helveticaneuecyr-black.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE < 9 */ url("./fonts/helveticaneuecyr-black.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("./fonts/helveticaneuecyr-black.woff")
+      format("woff"),
     /* Firefox >= 3.6, any other modern browser */
-    url('./fonts/helveticaneuecyr-black.ttf') format('truetype'),
+      url("./fonts/helveticaneuecyr-black.ttf") format("truetype"),
     /* Safari, Android, iOS */
-    url('./fonts/helveticaneuecyr-black.svg#helveticaneuecyr-black') format('svg');
+      url("./fonts/helveticaneuecyr-black.svg#helveticaneuecyr-black")
+      format("svg");
   /* Chrome < 4, Legacy iOS */
 }

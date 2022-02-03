@@ -6,15 +6,22 @@
 }
 
 .card {
-  background: red;
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
   padding: 20px;
+  background: var(--background-card);
+  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+    3px 4px 4px rgba(21, 57, 90, 0.03);
+  border-radius: 10px;
 }
 .cardCategoryName {
   display: flex;
-  margin-bottom: 70px;
+  align-items: center;
+  margin-bottom: 50px;
+  font-family: "HelveticaNeueCyr-Medium";
+  font-size: 16px;
+  color: var(--font-secondary);
 }
 
 .cardCategoryCircle {
@@ -25,12 +32,20 @@
 }
 
 .cardTitle {
-  margin-bottom: 10px;
   margin: 0 auto;
+  margin-bottom: 10px;
+  font-family: "HelveticaNeueCyr-Bold";
+  font-size: 20px;
+  line-height: 20px;
+
+  color: var(--font-primary);
 }
 .cardDate {
-  margin-bottom: 40px;
   margin: 0 auto;
+  margin-bottom: 40px;
+  font-family: "HelveticaNeueCyr-Medium";
+  font-size: 14px;
+  color: var(--font-secondary);
 }
 
 .cardType {
@@ -38,8 +53,16 @@
   height: 35px;
   padding: 5px;
   padding-left: 20px;
+  margin-left: -20px;
   background-color: green;
   border-radius: 0px 25px 25px 0px;
+  font-family: "HelveticaNeueCyr-Medium";
+  font-size: 11px;
+  line-height: 11px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
 }
 
 @media screen and (min-width: 768px) {
@@ -52,6 +75,9 @@
   }
   .card:nth-child(3n) {
     margin-right: 0;
+  }
+  .cardCategoryName {
+    font-size: 16px;
   }
 }
 @media screen and (min-width: 1280px) {
