@@ -1,0 +1,21 @@
+:root {
+  --primary: #15395a;
+  --secondary: #242a37;
+  --accent: #ff851c;
+
+  --background-main: #f2f3f7;
+  --background-card: #ffffff;
+
+  --bg-card-learning: #FFF6C0;
+  --bg-card-leisure: #F8D2FF;
+  --bg-card-family: #FFE6D3;
+  --bg-card-health: #CDF7FF;
+  --bg-card-stuff: #B9C3C8;
+
+  --font-primary: #282828;
+  --font-secondary: #B9C3C8;
+  --font-tertiary: #7B8AA4;
+  --font-accent: #00D7FF;
+
+
+}
