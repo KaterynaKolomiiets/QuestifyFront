@@ -1,0 +1,72 @@
+.cardSet {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.card {
+  background: red;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+.cardCategoryName {
+  display: flex;
+  margin-bottom: 70px;
+}
+
+.cardCategoryCircle {
+  margin-right: 10px;
+}
+.cardCategoryStart {
+  margin-left: auto;
+}
+
+.cardTitle {
+  margin-bottom: 10px;
+  margin: 0 auto;
+}
+.cardDate {
+  margin-bottom: 40px;
+  margin: 0 auto;
+}
+
+.cardType {
+  width: 120px;
+  height: 35px;
+  padding: 5px;
+  padding-left: 20px;
+  background-color: green;
+  border-radius: 0px 25px 25px 0px;
+}
+
+@media screen and (min-width: 768px) {
+  .cardSet {
+    flex-direction: row;
+  }
+  .card {
+    width: calc((100% - 60px) / 3);
+    margin-right: 30px;
+  }
+  .card:nth-child(3n) {
+    margin-right: 0;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .card {
+    width: calc((100% - 120px) / 5);
+    margin-right: 30px;
+  }
+  .card:nth-child(3n) {
+    margin-right: 30px;
+  }
+  .card:nth-child(5n) {
+    margin-right: 0;
+  }
+}
