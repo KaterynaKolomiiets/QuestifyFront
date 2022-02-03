@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+ul,
+ol,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+button {
+  cursor: pointer;
+}
+
+
+/* 300 */
+@font-face {
+  font-family: 'HelveticaNeueCyr-Light';
+  src: url('./fonts/helveticaneuecyr-light.eot');
+  /* IE 9 Compatibility Mode */
+  src: url('./fonts/helveticaneuecyr-light.eot?#iefix') format('embedded-opentype'),
+    /* IE < 9 */
+    url('./fonts/helveticaneuecyr-light.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('./fonts/helveticaneuecyr-light.woff') format('woff'),
+    /* Firefox >= 3.6, any other modern browser */
+    url('./fonts/helveticaneuecyr-light.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('./fonts/helveticaneuecyr-light.svg#helveticaneuecyr-light') format('svg');
+  /* Chrome < 4, Legacy iOS */
+}
+
+/* 400 */
+@font-face {
+  font-family: 'HelveticaNeueCyr-Medium';
+  src: url('./fonts/helveticaneuecyr-medium.eot');
+  /* IE 9 Compatibility Mode */
+  src: url('./fonts/helveticaneuecyr-medium.eot?#iefix') format('embedded-opentype'),
+    /* IE < 9 */
+    url('./fonts/helveticaneuecyr-medium.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('./fonts/helveticaneuecyr-medium.woff') format('woff'),
+    /* Firefox >= 3.6, any other modern browser */
+    url('./fonts/helveticaneuecyr-medium.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('./fonts/helveticaneuecyr-medium.svg#helveticaneuecyr-medium') format('svg');
+  /* Chrome < 4, Legacy iOS */
+}
+
+/* 700 */
+@font-face {
+  font-family: 'HelveticaNeueCyr-Bold';
+  src: url('./fonts/helveticaneuecyr-bold.eot');
+  /* IE 9 Compatibility Mode */
+  src: url('./fonts/helveticaneuecyr-bold.eot?#iefix') format('embedded-opentype'),
+    /* IE < 9 */
+    url('./fonts/helveticaneuecyr-bold.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('./fonts/helveticaneuecyr-bold.woff') format('woff'),
+    /* Firefox >= 3.6, any other modern browser */
+    url('./fonts/helveticaneuecyr-bold.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('./fonts/helveticaneuecyr-bold.svg#helveticaneuecyr-bold') format('svg');
+  /* Chrome < 4, Legacy iOS */
+}
+
+/* 900 */
+@font-face {
+  font-family: 'HelveticaNeueCyr-Black';
+  src: url('./fonts/helveticaneuecyr-black.eot');
+  /* IE 9 Compatibility Mode */
+  src: url('./fonts/helveticaneuecyr-black.eot?#iefix') format('embedded-opentype'),
+    /* IE < 9 */
+    url('./fonts/helveticaneuecyr-black.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('./fonts/helveticaneuecyr-black.woff') format('woff'),
+    /* Firefox >= 3.6, any other modern browser */
+    url('./fonts/helveticaneuecyr-black.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('./fonts/helveticaneuecyr-black.svg#helveticaneuecyr-black') format('svg');
+  /* Chrome < 4, Legacy iOS */
+}
