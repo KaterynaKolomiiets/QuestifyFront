@@ -3,6 +3,9 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   flex-direction: column;
+
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .card {
@@ -15,6 +18,7 @@
     3px 4px 4px rgba(21, 57, 90, 0.03);
   border-radius: 10px;
 }
+
 .cardCategoryName {
   display: flex;
   align-items: center;
@@ -40,6 +44,7 @@
 
   color: var(--font-primary);
 }
+
 .cardDate {
   margin: 0 auto;
   margin-bottom: 40px;
@@ -68,13 +73,16 @@
 @media screen and (min-width: 768px) {
   .cardSet {
     flex-direction: row;
+
+    padding-left: 50px;
+    padding-right: 50px;
+
+    margin-left: -27px;
   }
   .card {
-    width: calc((100% - 60px) / 3);
-    margin-right: 30px;
-  }
-  .card:nth-child(3n) {
-    margin-right: 0;
+    width: calc((100% / 3) - 27px);
+
+    margin-left: 27px;
   }
   .cardCategoryName {
     font-size: 16px;
@@ -84,15 +92,11 @@
   .list {
     display: flex;
     flex-wrap: wrap;
+
+    margin-left: -28px;
   }
   .card {
-    width: calc((100% - 120px) / 5);
-    margin-right: 30px;
-  }
-  .card:nth-child(3n) {
-    margin-right: 30px;
-  }
-  .card:nth-child(5n) {
-    margin-right: 0;
+    width: calc((100% / 5) - 28px);
+    margin-left: 28px;
   }
 }
