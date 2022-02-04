@@ -6,7 +6,7 @@ function AuthPage() {
   return (
     <div className={s.wrapper}>
       <Container>
-        <section className={s.hero}>
+        <section className={s.landing}>
           <h1 className={s.title}>
             Questify
             </h1>
