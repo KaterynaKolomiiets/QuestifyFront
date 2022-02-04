@@ -1,7 +1,9 @@
-import "./App.css";
 import Container from "./components/Container";
-import AuthPage from "./views/AuthPage";
-import HomePage from "./views/HomePage";
+
+import AuthPage from "./pages/AuthPage";
+import HomePage from "./pages/HomePage";
+
+import "./App.css";
 
 function App() {
   return (
