@@ -4,6 +4,7 @@ import AuthPage from "./views/AuthPage";
 
 import Card from "./components/Card";
 import ButtonAddCard from "./components/ButtonAddCard";
+import DoneSection from "./components/DoneSection";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
             
         <Card />
         <ButtonAddCard />
-
+<DoneSection/>
       </Container>
     </div>
   );
