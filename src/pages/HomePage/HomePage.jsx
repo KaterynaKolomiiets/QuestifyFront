@@ -10,7 +10,7 @@ function HomePage() {
         <h1 className={s.hero_title}>
           Questify
         </h1>
-        
+        {/* <Header /> */}
         <Card />
         <ButtonAddCard />
 
