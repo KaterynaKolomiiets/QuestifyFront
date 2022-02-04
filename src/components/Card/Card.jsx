@@ -1,5 +1,6 @@
-import "../../../utils/variables.css";
+import "../../utils/variables.css";
 import s from "./Card.module.css";
+
 const Card = () => {
   return (
     <>
