@@ -155,10 +155,13 @@
 
   box-shadow: 0 0 5px 2px #ff851c;
 
-  width: 53px;
-  height: 53px;
+  width: 52px;
+  height: 52px;
 
-  cursor: pointer;
+  /* cursor: pointer; */
+}
+.auth_form_button:hover {
+  border: solid 1px #fff;
 }
 /* Цвет плейсхолдера */
 ::-webkit-input-placeholder {
