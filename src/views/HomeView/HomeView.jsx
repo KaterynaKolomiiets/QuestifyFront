@@ -1,7 +1,12 @@
-import s from './HomeView.module.css'
+import s from "./HomeView.module.css";
+import Header from "../../components/Header/index";
 
-const HomeView=()=> {
-    return (<></>)
-}
+const HomeView = () => {
+  return (
+    <>
+      <Header />
+    </>
+  );
+};
 
-export default HomeView
+export default HomeView;
