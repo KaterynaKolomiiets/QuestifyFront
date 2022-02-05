@@ -12,16 +12,16 @@
 }
 @media screen and (min-width: 768px) {
   .landing {
-    padding-top: 312px;
-    padding-bottom: 312px;
+    padding-top: 306px;
+    padding-bottom: 306px;
     padding-left: 50px;
     padding-right: 338px;
   }
 }
 @media screen and (min-width: 1280px) {
   .landing {
-    padding-top: 193px;
-    padding-bottom: 194px;
+    padding-top: 186px;
+    padding-bottom: 185px;
     padding-left: 229px;
     padding-right: 489px;
   }
