@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { userRegistration } from "./operation";
+import { userRegistration, userLogin,userLogout } from "./operation";
 
 const initialState = {
   //   user: { name: "", email: "", isActivated: false},
@@ -20,8 +20,11 @@ const initialState = {
 const userSlice = createSlice({
   name: "user",
   initialState,
-    extraReducers: {
-    [userRegistration.fulfilled] : (state, action) => action.payload.user
+  extraReducers: {
+    //   - do I need to save user information on Registration?
+    // [userRegistration.fulfilled]: (state, action) => action.payload.user,
+    [userLogin.fulfilled]: (state, action) => action.payload.user,
+    [userLogout.fulfilled]: (state, action) => initialState,
     // [userRegistration.pending](state) {
     //   state.isLoading = true;
     // },

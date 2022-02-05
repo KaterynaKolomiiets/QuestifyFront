@@ -17,7 +17,7 @@ export const userRegistration = createAsyncThunk("auth/registration", async (use
   try {
     const { data } = await axios.post(`${BASE_URL}/registration`, user);
     console.log(data)
-    token.set(data.accessToken);
+    // token.set(data.accessToken);
     return data;
   } catch (error) {
     throw new Error(error);
@@ -27,18 +27,21 @@ export const userRegistration = createAsyncThunk("auth/registration", async (use
 export const userLogin = createAsyncThunk("auth/login", async (user) => {
   try {
     const { data } = await axios.post(`${BASE_URL}/login`, user);
+    console.log(data)
+     token.set(data.accessToken);
     return data;
   } catch (error) {
     throw new Error(error);
   }
 });
 
-export const userLogoutOperation = createAsyncThunk(
+export const userLogout = createAsyncThunk(
   "auth/logout",
   async () => {
     try {
       const { data } = await axios.post(`${BASE_URL}/logout`);
       token.unset();
+        console.log(data);
       return data;
     } catch (error) {
       throw new Error(error);
@@ -46,38 +49,42 @@ export const userLogoutOperation = createAsyncThunk(
   }
 );
 // check address
-export const userActivate = createAsyncThunk("auth/activate", async (user) => {
-  try {
-    const { data } = await axios.get(`${BASE_URL}/activate`, user);
-    return data;
-  } catch (error) {
-    throw new Error(error);
-  }
-});
+// export const userActivate = createAsyncThunk("auth/activate", async (id) => {
+//   try {
+//     const { data } = await axios.get(`${BASE_URL}/activate/${id}`, id);
+//       console.log(data);
+//     return data;
+//   } catch (error) {
+//     throw new Error(error);
+//   }
+// });
 
-export const userRefresh = createAsyncThunk("auth/refresh", async (user) => {
-  try {
-    const { data } = await axios.get(`${BASE_URL}/refresh`, user);
-    return data;
-  } catch (error) {
-    throw new Error(error);
-  }
-});
+// export const userRefresh = createAsyncThunk("auth/refresh", async (user) => {
+//   try {
+//     const { data } = await axios.get(`${BASE_URL}/refresh`, user);
+//       console.log(data);
+//     return data;
+//   } catch (error) {
+//     throw new Error(error);
+//   }
+// });
 
-export const userResetPassword = createAsyncThunk("auth/reset-password", async (user) => {
-  try {
-    const { data } = await axios.get(`${BASE_URL}/reset-password`, user);
-    return data;
-  } catch (error) {
-    throw new Error(error);
-  }
-});
+// export const userResetPassword = createAsyncThunk("auth/reset-password", async (user) => {
+//   try {
+//     const { data } = await axios.get(`${BASE_URL}/reset-password`, user);
+//       console.log(data);
+//     return data;
+//   } catch (error) {
+//     throw new Error(error);
+//   }
+// });
 
-export const userChangePassword = createAsyncThunk("auth/change-password", async (user) => {
-  try {
-    const { data } = await axios.get(`${BASE_URL}/change-password`, user);
-    return data;
-  } catch (error) {
-    throw new Error(error);
-  }
-});
+// export const userChangePassword = createAsyncThunk("auth/change-password", async (user) => {
+//   try {
+//     const { data } = await axios.get(`${BASE_URL}/change-password`, user);
+//       console.log(data);
+//     return data;
+//   } catch (error) {
+//     throw new Error(error);
+//   }
+// });

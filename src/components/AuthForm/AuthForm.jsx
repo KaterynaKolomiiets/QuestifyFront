@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 // import { authOperations } from 'redux/auth';
-import {userRegistration} from '../../redux/user/operation'
+import {userRegistration, userLogin} from '../../redux/user/operation'
 
 import s from './AuthForm.module.css';
 
@@ -32,7 +32,7 @@ function AuthForm() {
 
     if (validateEmail(email) && validatePassword(password)) {
       // dispatch(authOperations.handleLogin({ email, password }));
-      dispatch(userRegistration({ email: "email@gmail.com", password: "12345"}))
+      dispatch(userLogin({ email, password}))
     }
   };
 
@@ -50,7 +50,7 @@ function AuthForm() {
 
     if (validateEmail(email) && validatePassword(password)) {
       // dispatch(authOperations.handleRegister({ email, password }));
-      dispatch(userRegistration({ email: "email@gmail.com", password: "12345"}))
+      dispatch(userRegistration({ email, password}))
     }
   };
 
