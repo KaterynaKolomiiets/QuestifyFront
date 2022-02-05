@@ -1,9 +1,14 @@
 import s from "./difficultModal.module.css";
 import style from "../../../utils/variables.css";
 
-const DifficultModal = () => {
+const DifficultModal = ({ change }) => {
+  function onchange(e) {
+    console.log(e.target.textContent);
+    change(e.target.textContent);
+  }
+
   return (
-    <ul className={s.list}>
+    <ul onClick={onchange} className={s.list}>
       <li className={s.fstOption}>
         <span>Easy</span>
       </li>
