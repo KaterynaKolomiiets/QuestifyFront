@@ -1,0 +1,73 @@
+.headerSection {
+  background-color: #242a37;
+}
+
+.header {
+  height: 60px;
+  box-shadow: 0px 4px 4px rgba(36, 42, 55, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media screen and (min-width: 768px) {
+  .header {
+    height: 70px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  color: #00d7ff;
+}
+@media screen and (min-width: 768px) {
+  .logo {
+    font-size: 21px;
+    line-height: 21px;
+  }
+}
+
+.userData {
+  align-items: center;
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .userData {
+    display: flex;
+  }
+}
+
+.userDataMobile {
+  display: flex;
+}
+
+.userName {
+  font-size: 17px;
+  line-height: 17px;
+  letter-spacing: 0.02em;
+  color: #7b8aa4;
+  margin-left: 10px;
+}
+
+.avatarMobile {
+  display: flex;
+  margin-right: 10px;
+  width: 35px;
+  height: 35px;
+}
+@media screen and (min-width: 768px) {
+  .avatarMobile {
+    display: none;
+  }
+}
+
+.BtnLogout {
+  background-color: transparent;
+  border: none;
+}
