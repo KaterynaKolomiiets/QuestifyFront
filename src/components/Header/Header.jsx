@@ -4,8 +4,17 @@ import BtnLogout from "../../images/btn-logout.png";
 
 import Avatar from "@mui/material/Avatar";
 import { blueGrey } from "@mui/material/colors";
+import { useDispatch, useSelector } from 'react-redux';
+import {getUser} from '../../redux/user/selectors'
+import {userLogout} from '../../redux/user/operation'
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const user = useSelector(getUser);
+
+  const onLogout = () => {
+    dispatch(userLogout({ email: user.email, password: user.password}))
+  }
   return (
     <header className={s.headerSection}>
       <Container>
@@ -19,7 +28,7 @@ const Header = () => {
             <Avatar sx={{ bgcolor: blueGrey[800] }} className={s.avatarMobile}>
               U
             </Avatar>
-            <button type="button" className={s.BtnLogout}>
+            <button type="button" className={s.BtnLogout} onClick={onLogout}>
               <img src={BtnLogout} alt="button-logout" />
             </button>
           </div>
