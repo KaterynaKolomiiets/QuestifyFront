@@ -1,10 +1,7 @@
 import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
-
 import todos from "../redux/todos/reducer";
-
 import { userReducer } from "./user/reducer";
-import { todosReducer } from "./todos/reducer";
 
 import {
   persistStore,

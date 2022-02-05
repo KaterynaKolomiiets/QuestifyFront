@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://questify-project.herokuapp.com/api";
 
 const token = {
   set(token) {
@@ -10,17 +10,21 @@ const token = {
   unset() {
     axios.defaults.headers.common.Authorization = "";
   },
-}
+};
 
-export const userRegistration = createAsyncThunk("auth/registration", async (user) => {
-  try {
-    const { data } = await axios.post(`${BASE_URL}/registration`, user);
-    //   token.set(data.token);
-    return data;
-  } catch (error) {
-    throw new Error(error);
+export const userRegistration = createAsyncThunk(
+  "auth/registration",
+  async (user) => {
+    try {
+      const { data } = await axios.post(`${BASE_URL}/registration`, user);
+      //   token.set(data.token);
+      console.log(data);
+      return data;
+    } catch (error) {
+      throw new Error(error);
+    }
   }
-});
+);
 
 export const userLogin = createAsyncThunk("auth/login", async (user) => {
   try {
@@ -31,18 +35,15 @@ export const userLogin = createAsyncThunk("auth/login", async (user) => {
   }
 });
 
-export const userLogoutOperation = createAsyncThunk(
-  "auth/logout",
-  async () => {
-    try {
-      const { data } = await axios.post(`${BASE_URL}/logout`);
-      token.unset();
-      return data;
-    } catch (error) {
-      throw new Error(error);
-    }
+export const userLogoutOperation = createAsyncThunk("auth/logout", async () => {
+  try {
+    const { data } = await axios.post(`${BASE_URL}/logout`);
+    token.unset();
+    return data;
+  } catch (error) {
+    throw new Error(error);
   }
-);
+});
 // check address
 export const userActivate = createAsyncThunk("auth/activate", async (user) => {
   try {
@@ -62,20 +63,26 @@ export const userRefresh = createAsyncThunk("auth/refresh", async (user) => {
   }
 });
 
-export const userResetPassword = createAsyncThunk("auth/reset-password", async (user) => {
-  try {
-    const { data } = await axios.get(`${BASE_URL}/reset-password`, user);
-    return data;
-  } catch (error) {
-    throw new Error(error);
+export const userResetPassword = createAsyncThunk(
+  "auth/reset-password",
+  async (user) => {
+    try {
+      const { data } = await axios.get(`${BASE_URL}/reset-password`, user);
+      return data;
+    } catch (error) {
+      throw new Error(error);
+    }
   }
-});
+);
 
-export const userChangePassword = createAsyncThunk("auth/change-password", async (user) => {
-  try {
-    const { data } = await axios.get(`${BASE_URL}/change-password`, user);
-    return data;
-  } catch (error) {
-    throw new Error(error);
+export const userChangePassword = createAsyncThunk(
+  "auth/change-password",
+  async (user) => {
+    try {
+      const { data } = await axios.get(`${BASE_URL}/change-password`, user);
+      return data;
+    } catch (error) {
+      throw new Error(error);
+    }
   }
-});
+);

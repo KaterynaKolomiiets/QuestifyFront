@@ -1,7 +1,18 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { showTodos } from "../../redux/todos/operation";
 import "../../utils/variables.css";
 import s from "./Card.module.css";
 
 const Card = () => {
+  const name = useSelector((state) => state.user.name);
+  const dispatch = useDispatch();
+  console.log(name);
+  useEffect(() => {
+    dispatch(showTodos());
+  }, []);
+
   return (
     <>
       <ul className={s.cardSet}>
