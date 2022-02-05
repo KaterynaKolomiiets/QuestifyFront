@@ -35,7 +35,10 @@ const todoSlice = createSlice({
     [showTodosDone.fulfilled]: (_, action) => action.payload,
     [showTodosActive.fulfilled]: (_, action) => action.payload,
     [showTodosDone.fulfilled]: (_, action) => action.payload,
-    [addTodo.fulfilled]: (state, action) => [...state, action.payload.result],
+    [addTodo.fulfilled]: (state, action) => [
+      ...state.todos,
+      action.payload.result,
+    ],
 
     // [showTodos.fulfilled](state, action) {
     //   state.todos = action.payload;
