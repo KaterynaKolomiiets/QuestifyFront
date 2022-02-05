@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://questify-project.herokuapp.com/api/users";
 
 const token = {
   set(token) {
@@ -13,9 +13,11 @@ const token = {
 }
 
 export const userRegistration = createAsyncThunk("auth/registration", async (user) => {
+  console.log(user)
   try {
     const { data } = await axios.post(`${BASE_URL}/registration`, user);
-    //   token.set(data.token);
+    console.log(data)
+    token.set(data.accessToken);
     return data;
   } catch (error) {
     throw new Error(error);

@@ -1,38 +1,31 @@
-// import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-// import {userSignUp, userLogIn} from './operation'
+import { userRegistration } from "./operation";
 
+const initialState = {
+  //   user: { name: "", email: "", isActivated: false},
+  name: null,
+  email: null,
+  isActivated: false,
+  token: null,
+  //   sid: "",
+  //   isLoggedIn: false,
+  //   isCheckingUser: false,
+  //   isLoading: false,
+  //   isRegisterFullField: false,
+  //   isRefreshFullFilled: false,
+  //   isGetUserFulfilledAfterRefresh: false,
+};
 
-// const initialState = {
-//   user: { name: "", email: "", password: ""},
-//   token: "",
-// //   sid: "",
-//   isLoggedIn: false,
-// //   isCheckingUser: false,
-//   isLoading: false,
-//   isRegisterFullField: false,
-//   isRefreshFullFilled: false,
-//   isGetUserFulfilledAfterRefresh: false,
-// };
+const userSlice = createSlice({
+  name: "user",
+  initialState,
+    extraReducers: {
+    [userRegistration.fulfilled] : (state, action) => action.payload.user
+    // [userRegistration.pending](state) {
+    //   state.isLoading = true;
+    // },
+  },
+});
 
-// const userSlice = createSlice({
-//   name: "user",
-//   initialState,
-//   extraReducers: {
-//     [userSignUp.pending](state) {
-//       state.isLoading = true;
-//     },
-//     // [register.pending](state) {
-//     //     state.isLoading = true;
-//     // },
-//     // [register.fulfilled](state, action) {
-//     //   state.user = action.payload.data;
-//     //   state.isLoading = false;
-//     //   // state.isLoggedIn = true;
-//     //   state.isRegisterFullField = true;
-//     //   state.socialAuth = action.payload.socialAuth;
-//     // },
-//   },
-// });
-
-// export default userSlice.reducer;
+export default userSlice.reducer;
