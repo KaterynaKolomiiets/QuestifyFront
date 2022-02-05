@@ -1,20 +1,23 @@
+import Container from "../../components/Container";
+
 import s from './AuthPage.module.css';
 
 function AuthPage() {
   return (
     <div className={s.wrapper}>
-      <section className={s.hero}>
-          <h1 className={s.hero_title}>
+      <Container>
+        <section className={s.landing}>
+          <h1 className={s.title}>
             Questify
             </h1>
             
-          <p className={s.hero_txt__top}>
+          <p className={s.txt__top}>
             Questify will turn your life into
             a thrilling game full of amazing
             quests and exciting challenges.
           </p>
 
-          <p className={s.hero_txt__bottom}>
+          <p className={s.txt__bottom}>
             Choose your name to sign up or log in
           </p>
 
@@ -25,7 +28,8 @@ function AuthPage() {
               go!
             </button>
           </form>
-      </section>
+        </section>
+      </Container>
     </div>
   );
 }

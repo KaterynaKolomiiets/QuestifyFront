@@ -1,19 +1,15 @@
-import "./App.css";
-import Container from "./components/Container";
-import AuthPage from "./views/AuthPage";
+import AuthPage from "./pages/AuthPage";
+import HomePage from "./pages/HomePage";
 
-import Card from "./components/Card";
-import ButtonAddCard from "./components/ButtonAddCard";
+import "./App.css";
+
 
 function App() {
   return (
     <div className="App">
-      <Container>
         <AuthPage />
 
-        <Card />
-        <ButtonAddCard />
-      </Container>
+        <HomePage />
     </div>
   );
 }

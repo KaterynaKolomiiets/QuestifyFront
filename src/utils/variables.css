@@ -6,16 +6,17 @@
   --background-main: #f2f3f7;
   --background-card: #ffffff;
 
-  --bg-card-learning: #FFF6C0;
-  --bg-card-leisure: #F8D2FF;
-  --bg-card-family: #FFE6D3;
-  --bg-card-health: #CDF7FF;
-  --bg-card-stuff: #B9C3C8;
+  --bg-card-learning: #fff6c0;
+  --bg-card-leisure: #f8d2ff;
+  --bg-card-family: #ffe6d3;
+  --bg-card-health: #cdf7ff;
+  --bg-card-stuff: #b9c3c8;
+  --option-color: #db0837;
 
   --font-primary: #282828;
-  --font-secondary: #B9C3C8;
-  --font-tertiary: #7B8AA4;
-  --font-accent: #00D7FF;
-
-
+  --font-secondary: #b9c3c8;
+  --font-tertiary: #7b8aa4;
+  --font-accent: #00d7ff;
+  --font-button-cancel: #24d40c;
+  --font-button-delete: #db0938;
 }

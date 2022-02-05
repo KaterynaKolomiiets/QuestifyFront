@@ -1,8 +1,11 @@
 import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
+
 import todos from "../redux/todos/reducer";
-import { authReducer } from "./auth/reducer";
-// import { authReducer } from "./todos/reducer";
+
+import { userReducer } from "./user/reducer";
+import { todosReducer } from "./todos/reducer";
+
 import {
   persistStore,
   persistReducer,
@@ -15,16 +18,15 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-const authPersistConfig = {
-  key: "auth",
+const userPersistConfig = {
+  key: "user",
   storage,
   whitelist: ["token", "user"],
 };
 
 const rootReducer = combineReducers({
   todos: todos,
-  auth: persistReducer(authPersistConfig, authReducer),
-  // auth:  authReducer,
+  user: persistReducer(userPersistConfig, userReducer),
 });
 
 export const store = configureStore({

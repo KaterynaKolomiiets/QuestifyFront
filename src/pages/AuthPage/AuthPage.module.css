@@ -4,14 +4,14 @@
   letter-spacing: 0.01em;
 }
 /* ======== Стили Секции ====== */
-.hero {
+.landing {
   padding-top: 60px;
   padding-bottom: 181px;
   padding-left: 15px;
   padding-right: 15px;
 }
 @media screen and (min-width: 768px) {
-  .hero {
+  .landing {
     padding-top: 312px;
     padding-bottom: 312px;
     padding-left: 50px;
@@ -19,7 +19,7 @@
   }
 }
 @media screen and (min-width: 1280px) {
-  .hero {
+  .landing {
     padding-top: 193px;
     padding-bottom: 194px;
     padding-left: 229px;
@@ -27,7 +27,7 @@
   }
 }
 
-.hero_title {
+.title {
   font-weight: 700;
   font-size: 24px;
   line-height: 1.167;
@@ -37,7 +37,7 @@
   margin-bottom: 60px;
 }
 @media screen and (min-width: 768px) {
-  .hero_title {
+  .title {
     font-size: 20px;
     line-height: 1.15;
 
@@ -45,7 +45,7 @@
   }
 }
 @media screen and (min-width: 1280px) {
-  .hero_title {
+  .title {
     font-size: 24px;
     line-height: 1.167;
 
@@ -53,7 +53,7 @@
   }
 }
 
-.hero_txt__top {
+.txt__top {
   font-weight: 700;
   font-size: 18px;
   line-height: 1.61;
@@ -65,7 +65,7 @@
   margin-bottom: 30px;
 }
 @media screen and (min-width: 768px) {
-  .hero_title {
+  .txt__top {
     font-size: 24px;
     line-height: 1.37;
 
@@ -73,7 +73,7 @@
   }
 }
 @media screen and (min-width: 1280px) {
-  .hero_title {
+  .txt__top {
     font-size: 36px;
     line-height: 1.25;
 
@@ -81,7 +81,7 @@
   }
 }
 
-.hero_txt__bottom {
+.txt__bottom {
   font-size: 14px;
   line-height: 3.21;
 
@@ -90,7 +90,7 @@
   margin-bottom: 30px;
 }
 @media screen and (min-width: 768px) {
-  .hero_title {
+  .txt__bottom {
     font-size: 18px;
     line-height: 2.5;
 
@@ -98,7 +98,7 @@
   }
 }
 @media screen and (min-width: 1280px) {
-  .hero_title {
+  .txt__bottom {
     font-size: 25px;
     line-height: 1.87;
 
@@ -133,6 +133,7 @@
 
   border: none;
   border-bottom: 1px solid #00d7ff;
+  outline: transparent;
 
   width: 100%;
 
@@ -152,10 +153,15 @@
   border-radius: 50%;
   border: none;
 
-  width: 53px;
-  height: 53px;
+  box-shadow: 0 0 5px 2px #ff851c;
 
-  cursor: pointer;
+  width: 52px;
+  height: 52px;
+
+  /* cursor: pointer; */
+}
+.auth_form_button:hover {
+  border: solid 1px #fff;
 }
 /* Цвет плейсхолдера */
 ::-webkit-input-placeholder {
