@@ -10,10 +10,9 @@ function App() {
     <div className="App">
       <Container>
         <AuthPage />
-            
+
         <Card />
         <ButtonAddCard />
-
       </Container>
     </div>
   );

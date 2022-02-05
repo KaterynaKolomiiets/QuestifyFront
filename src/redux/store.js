@@ -1,7 +1,8 @@
 import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
-import { authReducer } from './auth/reducer'
-import { todosReducer } from "./todos/reducer";
+import todos from "../redux/todos/reducer";
+import { authReducer } from "./auth/reducer";
+// import { authReducer } from "./todos/reducer";
 import {
   persistStore,
   persistReducer,
@@ -21,7 +22,7 @@ const authPersistConfig = {
 };
 
 const rootReducer = combineReducers({
-    todos: todosReducer,
+  todos: todos,
   auth: persistReducer(authPersistConfig, authReducer),
   // auth:  authReducer,
 });
