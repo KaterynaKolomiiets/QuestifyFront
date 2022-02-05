@@ -7,14 +7,14 @@ const ModalDelete = ({ change }) => {
     change(true);
   }
 
-  function cencle(e) {
+  function cancel(e) {
     change(false);
   }
 
   return (
     <div className={s.modal}>
       <p className={s.text}>Delete this Quest?</p>
-      <button className={s.cancel} type="button" onClick={cencle}>
+      <button className={s.cancel} type="button" onClick={cancel}>
         CANCEL
       </button>
       <button className={s.delete} type="button" onClick={deleteHandler}>
