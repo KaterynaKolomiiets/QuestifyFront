@@ -1,4 +1,6 @@
 import Container from "../../components/Container";
+import Header from "../../components/Header/Header";
+
 import Card from "../../components/Card";
 import ButtonAddCard from "../../components/ButtonAddCard";
 
@@ -8,7 +10,7 @@ function HomePage() {
   return (
     <section className={s.dashboard}>
       <Container>
-          {/* <Header /> */}
+          <Header />
           <Card />
           <ButtonAddCard />
       </Container>
