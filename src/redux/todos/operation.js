@@ -11,20 +11,51 @@ const token = {
 };
 export const showTodos = createAsyncThunk("todos/get", async (_, thunkApi) => {
   try {
-    const result = await axios.get(
+    const { data } = await axios.get(
       `http://questify-project.herokuapp.com/api/todos/all`
     );
-    token.set(result.token);
-    console.log(result);
-    return result;
+    console.log(data);
+    return data;
   } catch (err) {
     return thunkApi.rejectWithValue(err);
   }
 });
+export const showTodosDone = createAsyncThunk(
+  "todos/done",
+  async (_, thunkApi) => {
+    try {
+      const { data } = await axios.get(
+        `http://questify-project.herokuapp.com/api/todos/completed`
+      );
+      console.log(data);
+      return data;
+    } catch (err) {
+      return thunkApi.rejectWithValue(err);
+    }
+  }
+);
+export const showTodosActive = createAsyncThunk(
+  "todos/active",
+  async (_, thunkApi) => {
+    try {
+      const { data } = await axios.get(
+        `http://questify-project.herokuapp.com/api/todos/active`
+      );
+      console.log(data);
+      return data;
+    } catch (err) {
+      return thunkApi.rejectWithValue(err);
+    }
+  }
+);
 export const addTodo = createAsyncThunk("todo/add", async (todo, thunkApi) => {
   try {
-    const result = await axios.post("/todos", todo);
-    return result;
+    const { data } = await axios.post(
+      `http://questify-project.herokuapp.com/api/todos/add`,
+      todo
+    );
+
+    return data;
   } catch (err) {
     return thunkApi.rejectWithValue(err);
   }

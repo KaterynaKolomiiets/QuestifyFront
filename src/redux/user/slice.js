@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { userRegistration } from "./operation";
+import { userLogin, userRegistration } from "./operation";
 
 const initialState = {
   //   user: { name: "", email: "", isActivated: false},
@@ -20,8 +20,9 @@ const initialState = {
 const userSlice = createSlice({
   name: "user",
   initialState,
-    extraReducers: {
-    [userRegistration.fulfilled] : (state, action) => action.payload.user
+  extraReducers: {
+    [userRegistration.fulfilled]: (state, action) => action.payload.user,
+
     // [userRegistration.pending](state) {
     //   state.isLoading = true;
     // },

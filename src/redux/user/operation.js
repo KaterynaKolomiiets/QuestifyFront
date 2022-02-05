@@ -26,6 +26,17 @@ export const userRegistration = createAsyncThunk(
     }
   }
 );
+export const userLogin = createAsyncThunk("auth/login", async (user) => {
+  console.log(user);
+  try {
+    const { data } = await axios.post(`${BASE_URL}/login`, user);
+    console.log(data);
+    token.set(data.accessToken);
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
+});
 
 export const userLogoutOperation = createAsyncThunk("auth/logout", async () => {
   try {

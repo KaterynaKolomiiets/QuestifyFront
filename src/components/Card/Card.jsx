@@ -6,24 +6,26 @@ import "../../utils/variables.css";
 
 import s from "./Card.module.css";
 
-const Card = () => {
-  const name = useSelector((state) => state.user.name);
+const Card = ({ todo }) => {
+  console.log(todo);
   const dispatch = useDispatch();
-  console.log(name);
-  useEffect(() => {
-    dispatch(showTodos());
-  }, []);
+  // useEffect(async () => {
+  //   const data = await dispatch(showTodos());
+  //   const dataJson = data.JSON();
+  //   console.log(dataJson);
+  // });
 
   return (
     <>
       <p className={s.cardCategoryName}>
         <span className={s.cardCategoryCircle}>&#9679;</span>
-        Normal
+
+        {todo.level}
         <span className={s.cardCategoryStart}>&#9733;</span>
       </p>
-      <h2 className={s.cardTitle}>Todo name</h2>
-      <p className={s.cardDate}>Date</p>
-      <p className={s.cardType}>type</p>
+      <h2 className={s.cardTitle}>{todo.title}</h2>
+      <p className={s.cardDate}>{todo.updatedAt}</p>
+      <p className={s.cardType}> {todo.category}</p>
     </>
   );
 };
