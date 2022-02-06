@@ -18,22 +18,6 @@ function LoginForm() {
   const changeEmailValue = (event) => setEmail(event.target.value);
   const changePasswordValue = (event) => setPassword(event.target.value);
 
-  const onSubmit = (event) => {
-    event.preventDefault();
-
-    !validateEmail(email)
-      ? setEmailError('Некорректно введен e-mail.')
-      : setEmailError('');
-
-    !validatePassword(password)
-      ? setPasswordError('Пароль должен быть от 4 до 16 символов.')
-      : setPasswordError('');
-
-    if (validateEmail(email) && validatePassword(password)) {
-      dispatch(userLogin({ email, password}))
-    }
-  };
-
   const onLogin = (event) => {
     event.preventDefault();
 

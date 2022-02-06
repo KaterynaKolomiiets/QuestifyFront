@@ -11,6 +11,7 @@ function AuthPage() {
   const [showRegisterForm, setShowRegisterForm] = useState(false);
 
   const showRegForm = () => setShowRegisterForm(true);
+  const hideRegForm = () => setShowRegisterForm(false);
   
   return (
     <div className={s.wrapper}>
@@ -32,8 +33,10 @@ function AuthPage() {
             <button type='button' onClick={showRegForm} className={s.invisibleButton}>
               sign up
             </button>
-            
-            or log in
+            or
+            <button type='button' onClick={hideRegForm} className={s.invisibleButton}>
+              log in
+            </button>
           </p>
           {
             showRegisterForm
