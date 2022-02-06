@@ -4,6 +4,7 @@ import Loader from 'react-loader-spinner';
 
 import AuthPage from "./pages/AuthPage";
 import HomePage from "./pages/HomePage";
+import ModalNewCard from "./components/modal/ModalNewCard";
 
 import { routes, PublicRoute, PrivateRoute } from './routes';
 
