@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import s from "./Modal.module.css";
 
 export default function Modal({ children }) {
-  const portalModal = document.querySelector("#nodalRoot");
+  // const portalModal = document.querySelector("#nodalRoot");
 
   //   useEffect(() => {
   //     window.addEventListener("keydown", handleKeydown);
@@ -23,11 +23,16 @@ export default function Modal({ children }) {
   //     }
   //   }
 
-  return createPortal(
+  // return createPortal(
+  //   <div className={s.Overlay}>
+  //     <div className={s.Modal}>{children}</div>
+  //   </div>,
+  //   portalModal
+  // );
+  return (
     <div className={s.Overlay}>
       <div className={s.Modal}>{children}</div>
-    </div>,
-    portalModal
+    </div>
   );
 }
 

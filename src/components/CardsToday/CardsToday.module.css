@@ -1,0 +1,79 @@
+.section {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  max-width: 290px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media screen and (min-width: 768px) {
+  .section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+
+    max-width: none;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .section {
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+}
+
+.title {
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.2;
+  text-transform: uppercase;
+
+  letter-spacing: 0.02em;
+
+  margin-bottom: 20px;
+}
+
+.cardSet {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  margin-top: -20px;
+}
+@media screen and (min-width: 768px) {
+  .cardSet {
+    flex-direction: row;
+    margin-left: -27px;
+  }
+}
+
+.card {
+  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+    3px 4px 4px rgba(21, 57, 90, 0.03);
+  border-radius: 10px;
+
+  background: var(--background-card);
+
+  padding: 20px;
+
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 768px) {
+  .card {
+    width: calc((100% / 3) - 27px);
+    margin-left: 27px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .card {
+    width: calc((100% / 5) - 28px);
+    margin-left: 28px;
+  }
+}

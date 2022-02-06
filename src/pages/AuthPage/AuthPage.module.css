@@ -1,7 +1,9 @@
 .wrapper {
-  color: #000;
   font-family: "Roboto", sans-serif;
   letter-spacing: 0.01em;
+
+  /* color: #000;
+  background: #fff; */
 }
 /* ======== Стили Секции ====== */
 .landing {
@@ -12,16 +14,16 @@
 }
 @media screen and (min-width: 768px) {
   .landing {
-    padding-top: 312px;
-    padding-bottom: 312px;
+    padding-top: 306px;
+    padding-bottom: 306px;
     padding-left: 50px;
     padding-right: 338px;
   }
 }
 @media screen and (min-width: 1280px) {
   .landing {
-    padding-top: 193px;
-    padding-bottom: 194px;
+    padding-top: 186px;
+    padding-bottom: 185px;
     padding-left: 229px;
     padding-right: 489px;
   }
@@ -105,76 +107,6 @@
     margin-bottom: 23px;
     margin-right: 0;
   }
-}
-/* Форма */
-.auth_form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  width: 100%;
-}
-@media screen and (min-width: 768px) {
-  .auth_form {
-    width: 193px;
-    align-items: flex-end;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .auth_form {
-    width: 196px;
-  }
-}
-
-.auth_form_input {
-  font-weight: 300;
-  font-size: 18px;
-  line-height: 1.167;
-
-  border: none;
-  border-bottom: 1px solid #00d7ff;
-  outline: transparent;
-
-  width: 100%;
-
-  margin-bottom: 20px;
-}
-
-.auth_form_button {
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 28px;
-  text-align: center;
-  letter-spacing: 0.02em;
-
-  color: #ffffff;
-
-  background: #ff851c;
-  border-radius: 50%;
-  border: none;
-
-  box-shadow: 0 0 5px 2px #ff851c;
-
-  width: 52px;
-  height: 52px;
-
-  /* cursor: pointer; */
-}
-.auth_form_button:hover {
-  border: solid 1px #fff;
-}
-/* Цвет плейсхолдера */
-::-webkit-input-placeholder {
-  color: #00d7ff;
-}
-:-moz-placeholder {
-  color: #00d7ff;
-}
-::-moz-placeholder {
-  color: #00d7ff;
-}
-:-ms-input-placeholder {
-  color: #00d7ff;
 }
 
 .wrapper {

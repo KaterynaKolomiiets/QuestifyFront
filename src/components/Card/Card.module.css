@@ -1,102 +1,68 @@
-.cardSet {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  flex-direction: column;
-
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-  padding: 20px;
-  background: var(--background-card);
-  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
-    3px 4px 4px rgba(21, 57, 90, 0.03);
-  border-radius: 10px;
-}
-
 .cardCategoryName {
-  display: flex;
-  align-items: center;
-  margin-bottom: 50px;
   font-family: "HelveticaNeueCyr-Medium";
   font-size: 16px;
+
   color: var(--font-secondary);
+
+  margin-bottom: 50px;
+
+  display: flex;
+  align-items: center;
 }
 
 .cardCategoryCircle {
   margin-right: 10px;
 }
+
 .cardCategoryStart {
   margin-left: auto;
 }
 
 .cardTitle {
-  margin: 0 auto;
-  margin-bottom: 10px;
   font-family: "HelveticaNeueCyr-Bold";
   font-size: 20px;
   line-height: 20px;
 
   color: var(--font-primary);
+
+  margin: 0 auto;
+  margin-bottom: 10px;
 }
 
 .cardDate {
-  margin: 0 auto;
-  margin-bottom: 40px;
   font-family: "HelveticaNeueCyr-Medium";
   font-size: 14px;
+
   color: var(--font-secondary);
+
+  margin: 0 auto;
+  margin-bottom: 40px;
 }
 
 .cardType {
-  width: 120px;
-  height: 35px;
-  padding: 5px;
-  padding-left: 20px;
-  margin-left: -20px;
-  background-color: green;
-  border-radius: 0px 25px 25px 0px;
   font-family: "HelveticaNeueCyr-Medium";
   font-size: 11px;
   line-height: 11px;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+  border-radius: 0px 25px 25px 0px;
+
+  background-color: green;
+
+  width: 120px;
+  height: 35px;
+
+  padding: 5px;
+  padding-left: 20px;
+
+  margin-left: -20px;
+
   display: flex;
   align-items: center;
 }
 
 @media screen and (min-width: 768px) {
-  .cardSet {
-    flex-direction: row;
-
-    padding-left: 50px;
-    padding-right: 50px;
-
-    margin-left: -27px;
-  }
-  .card {
-    width: calc((100% / 3) - 27px);
-
-    margin-left: 27px;
-  }
   .cardCategoryName {
     font-size: 16px;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .list {
-    display: flex;
-    flex-wrap: wrap;
-
-    margin-left: -28px;
-  }
-  .card {
-    width: calc((100% / 5) - 28px);
-    margin-left: 28px;
   }
 }
