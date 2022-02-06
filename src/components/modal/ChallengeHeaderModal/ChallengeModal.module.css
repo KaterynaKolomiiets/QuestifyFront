@@ -1,0 +1,19 @@
+.modal {
+  background-color: #7b8aa4;
+  height: 400px;
+  width: 350px;
+  border-radius: 10px;
+  position: fixed;
+  top: 75px;
+  right: 70px;
+  padding: 25px 25px;
+}
+
+.modal::before {
+  content: "";
+  position: absolute;
+  left: 42%;
+  top: -20px;
+  border: 10px solid transparent;
+  border-bottom: 10px solid #7b8aa4;
+}

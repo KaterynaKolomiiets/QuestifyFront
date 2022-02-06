@@ -1,22 +1,26 @@
 import s from "./Header.module.css";
 import Container from "../Container";
-import ModalWindow from "../modal/ModalWindow/ModalWindow";
+import ModalWindow from "../modal/ModalWindow/index";
 import BtnLogout from "../../images/btn-logout.png";
 import challengeIcon from "../../images/challengeIcon.png";
+import ChallengeModal from "../modal/ChallengeHeaderModal/index";
+
 import Avatar from "@mui/material/Avatar";
 import { blueGrey } from "@mui/material/colors";
-
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
+
 import { getUser } from "../../redux/user/selectors";
 import { userLogout } from "../../redux/user/operation";
 
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showChallenges, setShowChallenges] = useState(false);
   const dispatch = useDispatch();
   const user = useSelector(getUser);
   const toggleModal = () => setShowModal((prevState) => !prevState);
+  const challengeModal = () => setShowChallenges((prevState) => !prevState);
 
   const modalEscape = (e) => {
     if (e.code === "Escape") {
@@ -53,7 +57,11 @@ const Header = () => {
             <div className={s.avatarMobile}>
               <Avatar sx={{ bgcolor: blueGrey[800] }}>{avatarLetter}</Avatar>
             </div>
-            <button type="button" className={s.challengeIcon}>
+            <button
+              type="button"
+              className={s.challengeIcon}
+              onClick={challengeModal}
+            >
               <img
                 src={challengeIcon}
                 alt="challengeIcon"
@@ -82,6 +90,7 @@ const Header = () => {
           </div>
         </ModalWindow>
       )}
+      {showChallenges && <ChallengeModal challengeModal={challengeModal} />}
     </header>
   );
 };
