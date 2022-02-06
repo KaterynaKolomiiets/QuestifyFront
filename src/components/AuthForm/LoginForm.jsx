@@ -3,12 +3,11 @@ import axios from "axios";
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-// import { authOperations } from 'redux/auth';
-import {userRegistration, userLogin} from '../../redux/user/operation'
+import { userLogin } from '../../redux/user/operation'
 
 import s from './AuthForm.module.css';
 
-function AuthForm() {
+function LoginForm() {
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState('');
@@ -31,12 +30,13 @@ function AuthForm() {
       : setPasswordError('');
 
     if (validateEmail(email) && validatePassword(password)) {
-      // dispatch(authOperations.handleLogin({ email, password }));
       dispatch(userLogin({ email, password}))
     }
   };
 
-  const onRegistration = () => {
+  const onLogin = (event) => {
+    event.preventDefault();
+
     !validateEmail(email)
       ? setEmailError('Некорректно введен e-mail.')
       : setEmailError('');
@@ -45,12 +45,8 @@ function AuthForm() {
       ? setPasswordError('Пароль должен быть от 4 до 16 символов.')
       : setPasswordError('');
 
-    // !email && setEmailError('это обязательное поле');
-    // !password && setPasswordError('это обязательное поле');
-
     if (validateEmail(email) && validatePassword(password)) {
-      // dispatch(authOperations.handleRegister({ email, password }));
-      dispatch(userRegistration({ email, password}))
+      dispatch(userLogin({ email, password}))
     }
   };
 
@@ -65,7 +61,7 @@ function AuthForm() {
   };
 
   return (
-    <form onSubmit={onSubmit} className={s.auth_form}>
+    <form onSubmit={onLogin} className={s.auth_form}>
       {/* И Н П У Т   И М Е Й Л */}
       <input
         type='email'
@@ -96,27 +92,24 @@ function AuthForm() {
 
       <div>
         {/* К Н О П К И */}
-        <button className={s.auth_form_button} type="submit">
-          go!
+        <button className={s.auth_form_button} type='submit'>
+          log
         </button>
 
-        <button className={s.auth_form_button} type='button' onClick={onRegistration}>
-          reg
-        </button>
         {/* TO DELETE BELOW */}
         <button
           type="button"
           onClick={async () => {
             const a = await axios.get(`http://questify-project.herokuapp.com/api/todos/all`);
-            console.log(a);
           }}
         >
           PressMe
         </button>      
         {/* TO DELETE ABOVE */}
+
       </div>
     </form>
   );
 }
 
-export default AuthForm;
+export { LoginForm };

@@ -1,9 +1,6 @@
 .wrapper {
   font-family: "Roboto", sans-serif;
   letter-spacing: 0.01em;
-
-  /* color: #000;
-  background: #fff; */
 }
 /* ======== Стили Секции ====== */
 .landing {
@@ -208,4 +205,11 @@
     background: url("../../images/bg_btm_dsk.png");
     background-repeat: no-repeat;
   }
+}
+.invisibleButton {
+  border: none;
+  background: transparent;
+  text-decoration: underline;
+  color: #00d7ff;
+  /* color: #b9c3c8; */
 }
