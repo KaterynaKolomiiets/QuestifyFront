@@ -1,5 +1,5 @@
-export const getUser = (state) => state.user;
-export const getIsActivated = (state) => state.user.isActivated;
+export const getUser = (state) => state.user.userinfo;
+export const getIsActivated = (state) => state.user.userinfo.isActivated;
 
-export const getIsLoggedIn = (state) => state.user.isLoggedIn;
-export const getIsRegistered = (state) => state.user.isRegistered;
+export const getIsLoggedIn = (state) => state.user.userinfo.isLoggedIn;
+export const getIsRegistered = (state) => state.user.userinfo.isRegistered;

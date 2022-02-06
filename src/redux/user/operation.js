@@ -59,6 +59,29 @@ export const userLogout = createAsyncThunk(
 //   }
 // });
 
+export const userRefresh = createAsyncThunk(
+  "auth/refresh",
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.user.token;
+    console.log(persistedToken)
+
+    if (!persistedToken) {
+      return thunkAPI.rejectWithValue("User is logged out");
+    }
+    token.set(persistedToken);
+    console.log(persistedToken)
+    try {
+      const { data } = await axios.get(`${BASE_URL}/refresh`);
+      console.log(data)
+      return data;
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+);
+
+
 // export const userRefresh = createAsyncThunk("auth/refresh", async (user) => {
 //   try {
 //     const { data } = await axios.get(`${BASE_URL}/refresh`, user);
