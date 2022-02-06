@@ -21,7 +21,7 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   extraReducers: {
-    [userRegistration.fulfilled]: (state, action) => action.payload.user,
+    [userRegistration.fulfilled]: (state, action) => action.payload,
 
     // [userRegistration.pending](state) {
     //   state.isLoading = true;

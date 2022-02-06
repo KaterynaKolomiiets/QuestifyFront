@@ -7,19 +7,12 @@ import "../../utils/variables.css";
 import s from "./Card.module.css";
 
 const Card = ({ todo }) => {
-  console.log(todo);
   const dispatch = useDispatch();
-  // useEffect(async () => {
-  //   const data = await dispatch(showTodos());
-  //   const dataJson = data.JSON();
-  //   console.log(dataJson);
-  // });
 
   return (
     <>
       <p className={s.cardCategoryName}>
         <span className={s.cardCategoryCircle}>&#9679;</span>
-
         {todo.level}
         <span className={s.cardCategoryStart}>&#9733;</span>
       </p>
