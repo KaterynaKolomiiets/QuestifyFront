@@ -61,8 +61,100 @@
   align-items: center;
 }
 
+/* new style */
+
+.bottomMenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cross {
+  color: var(--option-color);
+  margin-left: 73px;
+  margin-right: 14px;
+  /* width: 10px;
+    height: 10px; */
+  position: relative;
+  cursor: pointer;
+}
+
+.cross::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 16px;
+  background-color: var(--font-secondary);
+  top: 10%;
+  right: -7px;
+}
+
+.start {
+  color: var(--font-accent);
+
+  font-family: HelveticaNeueCyr;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+
+.card {
+  position: relative;
+}
+
+/* Options */
+
+.firstOption {
+  color: var(--font-accent);
+  margin-right: 10px;
+}
+
+.secondOption {
+  color: var(--font-button-cancel);
+  margin-right: 10px;
+}
+
+.thirdOption {
+  color: var(--option-color);
+  margin-right: 10px;
+}
+
 @media screen and (min-width: 768px) {
   .cardCategoryName {
     font-size: 16px;
+  }
+
+  .bottomMenu {
+    display: flex;
+    align-items: center;
+  }
+
+  .cross {
+    color: var(--option-color);
+    margin-left: 28px;
+    margin-right: 14px;
+    /* width: 10px;
+    height: 10px; */
+    position: relative;
+  }
+
+  .cross::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 16px;
+    background-color: var(--font-secondary);
+    top: 10%;
+    right: -7px;
+  }
+
+  .start {
+    color: var(--font-accent);
+
+    font-family: HelveticaNeueCyr;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: 0.02em;
   }
 }
