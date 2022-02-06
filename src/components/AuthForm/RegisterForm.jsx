@@ -10,7 +10,6 @@ import {
   changeTodo,
 } from "../../redux/todos/operation";
 
-import { userRegistration } from '../../redux/user/operation'
 // import { authOperations } from 'redux/auth';
 import { userLogin, userRegistration } from "../../redux/user/operation";
 
@@ -115,7 +114,6 @@ function RegisterForm() {
 
       <div>
         {/* К Н О П К И */}
-        <button className={s.auth_form_button} type='submit'>
         <button
           className={s.auth_form_button}
           // type="submit"
