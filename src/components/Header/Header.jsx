@@ -1,12 +1,13 @@
-import s from "./Header.module.css";
-import Container from "../Container";
-import BtnLogout from "../../images/btn-logout.png";
-
+import { useDispatch, useSelector } from 'react-redux';
 import Avatar from "@mui/material/Avatar";
 import { blueGrey } from "@mui/material/colors";
-import { useDispatch, useSelector } from 'react-redux';
+
+import Container from "../Container";
 import {getUser} from '../../redux/user/selectors'
-import {userLogout} from '../../redux/user/operation'
+import { userLogout } from '../../redux/user/operation'
+import BtnLogout from "../../images/btn-logout.png";
+
+import s from "./Header.module.css";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const Header = () => {
           <p className={s.logo}>Questify</p>
           <div className={s.userData}>
             <Avatar sx={{ bgcolor: blueGrey[800] }}>U</Avatar>
-            <p className={s.userName}>UserName</p>
+            <p className={s.userName}>{user.email}</p>
           </div>
           <div className={s.userDataMobile}>
             <Avatar sx={{ bgcolor: blueGrey[800] }} className={s.avatarMobile}>
