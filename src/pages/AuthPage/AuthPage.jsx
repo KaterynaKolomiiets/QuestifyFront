@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -5,7 +6,15 @@ import Container from "../../components/Container";
 import { LoginForm } from '../../components/AuthForm';
 import { RegisterForm } from '../../components/AuthForm';
 
-import s from './AuthPage.module.css';
+
+import { userLogin, userRegistration } from "../../redux/user/operation";
+
+import s from "./AuthPage.module.css";
+import {
+  showTodos,
+  showTodosActive,
+  showTodosDone,
+} from "../../redux/todos/operation";
 
 function AuthPage() {
   const [showRegisterForm, setShowRegisterForm] = useState(false);
@@ -17,13 +26,10 @@ function AuthPage() {
     <div className={s.wrapper}>
       <Container>
         <section className={s.landing}>
-          <h1 className={s.title}>
-            Questify
-            </h1>
-            
+          <h1 className={s.title}>Questify</h1>
+
           <p className={s.txt__top}>
-            Questify will turn your life into
-            a thrilling game full of amazing
+            Questify will turn your life into a thrilling game full of amazing
             quests and exciting challenges.
           </p>
 
