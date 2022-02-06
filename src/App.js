@@ -6,7 +6,7 @@ import { TailSpin } from 'react-loader-spinner';
 // import HomePage from "./pages/HomePage";
 // import ModalNewCard from "./components/modal/ModalNewCard";
 
-import { routes, PublicRoute, PrivateRoute } from './routes';
+import { routes, PublicRoute, PrivateRoute } from "./routes";
 
 import "./App.css";
 
