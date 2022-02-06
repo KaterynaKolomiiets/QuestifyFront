@@ -1,4 +1,11 @@
 /* ======== Стили Секции ====== */
 .dashboard {
   background: #e5e5e5;
+
+  padding-top: 25px;
+}
+@media screen and (min-width: 768px) {
+  .dashboard {
+    padding-top: 30px;
+  }
 }

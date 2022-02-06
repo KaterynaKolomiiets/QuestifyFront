@@ -9,10 +9,9 @@ const initialState = {
   isActivated: false,
   token: null,
   //   sid: "",
-  //   isLoggedIn: false,
+    isLoggedIn: false,
   //   isCheckingUser: false,
   //   isLoading: false,
-  //   isRegisterFullField: false,
   //   isRefreshFullFilled: false,
   //   isGetUserFulfilledAfterRefresh: false,
 };
