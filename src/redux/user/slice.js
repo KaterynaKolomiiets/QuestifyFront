@@ -28,6 +28,7 @@ const userSlice = createSlice({
     [userLogout.fulfilled]: (state, action) => initialState,
     [userRegistration.fulfilled]: (state, action) => action.payload.user,
 
+
     // [userRegistration.pending](state) {
     //   state.isLoading = true;
     // },

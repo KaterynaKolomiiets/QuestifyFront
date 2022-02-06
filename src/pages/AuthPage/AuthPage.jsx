@@ -8,6 +8,13 @@ import { RegisterForm } from '../../components/AuthForm';
 
 
 import { userLogin, userRegistration } from "../../redux/user/operation";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { userLogin, userRegistration } from "../../redux/user/operation";
+
+import Container from "../../components/Container";
+import AuthForm from "../../components/AuthForm";
 
 import s from "./AuthPage.module.css";
 import {

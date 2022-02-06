@@ -1,5 +1,9 @@
 import { useDispatch } from "react-redux";
-import { addTodo } from "../../redux/todos/operation";
+import {
+  addTodo,
+  showTodosActive,
+  showTodosDone,
+} from "../../redux/todos/operation";
 import "../../utils/variables.css";
 import s from "./ButtonAddCard.module.css";
 
@@ -12,7 +16,7 @@ const ButtonAddCard = () => {
         category: "FAMILY",
         type: "TASK",
         time: Date.now(),
-        isActive: false,
+        isActive: true,
         level: "Normal",
       })
     );
