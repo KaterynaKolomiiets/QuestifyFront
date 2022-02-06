@@ -81,7 +81,60 @@
   }
 }
 
+.challengeIcon {
+  margin-right: 30px;
+  background-color: transparent;
+  border: none;
+}
+
 .BtnLogout {
   background-color: transparent;
   border: none;
+}
+
+/* ------------------------MODAL WINDOW------------------------------------ */
+.btnDiv {
+  align-items: center;
+  text-align: center;
+}
+
+.modalTitle {
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 16px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #414553;
+  margin-bottom: 30px;
+}
+.modalBtn {
+  width: 100px;
+  height: 44px;
+  background: transparent;
+  border-radius: 16px;
+  color: #242a37;
+  border: 2px solid #242a37;
+  box-sizing: border-box;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background-color var(--transition-timing)
+      var(--transition-function),
+    color var(--transition-timing) var(--transition-function);
+}
+@media screen and (min-width: 768px) {
+  .modalBtn {
+    width: 125px;
+    height: 44px;
+  }
+}
+
+.modalBtn:not(:last-child) {
+  margin-right: 15px;
+}
+
+.modalBtn:hover,
+.modalBtn:focus {
+  background: #242a37;
+  color: #fff;
 }

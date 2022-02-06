@@ -1,0 +1,155 @@
+.exitModal {
+  position: fixed;
+  margin: 0 auto;
+  box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
+  border-radius: 15px;
+  width: 280px;
+  height: 150px;
+  background-color: #fff;
+  padding-top: 30px;
+  top: 50%;
+  left: 50%;
+  /* margin-top: -100px; */
+  margin-left: -140px;
+  padding-top: 40px;
+}
+@media screen and (min-width: 768px) {
+  .exitModal {
+    padding-top: 60px;
+    width: 380px;
+    height: 194px;
+    top: 50%;
+    left: 60%;
+    margin-top: -100px;
+    margin-left: -270px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .exitModal {
+    top: 50%;
+    left: 53%;
+    margin-top: -100px;
+    margin-left: -250px;
+  }
+}
+
+.btnDiv {
+  align-items: center;
+  text-align: center;
+}
+
+.modalBtn {
+  width: 100px;
+  height: 44px;
+  background: transparent;
+  border-radius: 16px;
+  color: #242a37;
+  border: 2px solid #242a37;
+  box-sizing: border-box;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background-color var(--transition-timing)
+      var(--transition-function),
+    color var(--transition-timing) var(--transition-function);
+}
+@media screen and (min-width: 768px) {
+  .modalBtn {
+    width: 125px;
+    height: 44px;
+  }
+}
+
+.modalBtn:not(:last-child) {
+  margin-right: 15px;
+}
+
+.modalBtn:hover,
+.modalBtn:focus {
+  background: #242a37;
+  color: #fff;
+}
+
+.modalTitle {
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 16px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #414553;
+  margin-bottom: 30px;
+}
+
+.closeBtn {
+  border-color: transparent;
+  background-color: transparent;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+}
+
+.backdrop {
+  color: rgb(61, 36, 36);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #52555fbd;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 999;
+}
+
+.backdropErrorModal {
+  font-weight: 600;
+  color: rgb(133, 20, 20);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(58, 9, 9, 0.301);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 999;
+}
+
+.exitErrorModal {
+  position: fixed;
+  margin: 0 auto;
+  box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
+  border-radius: 30px;
+  width: 280px;
+  height: 150px;
+  background-color: #fff;
+  /* padding-top: 15px; */
+  padding: 20px 5px 5px 5px;
+  align-items: center;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  margin-left: -140px;
+}
+@media screen and (min-width: 768px) {
+  .exitErrorModal {
+    padding: 30px 5px 5px 5px;
+    width: 380px;
+    height: 194px;
+    top: 50%;
+    left: 60%;
+    margin-top: -100px;
+    margin-left: -270px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .exitErrorModal {
+    top: 50%;
+    left: 53%;
+    margin-top: -100px;
+    margin-left: -250px;
+  }
+}
