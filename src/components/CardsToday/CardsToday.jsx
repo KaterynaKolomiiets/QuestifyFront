@@ -6,7 +6,7 @@ import s from "./CardsToday.module.css";
 import { useSelector } from "react-redux";
 import { todosActive } from "../../redux/todos/todosSelector";
 import { useState } from "react";
-import ChallengeCart from "../modal/ChallengeCart";
+import ChallengeCard from "../modal/ChallengeCard";
 import data from "./temporaryData.json";
 
 
@@ -27,28 +27,27 @@ import data from "./temporaryData.json";
   return (
     <section className={s.section}>
       <h2 className={s.title}>Today</h2>
-      
-        {todos?.map((todo) => (
-         
-            <Card todo={todo} />
-     
-        ))} 
+    <ul className={s.cardSet}>
+      {todos?.map((item) => (
+            <Card todo={item} />
+      ))} 
+        </ul>
 
-      <ul className={s.cardSet}>
+      {/* <ul className={s.cardSet}>
         {todos?.map((item) => {
           console.log(item.type)
         })}
-        {/* {todos?.map((todo) => (
+        {todos?.map((todo) => (
             <Card todo={todo} />
         ))} 
         {data.map((cart) => {
           return cart.isChallenge ? (
-            <ChallengeCart key={cart.id} cart={cart} data={takeData} />
+            <ChallengeCard key={cart.id} cart={cart} data={takeData} />
           ) : (
             <Card key={cart.id} cart={cart} data={takeData} />
           );
-        })} */}
-      </ul>
+        })}
+      </ul> */}
     </section>
   );
 };

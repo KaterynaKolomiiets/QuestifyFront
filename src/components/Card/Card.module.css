@@ -218,10 +218,9 @@
     width: 100%;
   }
 }
-
-/* @media only screen and (min-width: 1024px) and (orientation: landscape) {
+/* IPAD MINI LAYOUT */
+@media only screen and (min-width: 1024px) and (orientation: landscape) {
   .card {
     width: calc((100% / 4) - 27px);
-    background-color: green;
   }
-} */
+}

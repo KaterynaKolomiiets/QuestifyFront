@@ -1,5 +1,4 @@
 import Card from "../Card";
-import ChallengeCart from "../modal/ChallengeCart";
 
 import "../../utils/variables.css";
 import s from "./CardsTomorrow.module.css";
@@ -11,10 +10,7 @@ const CardsTomorrow = () => {
 
       <ul className={s.cardSet}>
         <Card />
-        <ChallengeCart/>
         <Card />
-        <ChallengeCart />
-        <ChallengeCart/>
         <Card />
         <Card />
         <Card />
