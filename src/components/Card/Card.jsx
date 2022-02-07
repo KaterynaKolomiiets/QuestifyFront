@@ -80,7 +80,7 @@ const Card = ({ data, card, ondelete, isNewCard }) => {
     dispatch(
       addNewCard({
         title: value,
-        category: "FAMILY",
+        category: "LEISURE",
         type: "TASK",
         time: Date.now(),
         level: difficult,
@@ -133,7 +133,7 @@ const Card = ({ data, card, ondelete, isNewCard }) => {
       {/* <p className={s.cardType}>type</p> */}
 
       <div className={s.bottomMenu}>
-        <p className={s.cardType}>{card.category}</p>
+        <p className={`${s.cardType} ${card.category.toLowerCase()}`}>{card.category}</p>
         {isNewCard && (
           <>
             <span className={s.cross} onClick={deleteNewCard}>

@@ -82,14 +82,14 @@ function LoginForm() {
         </button>
 
         {/* TO DELETE BELOW */}
-        <button
+        {/* <button
           type="button"
           onClick={async () => {
             const a = await axios.get(`http://questify-project.herokuapp.com/api/todos/all`);
           }}
         >
           PressMe
-        </button>      
+        </button>       */}
         {/* TO DELETE ABOVE */}
 
       </div>
