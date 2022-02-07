@@ -1,12 +1,8 @@
 .headerSection {
-  background-color: #242a37;
-
+  background-color: var(--secondary);
   position: fixed;
-
   top: 0;
-
   width: 100%;
-
   z-index: 100;
 }
 
@@ -44,7 +40,7 @@
   font-size: 18px;
   line-height: 18px;
   letter-spacing: 0.02em;
-  color: #00d7ff;
+  color: var(--font-accent);
 }
 @media screen and (min-width: 768px) {
   .logo {
@@ -63,6 +59,10 @@
   }
 }
 
+.avatarLetter {
+  font-weight: 700;
+}
+
 .userDataMobile {
   display: flex;
 }
@@ -71,15 +71,13 @@
   font-size: 17px;
   line-height: 17px;
   letter-spacing: 0.02em;
-  color: #7b8aa4;
+  color: var(--font-tertiary);
   margin-left: 10px;
 }
 
 .avatarMobile {
-  display: flex;
   margin-right: 10px;
-  width: 35px;
-  height: 35px;
+  margin-top: 10px;
 }
 @media screen and (min-width: 768px) {
   .avatarMobile {
@@ -87,7 +85,80 @@
   }
 }
 
+.challengeIcon {
+  background-color: transparent;
+  border: none;
+  position: relative;
+}
+@media screen and (min-width: 768px) {
+  .challengeIcon {
+    margin-right: 30px;
+  }
+}
+
+.challengeIconSvg {
+  fill: #00d7ff;
+  width: 57px;
+  height: 57px;
+}
+
 .BtnLogout {
   background-color: transparent;
   border: none;
+}
+
+.svgLogout {
+  fill: #3e4e6c;
+}
+
+.svgLogout:hover,
+.svgLogout:focus {
+  fill: #00d7ff;
+}
+
+/* ------------------------MODAL WINDOW------------------------------------ */
+.btnDiv {
+  align-items: center;
+  text-align: center;
+}
+
+.modalTitle {
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 16px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #414553;
+  margin-bottom: 30px;
+}
+.modalBtn {
+  width: 100px;
+  height: 44px;
+  background: transparent;
+  border-radius: 16px;
+  color: var(--secondary);
+  border: 2px solid var(--secondary);
+  box-sizing: border-box;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background-color var(--transition-timing)
+      var(--transition-function),
+    color var(--transition-timing) var(--transition-function);
+}
+@media screen and (min-width: 768px) {
+  .modalBtn {
+    width: 125px;
+    height: 44px;
+  }
+}
+
+.modalBtn:not(:last-child) {
+  margin-right: 15px;
+}
+
+.modalBtn:hover,
+.modalBtn:focus {
+  background: var(--secondary);
+  color: #fff;
 }

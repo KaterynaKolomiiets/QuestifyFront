@@ -83,6 +83,7 @@ export const userRefresh = createAsyncThunk(
       console.log(data);
       document.cookie = `refreshToken=${data.refreshToken}`;
       return data;
+      document.cookie = `refreshToken=${data.refreshToken}`;
     } catch (error) {
       throw new Error(error);
     }

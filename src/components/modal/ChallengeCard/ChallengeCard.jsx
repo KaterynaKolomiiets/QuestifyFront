@@ -1,12 +1,12 @@
-import s from "./ChallengeCart.module.css";
+import s from "./ChallengeCard.module.css";
 import { useState } from "react";
 
 import DifficultModal from "../DifficultModal";
 import DeleteModule from "../modalDelete";
 import icon from "./trophy.svg";
-import cartsList from "../../CardsToday/temporaryData.json";
+import cardsList from "../../CardsToday/temporaryData.json";
 
-const ChallengeCart = ({ data, cart }) => {
+const ChallengeCard = ({ data, card }) => {
   const [modal, setmodal] = useState(false);
   const [difficult, setdifficult] = useState("Normal");
   const [deleteModal, setdeleteModal] = useState(false);
@@ -14,8 +14,8 @@ const ChallengeCart = ({ data, cart }) => {
   const [value, setvalue] = useState("todo");
 
   function changeType() {
-    const cart = { difficult, value, isChallenge: false };
-    data(cart);
+    const card = { difficult, value, isChallenge: false };
+    data(card);
   }
 
   function onclick() {
@@ -30,7 +30,7 @@ const ChallengeCart = ({ data, cart }) => {
 
   function deleteHandler(bool) {
     if (bool) {
-      alert("delete");
+      console.log(card);
       onDelete();
     }
     onDelete();
@@ -50,12 +50,12 @@ const ChallengeCart = ({ data, cart }) => {
 
   function closeAndSave() {
     setedit(false);
-    const cart = {
+    const card = {
       difficult,
       value,
       data: Date.now(),
     };
-    console.log(cart);
+    console.log(card);
   }
 
   return (
@@ -75,7 +75,7 @@ const ChallengeCart = ({ data, cart }) => {
         >
           &#9679;
         </span>
-        <span className={s.cartCategory} onClick={onclick}>
+        <span className={s.cardCategory} onClick={onclick}>
           {difficult}
         </span>
         <img
@@ -118,4 +118,4 @@ const ChallengeCart = ({ data, cart }) => {
   );
 };
 
-export default ChallengeCart;
+export default ChallengeCard;

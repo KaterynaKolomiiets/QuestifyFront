@@ -8,6 +8,32 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.cardSet {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  margin-top: -20px;
+}
+
+@media only screen and (min-width: 320px) and (orientation: landscape) {
+  .section {
+    max-width: 100%;
+  }
+
+  .cardSet {
+    margin-left: -27px;
+    flex-direction: row;
+  }
+
+  li {
+    width: calc((100% / 2) - 27px);
+    margin-left: 27px;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .section {
     padding-top: 30px;
@@ -77,3 +103,18 @@
     margin-left: 28px;
   }
 }
+
+
+/* IPHONE LANDSCAPE */
+@media only screen and (min-width: 320px) and (orientation: landscape) {
+  .section {
+    max-width: 100%;
+  }
+
+  .cardSet {
+    margin-left: -27px;
+    flex-direction: row;
+  }
+}
+
+
