@@ -4,7 +4,6 @@ import Header from "../../components/Header/Header";
 import CardsToday from "../../components/CardsToday";
 import CardsTomorrow from "../../components/CardsTomorrow";
 import ButtonAddCard from "../../components/ButtonAddCard";
-import ChallengeCart from "../../components/modal/ChallengeCart";
 
 import s from "./HomePage.module.css";
 import { useSelector } from "react-redux";
@@ -19,7 +18,6 @@ function HomePage() {
       <Header />
       <Container>
         <CardsToday />
-        <ChallengeCart />
         <CardsTomorrow />
         <ButtonAddCard />
       </Container>
