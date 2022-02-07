@@ -6,34 +6,42 @@ const BASE_URL = "http://questify-project.herokuapp.com/api/users";
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+
   },
   unset() {
     axios.defaults.headers.common.Authorization = "";
   },
-}
+};
 
-export const userRegistration = createAsyncThunk("auth/registration", async (user) => {
-  console.log(user)
-  try {
-    const { data } = await axios.post(`${BASE_URL}/registration`, user);
-    console.log(data)
-    // token.set(data.accessToken);
-    return data;
-  } catch (error) {
-    throw new Error(error);
+export const userRegistration = createAsyncThunk(
+  "auth/registration",
+  async (user) => {
+    console.log(user);
+    try {
+      const { data } = await axios.post(`${BASE_URL}/registration`, user);
+      console.log(data);
+      token.set(data.accessToken);
+      return data;
+    } catch (error) {
+      throw new Error(error);
+    }
   }
-});
-
+);
 export const userLogin = createAsyncThunk("auth/login", async (user) => {
+  console.log(user);
   try {
+
     const { data } = await axios.post(`${BASE_URL}/login`, user);
-    console.log(data)
-     token.set(data.accessToken);
+    console.log(data);
+    token.set(data.accessToken);
+
     return data;
   } catch (error) {
     throw new Error(error);
   }
 });
+
+
 
 export const userLogout = createAsyncThunk(
   "auth/logout",
@@ -111,3 +119,26 @@ export const userRefresh = createAsyncThunk(
 //     throw new Error(error);
 //   }
 // });
+export const userResetPassword = createAsyncThunk(
+  "auth/reset-password",
+  async (user) => {
+    try {
+      const { data } = await axios.get(`${BASE_URL}/reset-password`, user);
+      return data;
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+);
+
+export const userChangePassword = createAsyncThunk(
+  "auth/change-password",
+  async (user) => {
+    try {
+      const { data } = await axios.get(`${BASE_URL}/change-password`, user);
+      return data;
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+);
