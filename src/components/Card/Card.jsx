@@ -2,19 +2,25 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { deleteTodo, changeTodo } from "../../redux/todos/operation";
+import {
+  deleteTodo,
+  changeTodo,
+  deleteNewTodo,
+  addNewCard,
+} from "../../redux/todos/operation";
 import "../../utils/variables.css";
 
 import DifficultModal from "../modal/DifficultModal";
 import DeleteModule from "../modal/modalDelete";
 import s from "./Card.module.css";
 
-const Card = ({ data, card, ondelete }) => {
+const Card = ({ data, card, ondelete, isNewCard }) => {
   const [modal, setmodal] = useState(false);
   const [difficult, setdifficult] = useState("Normal");
   const [deleteModal, setdeleteModal] = useState(false);
   const [edit, setedit] = useState(false);
   const [value, setvalue] = useState("todo");
+
   // console.log(card);
   function onclick() {
     setmodal(!modal);
@@ -51,6 +57,7 @@ const Card = ({ data, card, ondelete }) => {
 
   function closeAndSave() {
     setedit(false);
+
     const card = {
       difficult,
       value,
@@ -66,9 +73,22 @@ const Card = ({ data, card, ondelete }) => {
   // function deleteCard(id) {
   //   dispatch(deleteTodo(id));
   // }
-
+  const deleteNewCard = () => {
+    dispatch(deleteNewTodo());
+  };
+  const addNewTodo = () => {
+    dispatch(
+      addNewCard({
+        title: value,
+        category: "FAMILY",
+        type: "TASK",
+        time: Date.now(),
+        level: difficult,
+      })
+    );
+  };
   const dispatch = useDispatch();
-
+  console.log();
   return (
     <li className={s.card} onClick={onedit}>
       {modal && <DifficultModal change={change} />}
@@ -93,9 +113,11 @@ const Card = ({ data, card, ondelete }) => {
           &#9733;
         </span>
       </p>
-      {edit ? (
+      <p>{card._id}</p>
+      {isNewCard || edit ? (
         <form className={s.form}>
           <input
+            autoFocus
             className={s.input}
             type="text"
             value={value}
@@ -104,20 +126,20 @@ const Card = ({ data, card, ondelete }) => {
           />
         </form>
       ) : (
-        <h2 className={s.cardTitle}>{value}</h2>
+        <h2 className={s.cardTitle}>{card.title}</h2>
       )}
 
-      <p className={s.cardDate}>Date</p>
+      <p className={s.cardDate}>{card.time}</p>
       {/* <p className={s.cardType}>type</p> */}
 
       <div className={s.bottomMenu}>
-        <p className={s.cardType}>type</p>
-        {edit && (
+        <p className={s.cardType}>{card.category}</p>
+        {isNewCard && (
           <>
-            <span className={s.cross} onClick={onDelete}>
+            <span className={s.cross} onClick={deleteNewCard}>
               &#10006;
             </span>
-            <span onClick={closeAndSave} className={s.start}>
+            <span onClick={addNewTodo} className={s.start}>
               START
             </span>
           </>

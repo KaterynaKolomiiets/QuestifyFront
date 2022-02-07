@@ -9,6 +9,38 @@ const token = {
     axios.defaults.headers.common.Authorization = "";
   },
 };
+export const addCardToState = createAsyncThunk(
+  "todos/addCard",
+  async (_, thunkApi) => {
+    return {
+      title: "Enter your data",
+      category: "FAMILY",
+      type: "TASK",
+      time: Date.now(),
+      level: "Normal",
+    };
+  }
+);
+export const deleteNewTodo = createAsyncThunk(
+  "todos/deleteNewToto",
+  async (_, thunkApi) => {
+    return null;
+  }
+);
+export const addNewCard = createAsyncThunk(
+  "todos/addNewCard",
+  async (todo, thunkApi) => {
+    try {
+      const { data } = await axios.post(
+        `http://questify-project.herokuapp.com/api/todos/add`,
+        todo
+      );
+      return data;
+    } catch (err) {
+      return thunkApi.rejectWithValue(err);
+    }
+  }
+);
 export const showTodos = createAsyncThunk("todos/get", async (_, thunkApi) => {
   try {
     const { data } = await axios.get(
