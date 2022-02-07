@@ -2,32 +2,35 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { showTodos } from "../../redux/todos/operation";
+import { deleteTodo, changeTodo } from "../../redux/todos/operation";
 import "../../utils/variables.css";
 
 import DifficultModal from "../modal/DifficultModal";
 import DeleteModule from "../modal/modalDelete";
 import s from "./Card.module.css";
 
-const Card = ({ data }) => {
+const Card = ({ data, card, ondelete }) => {
   const [modal, setmodal] = useState(false);
   const [difficult, setdifficult] = useState("Normal");
   const [deleteModal, setdeleteModal] = useState(false);
   const [edit, setedit] = useState(false);
   const [value, setvalue] = useState("todo");
-
+  // console.log(card);
   function onclick() {
     setmodal(!modal);
   }
-
   function change(data) {
     setdifficult(data);
+    console.log(card);
+    dispatch(changeTodo({ id: card._id, ...card, level: data }));
     onclick();
   }
-
   function deleteHandler(bool) {
     if (bool) {
-      alert("delete");
+      // ondelete(card._id);
+      console.log(card._id);
+      // deleteCard(card._id);
+      dispatch(deleteTodo(card._id));
       onDelete();
     }
     onDelete();
@@ -38,6 +41,7 @@ const Card = ({ data }) => {
   }
 
   function onedit() {
+    console.log(card._id);
     if (!edit) setedit(true);
   }
 
@@ -47,18 +51,23 @@ const Card = ({ data }) => {
 
   function closeAndSave() {
     setedit(false);
-    const cart = {
+    const card = {
       difficult,
       value,
       data: Date.now(),
     };
-    console.log(cart);
   }
 
   function isChallenge() {
-    const cart = { difficult, value, isChallenge: true };
-    data(cart);
+    const card = { difficult, value, isChallenge: true };
+    data(card);
   }
+
+  // function deleteCard(id) {
+  //   dispatch(deleteTodo(id));
+  // }
+
+  const dispatch = useDispatch();
 
   return (
     <li className={s.card} onClick={onedit}>
@@ -68,17 +77,17 @@ const Card = ({ data }) => {
         <span
           className={
             (s.cardCategoryCircle,
-            difficult === "Normal"
+            card.level === "Normal"
               ? s.secondOption
-              : difficult === "Hard"
+              : card.level === "Hard"
               ? s.thirdOption
               : s.firstOption)
           }
         >
           &#9679;
         </span>
-        <span className={s.cartCategory} onClick={onclick}>
-          {difficult}
+        <span className={s.cardCategory} onClick={onclick}>
+          {card.level}
         </span>
         <span className={s.cardCategoryStart} onClick={isChallenge}>
           &#9733;
