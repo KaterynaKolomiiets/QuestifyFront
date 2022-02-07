@@ -1,8 +1,11 @@
 import { createReducer } from "@reduxjs/toolkit";
 import {
+  addCardToState,
+  addNewCard,
   addTodo,
   changeTodo,
   changeTodoStatus,
+  deleteNewTodo,
   deleteTodo,
   showTodos,
   showTodosActive,
@@ -10,11 +13,21 @@ import {
 } from "./operation";
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { activeTodos: [], completedTodos: [] };
+const initialState = { activeTodos: [], completedTodos: [], newTodoCard: "" };
 const todoSliceAll = createSlice({
   name: "todos",
   initialState,
   extraReducers: {
+    [addNewCard.fulfilled](state, action) {
+      state.activeTodos = [...state.activeTodos, action.payload.result];
+      state.newTodoCard = null;
+    },
+    [deleteNewTodo.fulfilled](state, action) {
+      state.newTodoCard = action.payload;
+    },
+    [addCardToState.fulfilled](state, action) {
+      state.newTodoCard = action.payload;
+    },
     [showTodosDone.fulfilled](state, action) {
       state.completedTodos = action.payload;
     },
