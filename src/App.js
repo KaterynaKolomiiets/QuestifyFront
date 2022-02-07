@@ -1,6 +1,8 @@
 import { useEffect, useState, Suspense, lazy } from 'react';
+import { useDispatch } from "react-redux";
 import { Switch, Redirect } from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner';
+import {userRefresh} from './redux/user/operation'
 
 // import AuthPage from "./pages/AuthPage";
 // import HomePage from "./pages/HomePage";
@@ -16,6 +18,10 @@ const HomePage = lazy(() =>
   import('./pages/HomePage' /* webpackChunkName: 'HomePage' */));
 
 function App() {
+const dispatch = useDispatch(userRefresh);
+  useEffect(()=> { dispatch(userRefresh())}, [dispatch])
+  
+ 
   return (
     <div className="App">
       <Suspense

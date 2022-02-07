@@ -9,8 +9,10 @@ import { useState } from "react";
 import ChallengeCard from "../modal/ChallengeCard";
 import { deleteTodo, changeTodo } from "../../redux/todos/operation";
 
-const CardsToday = () => {
-  const todos = useSelector(todosActive);
+
+
+  const CardsToday = () => {
+    const todos = useSelector(todosActive);
   const [isChallenge, setChallenger] = useState(true);
   // const [cards, setCards] = useState(todos);
 
@@ -27,6 +29,7 @@ const CardsToday = () => {
   return (
     <section className={s.section}>
       <h2 className={s.title}>Today</h2>
+
       {/* <ul className={s.cardSet}> */}
       {/* {todos?.map((todo) => (
           <Card todo={todo} />
@@ -41,6 +44,25 @@ const CardsToday = () => {
               data={takeData}
               // delete={deleteCard}
             />
+
+      
+        {todos?.map((todo) => (
+         
+            <Card todo={todo} />
+     
+        ))} 
+
+      <ul className={s.cardSet}>
+        {todos?.map((item) => {
+          console.log(item.type)
+        })}
+        {/* {todos?.map((todo) => (
+            <Card todo={todo} />
+        ))} 
+        {data.map((cart) => {
+          return cart.isChallenge ? (
+            <ChallengeCart key={cart.id} cart={cart} data={takeData} />
+
           ) : (
             <Card
               key={card._id}
@@ -49,7 +71,7 @@ const CardsToday = () => {
               // ondelete={deleteCard}
             />
           );
-        })}
+        })} */}
       </ul>
     </section>
   );
