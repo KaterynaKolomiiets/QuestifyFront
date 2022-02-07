@@ -122,3 +122,27 @@ button {
       format("svg");
   /* Chrome < 4, Legacy iOS */
 }
+
+.learning {
+  background-color: var(--bg-card-learning)
+}
+
+.learning {
+  background-color: var(--bg-card-learning)
+}
+
+.leisure {
+  background-color: var(--bg-card-leisure)
+}
+
+.family {
+  background-color: var(--bg-card-family);
+}
+
+.health {
+  background-color: var(--health)
+}
+
+.stuff {
+  background-color: var(--bg-card-stuff)
+}

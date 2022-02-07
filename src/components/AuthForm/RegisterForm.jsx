@@ -132,7 +132,7 @@ function RegisterForm() {
         </button>
 
         {/* TO DELETE BELOW */}
-        <button
+        {/* <button
           type="button"
           // onClick={async () => {
           //   const a = await axios.get(`http://questify-project.herokuapp.com/api/todos/all`);
@@ -144,7 +144,7 @@ function RegisterForm() {
         </button>
         <button onClick={deleteCard}>del</button>
         <button onClick={changeStatus}>changeStatus</button>
-        <button onClick={changeCard}>update</button>
+        <button onClick={changeCard}>update</button> */}
         {/* TO DELETE ABOVE */}
       </div>
     </form>

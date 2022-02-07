@@ -1,3 +1,5 @@
+@import '../../utils/variables.css';
+
 .cardCategoryName {
   font-family: "HelveticaNeueCyr-Medium";
   font-size: 16px;
@@ -9,7 +11,6 @@
   display: flex;
   align-items: center;
 }
-
 .cardCategoryCircle {
   margin-right: 10px;
 }
@@ -46,8 +47,6 @@
   letter-spacing: 0.02em;
   text-transform: uppercase;
   border-radius: 0px 25px 25px 0px;
-
-  background-color: green;
 
   width: 120px;
   height: 35px;
