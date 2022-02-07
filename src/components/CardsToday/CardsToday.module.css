@@ -43,6 +43,24 @@
   display: flex;
   flex-direction: column;
 }
+/* new */
+@media only screen and (min-width: 320px) and (orientation: landscape){
+  .section {
+    max-width: 100%;
+    /* background-color: pink; */
+    
+  }
+  .cardSet {
+    margin-left: -27px; 
+    flex-direction: row;
+    
+    /* background-color: orange; */
+  }
+  li{
+    width: calc((100% / 2) - 27px);
+    margin-left: 27px;
+  }
+}
 
 @media screen and (min-width: 768px) {
   .cardSet {
@@ -65,10 +83,16 @@
   }
 }
 
+
+
 @media screen and (min-width: 1280px) {
   .section {
     padding-left: 70px;
     padding-right: 70px;
+  }
+  .cardSet {
+    max-width: 100%;
+    flex-direction: row;
   }
 
   .card {
@@ -76,3 +100,6 @@
     margin-left: 28px;
   }
 }
+
+
+

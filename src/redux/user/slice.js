@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { userRegistration, userLogin, userLogout } from "./operation";
+import { userRegistration, userLogin, userLogout, userRefresh } from "./operation";
 
 
 const initialState = {
@@ -16,10 +16,16 @@ const userSlice = createSlice({
   initialState,
   extraReducers: {
     // [userRegistration.fulfilled]: (state, action) => action.payload.user,
-    [userLogin.fulfilled]: (state, action) => {state.userinfo = action.payload.user;
-    state.token = action.payload.accessToken;},
+    [userLogin.fulfilled]: (state, action) => {
+      state.userinfo = action.payload.user;
+      state.token = action.payload.accessToken;
+    },
     [userLogout.fulfilled]: (state, action) => initialState,
-    [userRegistration.fulfilled]: (state, action) => action.payload.user
+    [userRegistration.fulfilled]: (state, action) => action.payload.user,
+    [userRefresh.fulfilled]: (state, action) => {
+      state.userinfo = action.payload.user;
+      state.token = action.payload.accessToken;
+    },
   },
 });
 

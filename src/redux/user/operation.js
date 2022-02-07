@@ -33,6 +33,7 @@ export const userLogin = createAsyncThunk("auth/login", async (user) => {
 
     const { data } = await axios.post(`${BASE_URL}/login`, user);
     console.log(data);
+    document.cookie = `refreshToken=${data.refreshToken}`;
     token.set(data.accessToken);
 
     return data;
@@ -83,6 +84,7 @@ export const userRefresh = createAsyncThunk(
       const { data } = await axios.get(`${BASE_URL}/refresh`);
       console.log(data)
       return data;
+      document.cookie = `refreshToken=${data.refreshToken}`;
     } catch (error) {
       throw new Error(error);
     }
