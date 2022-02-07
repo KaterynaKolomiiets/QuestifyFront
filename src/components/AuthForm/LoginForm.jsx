@@ -31,7 +31,7 @@ function LoginForm() {
 
     if (validateEmail(email) && validatePassword(password)) {
       // dispatch(userLogin({ email, password}))
-       dispatch(userLogin({ email: "kolomiets_katia@ukr.net", password: "12345"}))
+       dispatch(userLogin({ email, password}))
     }
   };
 
