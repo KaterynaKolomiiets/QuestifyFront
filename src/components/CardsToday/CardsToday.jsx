@@ -6,12 +6,20 @@ import s from "./CardsToday.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { todosActive } from "../../redux/todos/todosSelector";
 import { useState } from "react";
-import ChallengeCard from "../modal/ChallengeCard";
+import ChallengeCard from "../modal/ChallengeCard/ChallengeCard";
+
+import data from "./temporaryData.json";
+
+
 import { deleteTodo, changeTodo } from "../../redux/todos/operation";
 
 
 
-  const CardsToday = () => {
+
+const CardsToday = () => {
+    
+
+
     const todos = useSelector(todosActive);
   const [isChallenge, setChallenger] = useState(true);
   // const [cards, setCards] = useState(todos);
@@ -25,43 +33,42 @@ import { deleteTodo, changeTodo } from "../../redux/todos/operation";
   // }
 
   // const dispatch = useDispatch();
+    
+    console.log(todos)
 
   return (
     <section className={s.section}>
       <h2 className={s.title}>Today</h2>
 
-      {/* <ul className={s.cardSet}> */}
-      {/* {todos?.map((todo) => (
-          <Card todo={todo} />
-        ))} */}
+      {/* RENDER TODOS */}
+
 
       <ul className={s.cardSet}>
-        {todos?.map((card) => {
+
+      {todos?.map((todo) => (
+          <Card todo={todo} />
+      ))}
+        </ul>
+
+      <ul className={s.cardSet}>
+         {/* {todos?.map((card) => {
           return card.isChallenge ? (
-            <ChallengeCard
-              key={card._id}
-              card={card}
-              data={takeData}
-              // delete={deleteCard}
-            />
-
-      
-        {todos?.map((todo) => (
-         
-            <Card todo={todo} />
-     
-        ))} 
-
+            <ChallengeCard key={card._id} card={card} data={takeData} delete={deleteCard}/>
+          )})} */}
+       </ul>
+        
       <ul className={s.cardSet}>
         {todos?.map((item) => {
           console.log(item.type)
         })}
-        {/* {todos?.map((todo) => (
+        {todos?.map((todo) => (
             <Card todo={todo} />
         ))} 
-        {data.map((cart) => {
-          return cart.isChallenge ? (
-            <ChallengeCart key={cart.id} cart={cart} data={takeData} />
+        {data.map((card) => {
+          return card.isChallenge ? (
+
+            <ChallengeCard key={card.id} card={card} data={takeData} />
+
 
           ) : (
             <Card
@@ -71,7 +78,7 @@ import { deleteTodo, changeTodo } from "../../redux/todos/operation";
               // ondelete={deleteCard}
             />
           );
-        })} */}
+        })}
       </ul>
     </section>
   );

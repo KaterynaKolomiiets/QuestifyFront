@@ -122,37 +122,3 @@ button {
       format("svg");
   /* Chrome < 4, Legacy iOS */
 }
-@media only screen and (min-width: 320px) and (orientation: landscape) {
-  /* .container {
-    background-color: lightblue !important;
-    max-width: 600px;
-  } */
-  /* ul {
-    max-width: 100%;
-    flex-direction: row;
-    margin-left: -27px;
-  } */
-  /* li {
-    width: calc((100% / 2) - 27px);
-    margin-left: 27px;
-  } */
-}
-
-/* @media only screen and (min-width: 768px) and (orientation: landscape) {
-  body {
-    background-color: orange;
-  }
-} */
-
-/* IPAD MINI */
-
-@media only screen and (min-width: 1024px) and (orientation: landscape) {
-  ul {
-    margin-left: -27px;
-  }
-  li {
-    width: calc((100% / 4) - 27px);
-    margin-left: 27px;
-    background-color: yellow;
-  }
-}

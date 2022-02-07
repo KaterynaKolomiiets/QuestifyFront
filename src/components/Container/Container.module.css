@@ -20,15 +20,13 @@
 }
 @media screen and (min-width: 320px) and (orientation: landscape) {
   .container {
-    /* background-color: lightblue; */
     max-width: 600px;
   }
 }
-/* IPAD MINI */
+/* IPAD MINI LAYOUT */
 
-/* @media only screen and (min-width:  1024px) and (orientation: landscape) {
+@media only screen and (min-width:  1024px) and (max-width: 1280px) and (orientation: landscape) {
   .container {
-    background-color: purple;
     min-width: 920px;
   }
-} */
+}
