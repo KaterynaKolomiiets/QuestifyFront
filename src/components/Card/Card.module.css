@@ -69,6 +69,10 @@
   justify-content: space-between;
 }
 
+.cartCategory {
+  cursor: pointer;
+}
+
 .cross {
   color: var(--option-color);
   margin-left: auto;

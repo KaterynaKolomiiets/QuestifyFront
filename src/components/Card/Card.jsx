@@ -12,8 +12,6 @@ const Card = ({ data }) => {
   const [edit, setedit] = useState(false);
   const [value, setvalue] = useState("todo");
 
-  const [onchange, setchange] = useState(false);
-
   function onclick() {
     setmodal(!modal);
   }
@@ -40,13 +38,17 @@ const Card = ({ data }) => {
   }
 
   function changeValue(e) {
-    console.log(e.target.value);
     setvalue(e.target.value);
   }
 
   function closeAndSave() {
     setedit(false);
-    console.log(edit);
+    const cart = {
+      difficult,
+      value,
+      data: Date.now(),
+    };
+    console.log(cart);
   }
 
   function isChallenge() {
@@ -89,7 +91,7 @@ const Card = ({ data }) => {
           />
         </form>
       ) : (
-        <h2 className={s.cardTitle}>Todo name</h2>
+        <h2 className={s.cardTitle}>{value}</h2>
       )}
 
       <p className={s.cardDate}>Date</p>

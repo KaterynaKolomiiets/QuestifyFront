@@ -45,7 +45,6 @@ const ChallengeCart = ({ data, cart }) => {
   }
 
   function changeValue(e) {
-    console.log(e.target.value);
     setvalue(e.target.value);
   }
 
@@ -67,9 +66,9 @@ const ChallengeCart = ({ data, cart }) => {
         <span
           className={
             (s.cardCategoryCircle,
-            cart.difficult === "Normal"
+            difficult === "Normal"
               ? s.secondOption
-              : cart.difficult === "Hard"
+              : difficult === "Hard"
               ? s.thirdOption
               : s.firstOption)
           }
@@ -77,7 +76,7 @@ const ChallengeCart = ({ data, cart }) => {
           &#9679;
         </span>
         <span className={s.cartCategory} onClick={onclick}>
-          {cart.difficult}
+          {difficult}
         </span>
         <img
           src={icon}
