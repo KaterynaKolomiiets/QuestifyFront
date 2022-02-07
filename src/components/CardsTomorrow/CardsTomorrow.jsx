@@ -9,24 +9,12 @@ const CardsTomorrow = () => {
       <h2 className={s.title}>Tomorrow</h2>
 
       <ul className={s.cardSet}>
-        <li className={s.card}>
-          <Card />
-        </li>
-        <li className={s.card}>
-          <Card />
-        </li>
-        <li className={s.card}>
-          <Card />
-        </li>
-        <li className={s.card}>
-          <Card />
-        </li>
-        <li className={s.card}>
-          <Card />
-        </li>
-        <li className={s.card}>
-          <Card />
-        </li>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
       </ul>
     </section>
   );

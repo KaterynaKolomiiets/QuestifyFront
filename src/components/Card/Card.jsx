@@ -5,7 +5,7 @@ import DifficultModal from "../modal/DifficultModal";
 import DeleteModule from "../modal/modalDelete";
 import s from "./Card.module.css";
 
-const Card = () => {
+const Card = ({ data }) => {
   const [modal, setmodal] = useState(false);
   const [difficult, setdifficult] = useState("Normal");
   const [deleteModal, setdeleteModal] = useState(false);
@@ -15,7 +15,6 @@ const Card = () => {
   const [onchange, setchange] = useState(false);
 
   function onclick() {
-    // alert("type");
     setmodal(!modal);
   }
 
@@ -50,8 +49,13 @@ const Card = () => {
     console.log(edit);
   }
 
+  function isChallenge() {
+    const cart = { difficult, value, isChallenge: true };
+    data(cart);
+  }
+
   return (
-    <div className={s.card} onClick={onedit}>
+    <li className={s.card} onClick={onedit}>
       {modal && <DifficultModal change={change} />}
       {deleteModal && <DeleteModule change={deleteHandler} />}
       <p className={s.cardCategoryName}>
@@ -70,11 +74,14 @@ const Card = () => {
         <span className={s.cartCategory} onClick={onclick}>
           {difficult}
         </span>
-        <span className={s.cardCategoryStart}>&#9733;</span>
+        <span className={s.cardCategoryStart} onClick={isChallenge}>
+          &#9733;
+        </span>
       </p>
       {edit ? (
-        <form>
+        <form className={s.form}>
           <input
+            className={s.input}
             type="text"
             value={value}
             placeholder={"what todo"}
@@ -101,7 +108,7 @@ const Card = () => {
           </>
         )}
       </div>
-    </div>
+    </li>
   );
 };
 
