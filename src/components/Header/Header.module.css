@@ -1,11 +1,8 @@
 .headerSection {
-  background-color: #242a37;
+  background-color: var(--secondary);
   position: fixed;
-
   top: 0;
-
   width: 100%;
-
   z-index: 100;
 }
 
@@ -43,7 +40,7 @@
   font-size: 18px;
   line-height: 18px;
   letter-spacing: 0.02em;
-  color: #00d7ff;
+  color: var(--font-accent);
 }
 @media screen and (min-width: 768px) {
   .logo {
@@ -62,6 +59,10 @@
   }
 }
 
+.avatarLetter {
+  font-weight: 700;
+}
+
 .userDataMobile {
   display: flex;
 }
@@ -70,14 +71,13 @@
   font-size: 17px;
   line-height: 17px;
   letter-spacing: 0.02em;
-  color: #7b8aa4;
+  color: var(--font-tertiary);
   margin-left: 10px;
 }
 
 .avatarMobile {
   margin-right: 10px;
-  width: 35px;
-  height: 35px;
+  margin-top: 10px;
 }
 @media screen and (min-width: 768px) {
   .avatarMobile {
@@ -86,14 +86,34 @@
 }
 
 .challengeIcon {
-  margin-right: 30px;
   background-color: transparent;
   border: none;
+  position: relative;
+}
+@media screen and (min-width: 768px) {
+  .challengeIcon {
+    margin-right: 30px;
+  }
+}
+
+.challengeIconSvg {
+  fill: #00d7ff;
+  width: 57px;
+  height: 57px;
 }
 
 .BtnLogout {
   background-color: transparent;
   border: none;
+}
+
+.svgLogout {
+  fill: #3e4e6c;
+}
+
+.svgLogout:hover,
+.svgLogout:focus {
+  fill: #00d7ff;
 }
 
 /* ------------------------MODAL WINDOW------------------------------------ */
@@ -117,8 +137,8 @@
   height: 44px;
   background: transparent;
   border-radius: 16px;
-  color: #242a37;
-  border: 2px solid #242a37;
+  color: var(--secondary);
+  border: 2px solid var(--secondary);
   box-sizing: border-box;
   border-radius: 16px;
   cursor: pointer;
@@ -139,6 +159,6 @@
 
 .modalBtn:hover,
 .modalBtn:focus {
-  background: #242a37;
+  background: var(--secondary);
   color: #fff;
 }

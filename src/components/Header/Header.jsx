@@ -1,8 +1,7 @@
 import s from "./Header.module.css";
 import Container from "../Container";
 import ModalWindow from "../modal/ModalWindow/index";
-import BtnLogout from "../../images/btn-logout.png";
-import challengeIcon from "../../images/challengeIcon.png";
+import icons from "../../icons/sprite.svg";
 import ChallengeModal from "../modal/ChallengeHeaderModal/index";
 
 import Avatar from "@mui/material/Avatar";
@@ -50,29 +49,36 @@ const Header = () => {
         <div className={s.header}>
           <p className={s.logo}>Questify</p>
           <div className={s.userData}>
-            <Avatar sx={{ bgcolor: blueGrey[800] }}>{avatarLetter}</Avatar>
+            <Avatar sx={{ bgcolor: blueGrey[800] }} className={s.avatarLetter}>
+              {avatarLetter}
+            </Avatar>
             <p className={s.userName}>{user.email}</p>
           </div>
           <div className={s.userDataMobile}>
             <div className={s.avatarMobile}>
-              <Avatar sx={{ bgcolor: blueGrey[800] }}>{avatarLetter}</Avatar>
+              <Avatar
+                sx={{ bgcolor: blueGrey[800] }}
+                className={s.avatarLetter}
+              >
+                {avatarLetter}
+              </Avatar>
             </div>
             <button
               type="button"
               className={s.challengeIcon}
               onClick={challengeModal}
             >
-              <img
-                src={challengeIcon}
-                alt="challengeIcon"
-                className={s.challengeIconPng}
-              />
+              <svg width="46" height="46" className={s.challengeIconSvg}>
+                <use xlinkHref={`${icons}#challenge-icon`} />
+              </svg>
+              {showChallenges && (
+                <ChallengeModal challengeModal={challengeModal} />
+              )}
             </button>
             <button type="button" className={s.BtnLogout} onClick={toggleModal}>
-              <img src={BtnLogout} alt="button-logout" />
-              {/* <svg width="20" height="20" className={s.svgLogout}>
-                <use href="../../icons/sprite.svg#icon-logout"></use>
-              </svg> */}
+              <svg width="20" height="20" className={s.svgLogout}>
+                <use xlinkHref={`${icons}#icon-logout`} />
+              </svg>
             </button>
           </div>
         </div>
@@ -90,7 +96,6 @@ const Header = () => {
           </div>
         </ModalWindow>
       )}
-      {showChallenges && <ChallengeModal challengeModal={challengeModal} />}
     </header>
   );
 };

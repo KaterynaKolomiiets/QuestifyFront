@@ -1,19 +1,45 @@
 .modal {
-  background-color: #7b8aa4;
-  height: 400px;
-  width: 350px;
+  background-color: var(--font-tertiary);
   border-radius: 10px;
-  position: fixed;
-  top: 75px;
-  right: 70px;
+  position: absolute;
   padding: 25px 25px;
+  height: 250px;
+  width: 200px;
+  top: 65px;
+  left: -180%;
+  display: block;
+}
+@media screen and (min-width: 768px) {
+  .modal {
+    left: -190%;
+    height: 300px;
+    width: 250px;
+    top: 70px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .modal {
+    left: -180%;
+    height: 400px;
+    width: 350px;
+  }
 }
 
 .modal::before {
   content: "";
   position: absolute;
-  left: 42%;
-  top: -20px;
   border: 10px solid transparent;
   border-bottom: 10px solid #7b8aa4;
+  left: 72%;
+  top: -19px;
+}
+@media screen and (min-width: 768px) {
+  .modal::before {
+    left: 62%;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .modal::before {
+    left: 42%;
+  }
 }
