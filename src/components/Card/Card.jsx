@@ -1,21 +1,22 @@
 import { useState } from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { showTodos } from "../../redux/todos/operation";
 import "../../utils/variables.css";
 
 import DifficultModal from "../modal/DifficultModal";
 import DeleteModule from "../modal/modalDelete";
 import s from "./Card.module.css";
 
-const Card = () => {
+const Card = ({ data }) => {
   const [modal, setmodal] = useState(false);
   const [difficult, setdifficult] = useState("Normal");
   const [deleteModal, setdeleteModal] = useState(false);
   const [edit, setedit] = useState(false);
   const [value, setvalue] = useState("todo");
 
-  const [onchange, setchange] = useState(false);
-
   function onclick() {
-    // alert("type");
     setmodal(!modal);
   }
 
@@ -41,17 +42,26 @@ const Card = () => {
   }
 
   function changeValue(e) {
-    console.log(e.target.value);
     setvalue(e.target.value);
   }
 
   function closeAndSave() {
     setedit(false);
-    console.log(edit);
+    const cart = {
+      difficult,
+      value,
+      data: Date.now(),
+    };
+    console.log(cart);
+  }
+
+  function isChallenge() {
+    const cart = { difficult, value, isChallenge: true };
+    data(cart);
   }
 
   return (
-    <div className={s.card} onClick={onedit}>
+    <li className={s.card} onClick={onedit}>
       {modal && <DifficultModal change={change} />}
       {deleteModal && <DeleteModule change={deleteHandler} />}
       <p className={s.cardCategoryName}>
@@ -70,11 +80,14 @@ const Card = () => {
         <span className={s.cartCategory} onClick={onclick}>
           {difficult}
         </span>
-        <span className={s.cardCategoryStart}>&#9733;</span>
+        <span className={s.cardCategoryStart} onClick={isChallenge}>
+          &#9733;
+        </span>
       </p>
       {edit ? (
-        <form>
+        <form className={s.form}>
           <input
+            className={s.input}
             type="text"
             value={value}
             placeholder={"what todo"}
@@ -82,7 +95,7 @@ const Card = () => {
           />
         </form>
       ) : (
-        <h2 className={s.cardTitle}>Todo name</h2>
+        <h2 className={s.cardTitle}>{value}</h2>
       )}
 
       <p className={s.cardDate}>Date</p>
@@ -101,7 +114,7 @@ const Card = () => {
           </>
         )}
       </div>
-    </div>
+    </li>
   );
 };
 

@@ -8,22 +8,6 @@
   margin-left: auto;
   margin-right: auto;
 }
-@media screen and (min-width: 768px) {
-  .section {
-    padding-top: 30px;
-    padding-bottom: 30px;
-    padding-left: 50px;
-    padding-right: 50px;
-
-    max-width: none;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .section {
-    padding-left: 70px;
-    padding-right: 70px;
-  }
-}
 
 .title {
   font-weight: 300;
@@ -44,12 +28,6 @@
 
   margin-top: -20px;
 }
-@media screen and (min-width: 768px) {
-  .cardSet {
-    flex-direction: row;
-    margin-left: -27px;
-  }
-}
 
 .card {
   box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
@@ -65,13 +43,34 @@
   display: flex;
   flex-direction: column;
 }
+
 @media screen and (min-width: 768px) {
+  .cardSet {
+    flex-direction: row;
+    margin-left: -27px;
+  }
+
   .card {
     width: calc((100% / 3) - 27px);
     margin-left: 27px;
   }
+
+  .section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+
+    max-width: none;
+  }
 }
+
 @media screen and (min-width: 1280px) {
+  .section {
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+
   .card {
     width: calc((100% / 5) - 28px);
     margin-left: 28px;
