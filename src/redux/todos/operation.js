@@ -95,6 +95,7 @@ export const deleteTodo = createAsyncThunk(
   "todo/delete",
   async (id, thunkApi) => {
     try {
+      console.log(id, "action");
       const { data } = await axios.delete(
         `http://questify-project.herokuapp.com/api/todos/remove/${id}`,
         id

@@ -1,4 +1,4 @@
-import s from "./ChallengeCart.module.css";
+import s from "./ChallengeCard.module.css";
 import { useState } from "react";
 
 import DifficultModal from "../DifficultModal";
@@ -6,7 +6,7 @@ import DeleteModule from "../modalDelete";
 import icon from "./trophy.svg";
 import cartsList from "../../CardsToday/temporaryData.json";
 
-const ChallengeCart = ({ data, cart }) => {
+const ChallengeCard = ({ data, cart }) => {
   const [modal, setmodal] = useState(false);
   const [difficult, setdifficult] = useState("Normal");
   const [deleteModal, setdeleteModal] = useState(false);
@@ -30,7 +30,7 @@ const ChallengeCart = ({ data, cart }) => {
 
   function deleteHandler(bool) {
     if (bool) {
-      alert("delete");
+      console.log(cart);
       onDelete();
     }
     onDelete();
@@ -118,4 +118,4 @@ const ChallengeCart = ({ data, cart }) => {
   );
 };
 
-export default ChallengeCart;
+export default ChallengeCard;
