@@ -17,11 +17,10 @@ const ChallengeModal = ({ challengeModal }) => {
   return (
     <div className={s.modal} onClick={clickBackdrop}>
       <div className={s.modalDiv}>
-        <p>Challenges</p>
         {/* <ul>
           {todos.map((item) => {
             <li id={item._id} className={s.listItem}>
-              <p className={s.itemTitle}>{item.title}</p>
+              <h2 className={s.itemTitle}>{item.title}</h2>
               <p className={s.itemTime}>{item.time}</p>
               <p className={s.itemCategory}>{item.category}</p>
             </li>;
@@ -29,9 +28,14 @@ const ChallengeModal = ({ challengeModal }) => {
         </ul> */}
         <ul>
           <li className={s.listItem}>
-            <p className={s.itemTitle}>Visit the dentist</p>
+            <h2 className={s.itemTitle}>visit the dentist</h2>
             <p className={s.itemTime}>Today, 7:30</p>
-            <p className={s.itemCategory}>FAMILY</p>
+            <p className={s.itemCategory}>HEALTH</p>
+          </li>
+          <li className={s.listItem}>
+            <h2 className={s.itemTitle}>reed a book</h2>
+            <p className={s.itemTime}>Wednesday, 15:00</p>
+            <p className={s.itemCategory}>LEARNING</p>
           </li>
         </ul>
       </div>
