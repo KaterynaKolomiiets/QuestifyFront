@@ -6,6 +6,7 @@ const BASE_URL = "http://questify-project.herokuapp.com/api/users";
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+
   },
   unset() {
     axios.defaults.headers.common.Authorization = "";
@@ -65,6 +66,29 @@ export const userLogout = createAsyncThunk(
 //     throw new Error(error);
 //   }
 // });
+
+export const userRefresh = createAsyncThunk(
+  "auth/refresh",
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.user.token;
+    console.log(persistedToken)
+
+    if (!persistedToken) {
+      return thunkAPI.rejectWithValue("User is logged out");
+    }
+    token.set(persistedToken);
+    console.log(persistedToken)
+    try {
+      const { data } = await axios.get(`${BASE_URL}/refresh`);
+      console.log(data)
+      return data;
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+);
+
 
 // export const userRefresh = createAsyncThunk("auth/refresh", async (user) => {
 //   try {

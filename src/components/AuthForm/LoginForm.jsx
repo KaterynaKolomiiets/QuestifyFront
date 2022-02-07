@@ -30,7 +30,8 @@ function LoginForm() {
       : setPasswordError('');
 
     if (validateEmail(email) && validatePassword(password)) {
-      dispatch(userLogin({ email, password}))
+      // dispatch(userLogin({ email, password}))
+       dispatch(userLogin({ email: "kolomiets_katia@ukr.net", password: "12345"}))
     }
   };
 
