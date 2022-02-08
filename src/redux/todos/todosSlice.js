@@ -19,7 +19,7 @@ const todoSliceAll = createSlice({
   initialState,
   extraReducers: {
     [addNewCard.fulfilled](state, action) {
-      state.activeTodos = [...state.activeTodos, action.payload.result];
+      state.activeTodos = [action.payload.result, ...state.activeTodos];
       state.newTodoCard = null;
     },
     [deleteNewTodo.fulfilled](state, action) {
@@ -36,7 +36,7 @@ const todoSliceAll = createSlice({
     },
 
     [addTodo.fulfilled]: (state, action) => {
-      state.activeTodos = [...state.activeTodos, action.payload.result];
+      state.activeTodos = [action.payload.result, ...state.activeTodos];
     },
     [deleteTodo.fulfilled]: (state, action) => {
       state.activeTodos = state.activeTodos.filter((item) => {
