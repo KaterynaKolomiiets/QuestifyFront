@@ -124,15 +124,15 @@ button {
 }
 
 .learning {
-  background-color: var(--bg-card-learning)
+  background-color: var(--bg-card-learning);
 }
 
 .learning {
-  background-color: var(--bg-card-learning)
+  background-color: var(--bg-card-learning);
 }
 
 .leisure {
-  background-color: var(--bg-card-leisure)
+  background-color: var(--bg-card-leisure);
 }
 
 .family {
@@ -140,9 +140,12 @@ button {
 }
 
 .health {
-  background-color: var(--health)
+  background-color: var(--font-accent);
 }
 
 .stuff {
-  background-color: var(--bg-card-stuff)
+  background-color: var(--bg-card-stuff);
+}
+.work {
+  background-color: var(--bg-card-work);
 }

@@ -1,5 +1,4 @@
 import s from "./CategoryModal.module.css";
-import style from "../../../utils/variables.css";
 
 const CategoryModal = ({ change }) => {
   function changeType(e) {
@@ -20,10 +19,10 @@ const CategoryModal = ({ change }) => {
       </li>
       <li className={s.option}>
         <span>LEARNING</span>
-      </li>{" "}
+      </li>
       <li className={s.option}>
         <span>LEISURE</span>
-      </li>{" "}
+      </li>
       <li className={s.option}>
         <span>WORK</span>
       </li>
