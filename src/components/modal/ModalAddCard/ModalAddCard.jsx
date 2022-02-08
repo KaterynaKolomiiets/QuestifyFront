@@ -15,7 +15,7 @@ const ModalAddCard = ({ toggleModal, addCard }) => {
         <button type="button" className={s.closeBtn} onClick={toggleModal}>
           <img src={closeBtn} alt="closeButton" />
         </button>
-        <p className={s.addCardTitle}>which card do you want to add?</p>
+        <p className={s.addCardTitle}>which card would you like to add?</p>
         <div className={s.btnDiv}>
           <button
             type="button"
