@@ -17,12 +17,12 @@
     height: 300px;
     width: 250px;
     top: 70px;
+    margin-left: -27px;
   }
 }
 @media screen and (min-width: 1280px) {
   .modal {
     padding: 25px 25px;
-    margin-left: -27px;
     left: -180%;
     height: 400px;
     width: 350px;
@@ -60,6 +60,7 @@
     padding-top: 20px;
     width: 220px;
     height: 120px;
+    margin-left: 1px;
   }
 }
 @media screen and (min-width: 1280px) {
