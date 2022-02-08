@@ -1,11 +1,14 @@
 import s from "./ChallengeModal.module.css";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+
 import { todosActive } from "../../../redux/todos/todosSelector";
-import { useState } from "react";
+import { showTodosActive } from "../../../redux/todos/operation";
 
 const ChallengeModal = ({ challengeModal }) => {
   const todos = useSelector(todosActive);
+  const dispatch = useDispatch();
   console.log("todos", todos);
 
   const clickBackdrop = (event) => {
@@ -14,12 +17,16 @@ const ChallengeModal = ({ challengeModal }) => {
     }
   };
 
+  useEffect(() => {
+    dispatch(showTodosActive());
+  }, []);
+
   return (
     <div className={s.modal} onClick={clickBackdrop}>
       <div className={s.modalDiv}>
         {/* <ul>
           {todos.map((item) => {
-            <li id={item._id} className={s.listItem}>
+            <li key={item._id} className={s.listItem}>
               <h2 className={s.itemTitle}>{item.title}</h2>
               <p className={s.itemTime}>{item.time}</p>
               <p className={s.itemCategory}>{item.category}</p>
@@ -33,7 +40,7 @@ const ChallengeModal = ({ challengeModal }) => {
             <p className={s.itemCategory}>HEALTH</p>
           </li>
           <li className={s.listItem}>
-            <h2 className={s.itemTitle}>reed a book</h2>
+            <h2 className={s.itemTitle}>read a book</h2>
             <p className={s.itemTime}>Wednesday, 15:00</p>
             <p className={s.itemCategory}>LEARNING</p>
           </li>

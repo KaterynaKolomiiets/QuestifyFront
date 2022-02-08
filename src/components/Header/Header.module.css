@@ -97,7 +97,7 @@
 }
 
 .challengeIconSvg {
-  fill: #00d7ff;
+  fill: var(--font-accent);
   width: 57px;
   height: 57px;
 }
@@ -113,7 +113,7 @@
 
 .svgLogout:hover,
 .svgLogout:focus {
-  fill: #00d7ff;
+  fill: var(--font-accent);
 }
 
 /* ------------------------MODAL WINDOW------------------------------------ */
@@ -160,5 +160,5 @@
 .modalBtn:hover,
 .modalBtn:focus {
   background: var(--secondary);
-  color: #fff;
+  color: var(--background-card);
 }
