@@ -2,8 +2,9 @@ import s from "./CategoryModal.module.css";
 
 const CategoryModal = ({ change }) => {
   function changeType(e) {
-    console.log(e.target.textContent);
-    change(e.target.textContent);
+    if (e.currentTarget.textContent !== e.target.textContent) {
+      change(e.target.textContent);
+    }
   }
 
   return (

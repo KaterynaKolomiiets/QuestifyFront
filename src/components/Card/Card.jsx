@@ -153,7 +153,7 @@ const Card = ({ data, card, isNewCard }) => {
           &#9733;
         </span>
       </p>
-      {edit && <p className={s.editTitle}>edit quest</p>}
+      {edit && !isNewCard && <p className={s.editTitle}>edit quest</p>}
       {isNewCard && <p className={s.editTitle}>Create New Quest</p>}
 
       {isNewCard || edit ? (
