@@ -2,6 +2,10 @@ import axios from "axios";
 
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+
 import {
   deleteTodo,
   showTodosActive,
@@ -17,18 +21,24 @@ import s from "./AuthForm.module.css";
 function AuthForm({ showRegisterForm }) {
   const dispatch = useDispatch();
 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [showRegForm, setShowRegForm] = useState(showRegisterForm);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   useEffect(() => {
     setShowRegForm(showRegisterForm);
   },[showRegisterForm]);
 
+  const changeNameValue = (event) => setName(event.target.value);
   const changeEmailValue = (event) => setEmail(event.target.value);
   const changePasswordValue = (event) => setPassword(event.target.value);
+  const togglePasswordVisibility = (event) => {
+    isPasswordVisible ? setIsPasswordVisible(false) : setIsPasswordVisible(true);
+  };
 
   const validateEmail = (email) => {
     const response =
@@ -51,9 +61,10 @@ function AuthForm({ showRegisterForm }) {
       
     if (validateEmail(email) && validatePassword(password)) {
       dispatch(userRegistration({ email, password }))
+      // dispatch(userRegistration({ name, email, password }))
 
       alert('Вам на email отправлено письмо. Подтвердите регистрацию !');
-      
+
       setShowRegForm(false);
     }
   };
@@ -109,6 +120,23 @@ function AuthForm({ showRegisterForm }) {
 
   return (
     <form className={s.auth_form}>
+      {/* И Н П У Т   И М Я */}
+      {
+        showRegForm &&
+          <input
+            type="text"
+            name="name"
+            id="AuthForm__name"
+            value={name}
+            onChange={changeNameValue}
+            // pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
+            placeholder="Name"
+            className={s.auth_form_input}
+            autoComplete="off"
+            required
+          />
+      }
+
       {/* И Н П У Т   И М Е Й Л */}
       <input
         type="email"
@@ -126,7 +154,7 @@ function AuthForm({ showRegisterForm }) {
 
       {/* И Н П У Т   П А Р О Л Ь */}
       <input
-        type="password"
+        type={isPasswordVisible ? 'text' : 'password'}
         name="password"
         id="AuthForm__password"
         value={password}
@@ -137,6 +165,14 @@ function AuthForm({ showRegisterForm }) {
         required
       />
       <p className={s.errorMessage}>{passwordError}</p>
+
+      {
+        isPasswordVisible
+          ?
+        <VisibilityIcon className={s.password} onClick={togglePasswordVisibility} />
+          :
+        <VisibilityOffIcon className={s.password} onClick={togglePasswordVisibility} />
+      }
 
       {/* К Н О П К И */}
       {
