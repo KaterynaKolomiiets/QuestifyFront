@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import {
   deleteTodo,
@@ -10,37 +10,25 @@ import {
   changeTodo,
 } from "../../redux/todos/operation";
 
-// import { authOperations } from 'redux/auth';
 import { userLogin, userRegistration } from "../../redux/user/operation";
 
 import s from "./AuthForm.module.css";
 
-function RegisterForm() {
+function AuthForm({ showRegisterForm }) {
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [showRegForm, setShowRegForm] = useState(showRegisterForm);
+
+  useEffect(() => {
+    setShowRegForm(showRegisterForm);
+  },[showRegisterForm]);
 
   const changeEmailValue = (event) => setEmail(event.target.value);
   const changePasswordValue = (event) => setPassword(event.target.value);
-
-  const onRegistration = (event) => {
-    event.preventDefault();
-
-    !validateEmail(email)
-      ? setEmailError("Некорректно введен e-mail.")
-      : setEmailError("");
-
-    !validatePassword(password)
-      ? setPasswordError("Пароль должен быть от 4 до 16 символов.")
-      : setPasswordError("");
-
-    if (validateEmail(email) && validatePassword(password)) {
-      dispatch(userRegistration({ email, password}))
-    }
-  };
 
   const validateEmail = (email) => {
     const response =
@@ -51,23 +39,60 @@ function RegisterForm() {
   const validatePassword = (password) => {
     return Boolean(password.length > 3 && password.length < 17);
   };
+  
+  const onRegistration = () => {
+    !validateEmail(email)
+    ? setEmailError("Некорректно введен e-mail.")
+    : setEmailError("");
+    
+    !validatePassword(password)
+    ? setPasswordError("Пароль должен быть от 4 до 16 символов.")
+      : setPasswordError("");
+      
+    if (validateEmail(email) && validatePassword(password)) {
+      dispatch(userRegistration({ email, password }))
+
+      alert('Вам на email отправлено письмо. Подтвердите регистрацию !');
+      
+      setShowRegForm(false);
+    }
+  };
+  
+  const onLogin = () => {
+    !validateEmail(email)
+    ? setEmailError('Некорректно введен e-mail.')
+    : setEmailError('');
+    
+    !validatePassword(password)
+    ? setPasswordError('Пароль должен быть от 4 до 16 символов.')
+    : setPasswordError('');
+    
+    if (validateEmail(email) && validatePassword(password)) {
+      dispatch(userLogin({ email, password}))
+    }
+  };
+
+  // const onLogin = async () => {
+  //   await dispatch(
+  //     userLogin({ email: "andreikiv.ann@gmail.com", password: "12345" })
+  //   );
+  // };
+  
   const showCards = () => {
     dispatch(showTodosDone());
     dispatch(showTodosActive());
   };
-  const login = async () => {
-    await dispatch(
-      userLogin({ email: "andreikiv.ann@gmail.com", password: "12345" })
-    );
-  };
+
   const deleteCard = () => {
     dispatch(deleteTodo("61fee92bf6f84c3f97f8cec5"));
   };
+
   const changeStatus = () => {
     dispatch(
       changeTodoStatus({ id: "62001a1b4cbffc8d5811eba1", isActive: false })
     );
   };
+
   const changeCard = () => {
     dispatch(
       changeTodo({
@@ -83,7 +108,7 @@ function RegisterForm() {
   };
 
   return (
-    <form onSubmit={onRegistration} className={s.auth_form}>
+    <form className={s.auth_form}>
       {/* И Н П У Т   И М Е Й Л */}
       <input
         type="email"
@@ -98,6 +123,7 @@ function RegisterForm() {
         required
       />
       <p className={s.errorMessage}>{emailError}</p>
+
       {/* И Н П У Т   П А Р О Л Ь */}
       <input
         type="password"
@@ -112,17 +138,10 @@ function RegisterForm() {
       />
       <p className={s.errorMessage}>{passwordError}</p>
 
-      <div>
-        {/* К Н О П К И */}
-        <button
-          className={s.auth_form_button}
-          // type="submit"
-          type="button"
-          onClick={login}
-        >
-          go!
-        </button>
-
+      {/* К Н О П К И */}
+      {
+        showRegForm
+          ?
         <button
           className={s.auth_form_button}
           type="button"
@@ -130,25 +149,17 @@ function RegisterForm() {
         >
           reg
         </button>
-
-        {/* TO DELETE BELOW */}
-        {/* <button
+          :
+        <button
+          className={s.auth_form_button}
           type="button"
-          // onClick={async () => {
-          //   const a = await axios.get(`http://questify-project.herokuapp.com/api/todos/all`);
-          //   console.log(a);
-          // }}
-          onClick={showCards}
+          onClick={onLogin}
         >
-          PressMe
+          log
         </button>
-        <button onClick={deleteCard}>del</button>
-        <button onClick={changeStatus}>changeStatus</button>
-        <button onClick={changeCard}>update</button> */}
-        {/* TO DELETE ABOVE */}
-      </div>
+      }
     </form>
   );
 }
 
-export { RegisterForm };
+export default AuthForm;
