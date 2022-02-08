@@ -4,7 +4,7 @@
   width: 100%;
 
   min-width: 320px;
-  max-width: 480px;
+  max-width: 451px;
 }
 @media screen and (min-width: 768px) {
   .container {
@@ -18,6 +18,7 @@
     min-width: 1280px;
   }
 }
+
 @media screen and (min-width: 320px) and (orientation: landscape) {
   .container {
     max-width: 600px;
@@ -25,7 +26,7 @@
 }
 /* IPAD MINI LAYOUT */
 
-@media only screen and (min-width:  1024px) and (max-width: 1280px) and (orientation: landscape) {
+@media only screen and (min-width: 1024px) and (max-width: 1279px) and (orientation: landscape) {
   .container {
     min-width: 920px;
   }
