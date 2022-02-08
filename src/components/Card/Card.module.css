@@ -1,4 +1,4 @@
-@import '../../utils/variables.css';
+@import "../../utils/variables.css";
 
 .cardCategoryName {
   font-family: "HelveticaNeueCyr-Medium";
@@ -72,6 +72,30 @@
   cursor: pointer;
 }
 
+.buttons {
+  display: flex;
+  align-items: baseline;
+  margin-left: auto;
+}
+
+.saveIcon {
+  position: relative;
+  cursor: pointer;
+  width: 10px;
+  height: 10px;
+  margin-right: 17px;
+}
+
+.saveIcon::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 16px;
+  background-color: var(--font-secondary);
+  top: -40%;
+  right: -7px;
+}
+
 .cross {
   color: var(--option-color);
   margin-left: auto;
@@ -88,6 +112,11 @@
   background-color: var(--font-secondary);
   top: 10%;
   right: -7px;
+}
+
+.checked {
+  color: var(--font-button-cancel);
+  cursor: pointer;
 }
 
 .start {
@@ -187,7 +216,7 @@
 
   .cross {
     color: var(--option-color);
-    margin-left: 28px;
+    /* margin-left: 28px; */
     margin-right: 14px;
     /* width: 10px;
     height: 10px; */
@@ -217,6 +246,16 @@
     width: 100%;
   }
 }
+
+@media screen and (min-width: 1280px) {
+  .card {
+    margin-left: 27px;
+
+    width: 204px;
+    height: 199px;
+  }
+}
+
 /* IPAD MINI LAYOUT */
 @media only screen and (min-width: 1024px) and (orientation: landscape) {
   .card {
