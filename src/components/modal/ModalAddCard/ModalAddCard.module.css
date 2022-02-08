@@ -1,0 +1,141 @@
+/* .backdrop {
+} */
+.exitModal {
+  position: fixed;
+  display: block;
+  border-radius: 20px;
+  width: 210px;
+  height: 140px;
+  background-color: #939fb3;
+  padding-top: 30px;
+  right: 15px;
+  bottom: 80px;
+  padding: 30px 5px 0px 10px;
+}
+@media screen and (min-width: 768px) {
+  .exitModal {
+    padding: 25px 15px 0px 15px;
+    width: 230px;
+    height: 145px;
+    bottom: 100px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .exitModal {
+    width: 250px;
+    height: 150px;
+    padding: 25px 25px 0px 25px;
+  }
+}
+
+.exitModal::before {
+  content: "";
+  position: absolute;
+  border: 10px solid transparent;
+  border-top: 10px solid #939fb3;
+  left: 82%;
+  bottom: -18px;
+}
+@media screen and (min-width: 1280px) {
+  .exitModal::before {
+    left: 74%;
+  }
+}
+
+.closeBtn {
+  border-color: transparent;
+  background-color: transparent;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+}
+
+.addCardTitle {
+  font-size: 13px;
+  width: 190px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-family: "HelveticaNeueCyr-Bold";
+}
+@media screen and (min-width: 1280px) {
+  .addCardTitle {
+    font-size: 14px;
+    width: 200px;
+  }
+}
+
+.btnDiv {
+  margin-top: 10px;
+  display: flex;
+  padding-left: 25px;
+  padding-right: 35px;
+}
+
+.challengeIconBtn {
+  margin-right: 35px;
+  margin-top: 5px;
+}
+
+.challengeIconBtn,
+.iconStarBtn {
+  border: none;
+  background-color: transparent;
+}
+
+.challengeIconSvg,
+.IconStarSvg {
+  fill: var(--font-accent);
+}
+
+.challengeIconSvg {
+  width: 45px;
+  height: 45px;
+  margin-bottom: -5px;
+}
+@media screen and (min-width: 768px) {
+  .challengeIconSvg {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+.IconStarSvg {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+@media screen and (min-width: 768px) {
+  .IconStarSvg {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+.challengeIconSvg:hover,
+.challengeIconSvg:focus,
+.IconStarSvg:hover,
+.IconStarSvg:hover {
+  fill: var(--accent);
+}
+
+.titleCards {
+  display: flex;
+  padding-left: 20px;
+  padding-right: 35px;
+  margin-top: -10px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-family: "HelveticaNeueCyr-Medium";
+  letter-spacing: 0.04em;
+}
+@media screen and (min-width: 768px) {
+  .titleCards {
+    font-size: 13px;
+  }
+}
+
+.challengeTitle {
+  margin-right: 25px;
+}

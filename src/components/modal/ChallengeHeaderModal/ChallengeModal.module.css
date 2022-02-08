@@ -60,7 +60,7 @@
     padding-top: 20px;
     width: 220px;
     height: 120px;
-    margin-left: 1px;
+    margin-left: -1px;
   }
 }
 @media screen and (min-width: 1280px) {
