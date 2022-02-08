@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import {
   deleteTodo,
   changeTodo,
@@ -13,29 +11,35 @@ import "../../utils/variables.css";
 import DifficultModal from "../modal/DifficultModal";
 import DeleteModule from "../modal/modalDelete";
 import s from "./Card.module.css";
+import CategoryModal from "../modal/CategoryModal";
 
-const Card = ({ data, card, ondelete, isNewCard }) => {
+import saveIcon from "../../images/save.svg";
+
+const Card = ({ data, card, isNewCard }) => {
+  const [categoryModal, setcategoryModal] = useState(false);
   const [modal, setmodal] = useState(false);
-  const [difficult, setdifficult] = useState("Normal");
-  const [deleteModal, setdeleteModal] = useState(false);
   const [edit, setedit] = useState(false);
+  const [deleteModal, setdeleteModal] = useState(false);
+  const [difficult, setdifficult] = useState("Normal");
   const [value, setvalue] = useState("todo");
+  const [categoryCart, setcategoryCart] = useState("family");
 
-  // console.log(card);
+  const dispatch = useDispatch();
+
   function onclick() {
     setmodal(!modal);
   }
+
+  function categoryModalHandler() {
+    setcategoryModal(!categoryModal);
+  }
+
   function change(data) {
     setdifficult(data);
-    console.log(card);
-    dispatch(changeTodo({ id: card._id, ...card, level: data }));
     onclick();
   }
   function deleteHandler(bool) {
     if (bool) {
-      // ondelete(card._id);
-      console.log(card._id);
-      // deleteCard(card._id);
       dispatch(deleteTodo(card._id));
       onDelete();
     }
@@ -47,7 +51,6 @@ const Card = ({ data, card, ondelete, isNewCard }) => {
   }
 
   function onedit() {
-    console.log(card._id);
     if (!edit) setedit(true);
   }
 
@@ -59,10 +62,14 @@ const Card = ({ data, card, ondelete, isNewCard }) => {
     setedit(false);
 
     const card = {
-      difficult,
-      value,
-      data: Date.now(),
+      level: difficult,
+      title: value,
+      time: Date.now(),
+      category: categoryCart,
+      type: "TASK",
     };
+    dispatch(changeTodo({ id: card._id, ...card }));
+    console.log(card);
   }
 
   function isChallenge() {
@@ -70,12 +77,10 @@ const Card = ({ data, card, ondelete, isNewCard }) => {
     data(card);
   }
 
-  // function deleteCard(id) {
-  //   dispatch(deleteTodo(id));
-  // }
   const deleteNewCard = () => {
     dispatch(deleteNewTodo());
   };
+
   const addNewTodo = () => {
     dispatch(
       addNewCard({
@@ -87,12 +92,17 @@ const Card = ({ data, card, ondelete, isNewCard }) => {
       })
     );
   };
-  const dispatch = useDispatch();
-  console.log();
+
+  function changeType(data) {
+    setcategoryCart(data);
+    categoryModalHandler();
+  }
+
   return (
     <li className={s.card} onClick={onedit}>
       {modal && <DifficultModal change={change} />}
       {deleteModal && <DeleteModule change={deleteHandler} />}
+      {categoryModal && <CategoryModal change={changeType} />}
       <p className={s.cardCategoryName}>
         <span
           className={
@@ -130,18 +140,40 @@ const Card = ({ data, card, ondelete, isNewCard }) => {
       )}
 
       <p className={s.cardDate}>{card.time}</p>
-      {/* <p className={s.cardType}>type</p> */}
 
       <div className={s.bottomMenu}>
-        <p className={`${s.cardType} ${card.category.toLowerCase()}`}>{card.category}</p>
+        <p
+          className={`${s.cardType} ${card.category.toLowerCase()}`}
+          onClick={categoryModalHandler}
+        >
+          {card.category}
+        </p>
         {isNewCard && (
           <>
-            <span className={s.cross} onClick={deleteNewCard}>
-              &#10006;
-            </span>
-            <span onClick={addNewTodo} className={s.start}>
-              START
-            </span>
+            <div className={s.buttons}>
+              <span className={s.cross} onClick={deleteNewCard}>
+                &#10006;
+              </span>
+              <span onClick={addNewTodo} className={s.start}>
+                START
+              </span>
+            </div>
+          </>
+        )}
+        {edit && (
+          <>
+            <div className={s.buttons}>
+              <div className={s.saveIcon} onClick={closeAndSave}>
+                <img src={saveIcon} alt="save card" />
+              </div>
+
+              <span className={s.cross} onClick={onDelete}>
+                &#10006;
+              </span>
+              <span onClick={closeAndSave} className={s.checked}>
+                &#10004;
+              </span>
+            </div>
           </>
         )}
       </div>

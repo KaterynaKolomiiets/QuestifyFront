@@ -1,0 +1,30 @@
+.list {
+  position: absolute;
+  color: var(--bg-card-stuff);
+  padding: 12px;
+  background-color: #fff;
+  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.05),
+    3px 4px 4px rgba(21, 57, 90, 0.05);
+  border-radius: 10px;
+  left: 0;
+  top: 75%;
+  z-index: 1;
+}
+
+.option {
+  position: relative;
+
+  font-family: HelveticaNeueCyr;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--font-primary);
+  cursor: pointer;
+  margin-bottom: 5px;
+  margin-left: 0;
+}
+
+.option:hover {
+  color: var(--font-secondary);
+}
