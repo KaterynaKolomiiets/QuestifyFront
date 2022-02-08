@@ -1,5 +1,3 @@
-import axios from "axios";
-
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
@@ -31,14 +29,12 @@ function AuthForm({ showRegisterForm }) {
 
   useEffect(() => {
     setShowRegForm(showRegisterForm);
-  },[showRegisterForm]);
+  }, [showRegisterForm]);
 
   const changeNameValue = (event) => setName(event.target.value);
   const changeEmailValue = (event) => setEmail(event.target.value);
   const changePasswordValue = (event) => setPassword(event.target.value);
-  const togglePasswordVisibility = (event) => {
-    isPasswordVisible ? setIsPasswordVisible(false) : setIsPasswordVisible(true);
-  };
+  const togglePasswordVisibility = () => isPasswordVisible ? setIsPasswordVisible(false) : setIsPasswordVisible(true);
 
   const validateEmail = (email) => {
     const response =
@@ -60,12 +56,10 @@ function AuthForm({ showRegisterForm }) {
       : setPasswordError("");
       
     if (validateEmail(email) && validatePassword(password)) {
+      setShowRegForm(false);
       dispatch(userRegistration({ email, password }))
       // dispatch(userRegistration({ name, email, password }))
-
       alert('Вам на email отправлено письмо. Подтвердите регистрацию !');
-
-      setShowRegForm(false);
     }
   };
   
@@ -119,35 +113,30 @@ function AuthForm({ showRegisterForm }) {
   };
 
   return (
-    <form className={s.auth_form}>
+    <form className={s.auth_form} autoComplete="off">
       {/* И Н П У Т   И М Я */}
       {
         showRegForm &&
-          <input
-            type="text"
-            name="name"
-            id="AuthForm__name"
-            value={name}
-            onChange={changeNameValue}
-            // pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
-            placeholder="Name"
-            className={s.auth_form_input}
-            autoComplete="off"
-            required
-          />
+        <input
+          type="text"
+          name="name"
+          value={name}
+          onChange={changeNameValue}
+          placeholder="Name"
+          className={s.auth_form_input}
+          required
+        />
       }
 
       {/* И Н П У Т   И М Е Й Л */}
       <input
         type="email"
         name="email"
-        id="AuthForm__email"
         value={email}
         onChange={changeEmailValue}
         pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
         placeholder="Email"
         className={s.auth_form_input}
-        autoComplete="off"
         required
       />
       <p className={s.errorMessage}>{emailError}</p>
@@ -156,25 +145,22 @@ function AuthForm({ showRegisterForm }) {
       <input
         type={isPasswordVisible ? 'text' : 'password'}
         name="password"
-        id="AuthForm__password"
         value={password}
         onChange={changePasswordValue}
         placeholder="Password"
         className={s.auth_form_input}
-        autoComplete="off"
         required
       />
-      <p className={s.errorMessage}>{passwordError}</p>
-
       {
         isPasswordVisible
-          ?
-        <VisibilityIcon className={s.password} onClick={togglePasswordVisibility} />
-          :
-        <VisibilityOffIcon className={s.password} onClick={togglePasswordVisibility} />
+        ?
+        <VisibilityIcon className={s.show_hide_password} onClick={togglePasswordVisibility} />
+        :
+        <VisibilityOffIcon className={s.show_hide_password} onClick={togglePasswordVisibility} />
       }
+      <p className={s.errorMessage}>{passwordError}</p>
 
-      {/* К Н О П К И */}
+      {/* К Н О П К А   g o ! */}
       {
         showRegForm
           ?
