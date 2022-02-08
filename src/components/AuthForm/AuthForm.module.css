@@ -1,4 +1,6 @@
 /* Форма */
+
+@import url('../../utils/variables.css');
 .auth_form {
   display: flex;
   flex-direction: column;
@@ -26,10 +28,10 @@
   line-height: 1.167;
 
   border: none;
-  border-bottom: 1px solid #00d7ff;
+  border-bottom: 1px solid  var(--font-accent);
   outline: transparent;
 
-  color: #00d7ff;
+  color:  var(--font-accent);
   background: transparent;
 
   width: 100%;
@@ -46,30 +48,34 @@
 
   color: #ffffff;
 
-  background: #ff851c;
+  background:  var(--accent);
   border-radius: 50%;
   border: none;
 
-  box-shadow: 0 0 5px 2px #ff851c;
+  box-shadow: 0 0 5px 2px  var(--accent);
 
   width: 52px;
   height: 52px;
 }
-.auth_form_button:hover {
-  border: solid 1px #fff;
+.auth_form_button:hover,
+.auth_form_button:focus {
+  /* border: solid 1px #fff; */
+  background:  var(--accent-hover);
+  box-shadow: 0 0 5px 2px  var(--accent-hover);
+  outline: none;
 }
 /* Цвет плейсхолдера */
 ::-webkit-input-placeholder {
-  color: #00d7ff;
+  color:  var(--font-accent);
 }
 :-moz-placeholder {
-  color: #00d7ff;
+  color:  var(--font-accent);
 }
 ::-moz-placeholder {
-  color: #00d7ff;
+  color:  var(--font-accent);
 }
 :-ms-input-placeholder {
-  color: #00d7ff;
+  color:  var(--font-accent);
 }
 
 .errorMessage {
