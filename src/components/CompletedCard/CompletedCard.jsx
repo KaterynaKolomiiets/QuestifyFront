@@ -14,7 +14,7 @@ const CompletedCard = ({ taskName, isChallenge, onCompleted, onClose }) => {
         <div className={s.contentBox}>
           <p className={s.content}>COMPLETED:</p>
           <p  className={s.link}>
-            <span className={s.linkText}>NAME TASK</span>
+            <span className={s.linkText}>{taskName}</span>
           </p>
         </div>
         <div className={s.awardBox}>
