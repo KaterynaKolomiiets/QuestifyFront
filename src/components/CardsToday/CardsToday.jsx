@@ -14,19 +14,22 @@ import {
   deleteTodo,
   changeTodo,
   showTodosActive,
+  showTodosDone,
 } from "../../redux/todos/operation";
 
 const CardsToday = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(showTodosActive());
+    dispatch(showTodosDone());
   }, []);
 
-  const initialTodos = useSelector(todosActive);
+  const todos = useSelector(todosActive);
   const newTodo = useSelector(newTodoCard);
   let isNewCard = newTodo ? true : false;
 
-  const todos = newTodo ? [newTodo, ...initialTodos] : initialTodos;
+  // const todos = newTodo ? [newTodo, ...initialTodos] : initialTodos;
+
   const [isChallenge, setChallenger] = useState(true);
   // const [cards, setCards] = useState(todos);
 
