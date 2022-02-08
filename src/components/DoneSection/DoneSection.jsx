@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { showTodosDone } from "../../redux/todos/operation";
 import { todosDone } from "../../redux/todos/todosSelector";
@@ -8,29 +8,29 @@ import Icon from "../Icon";
 import s from "./DoneSection.module.css";
 
 const DoneSection = () => {
-  const dispatch = useDispatch();
+  const [doneIsShown, setDoneIsShown] = useState(false);
   const todos = useSelector(todosDone);
-  // useEffect(() => {
-  //   dispatch(showTodosDone());
-  //   console.log("kokpok");
-  // }, []);
-  console.log(todos);
+  const onShowDone = () => {
+    setDoneIsShown(!doneIsShown);
+  };
+  
   return (
     <>
-      <section className={s.sectionDone}>
-        <div className={s.lineWrapper}>
-          <button className={s.btnDone}>
+      <section className={s.section}>
+        <div>
+          <div className={s.lineWrapper}></div>
+          <button className={s.btnDone} onClick={onShowDone}>
             DONE
-            <Icon className={s.IconDone} name={"arrow-up"} size={12} />
+            <Icon className={s.IconDone} name={doneIsShown ? "arrow-down" : "arrow-up"} size={12} />
           </button>
-          {todos && (
+          {doneIsShown && todos && (
             <ul className={s.cardSet}>
               {todos?.map((card) => {
                 return <Card key={card._id} card={card} />;
               })}
             </ul>
           )}
-        </div>
+          </div>
       </section>
     </>
   );
