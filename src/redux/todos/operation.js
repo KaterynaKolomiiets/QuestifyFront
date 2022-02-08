@@ -12,11 +12,11 @@ const token = {
 };
 export const addCardToState = createAsyncThunk(
   "todos/addCard",
-  async (_, thunkApi) => {
+  async (type, thunkApi) => {
     return {
       title: "",
       category: "FAMILY",
-      type: "TASK",
+      type: type,
       time: Date.now(),
       // time: new Date().toISOString(),
       level: "Normal",
