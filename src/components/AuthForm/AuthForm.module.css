@@ -5,6 +5,8 @@
   align-items: center;
 
   width: 100%;
+
+  position: relative;
 }
 @media screen and (min-width: 768px) {
   .auth_form {
@@ -74,4 +76,10 @@
   font-size: 11px;
   margin-top: 4px;
   position: absolute;
+}
+
+.password {
+  position: absolute;
+  bottom: 72.5px;
+  right: 10px;
 }

@@ -1,24 +1,14 @@
 
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import Container from "../../components/Container";
-import { LoginForm } from '../../components/AuthForm';
-import { RegisterForm } from '../../components/AuthForm';
-import { userLogin, userRegistration } from "../../redux/user/operation";
 import AuthForm from "../../components/AuthForm";
 import s from "./AuthPage.module.css";
-
-import {
-  showTodos,
-  showTodosActive,
-  showTodosDone,
-} from "../../redux/todos/operation";
 
 function AuthPage() {
   const [showRegisterForm, setShowRegisterForm] = useState(false);
 
   const showRegForm = () => setShowRegisterForm(true);
-  const hideRegForm = () => setShowRegisterForm(false);
+  const showLogForm = () => setShowRegisterForm(false);
   
   return (
     <div className={s.wrapper}>
@@ -38,17 +28,12 @@ function AuthPage() {
               sign up
             </button>
             or
-            <button type='button' onClick={hideRegForm} className={s.invisibleButton}>
+            <button type='button' onClick={showLogForm} className={s.invisibleButton}>
               log in
             </button>
           </p>
-          {
-            showRegisterForm
-              ?
-              <RegisterForm />
-              :
-              <LoginForm />
-          }
+
+          <AuthForm showRegisterForm={ showRegisterForm }/>
         </section>
       </Container>
     </div>
