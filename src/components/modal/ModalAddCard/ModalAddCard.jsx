@@ -1,8 +1,9 @@
 import s from './ModalAddCard.module.css';
-import closeBtn from '../../../images/closeBtn.png';
-import icons from '../../../icons/sprite.svg';
 import { useDispatch } from 'react-redux';
+
+import icons from '../../../icons/sprite.svg';
 import { addCardToState } from '../../../redux/todos/operation';
+
 const ModalAddCard = ({ toggleModal }) => {
   const dispatch = useDispatch();
   const clickBackdrop = event => {
@@ -10,19 +11,17 @@ const ModalAddCard = ({ toggleModal }) => {
       toggleModal();
     }
   };
+
   const addCard = e => {
     if (e.currentTarget.className.toString().includes('challenge')) {
       return dispatch(addCardToState('CHALLENGE'));
     }
     return dispatch(addCardToState('TASK'));
   };
+
   return (
     <div className={s.backdrop} onClick={clickBackdrop}>
       <div className={s.exitModal}>
-        {/* <button type="button" className={s.closeBtn} onClick={toggleModal}>
-          <img src={closeBtn} alt="closeButton" />
-        </button> */}
-        {/* <p className={s.addCardTitle}>which card would you like to add?</p> */}
         <div className={s.btnDiv}>
           <button
             type="button"
@@ -33,11 +32,14 @@ const ModalAddCard = ({ toggleModal }) => {
               width="35"
               height="35"
               className={`${s.challengeIconSvg} challenge`}
-              onClick={addCard}
+              onClick={toggleModal}
             >
               <use className="challenge" xlinkHref={`${icons}#icon-trophy`} />
             </svg>
-            <p className={`${s.challengeTitle} challenge`} onClick={addCard}>
+            <p
+              className={`${s.challengeTitle} challenge`}
+              onClick={toggleModal}
+            >
               challenge
             </p>
           </button>
@@ -50,23 +52,15 @@ const ModalAddCard = ({ toggleModal }) => {
               width="35"
               height="35"
               className={`${s.IconStarSvg} quest`}
-              onClick={addCard}
+              onClick={toggleModal}
             >
               <use xlinkHref={`${icons}#icon-star`} />
             </svg>
-            <p className={`${s.questTitle} quest`} onClick={addCard}>
+            <p className={`${s.questTitle} quest`} onClick={toggleModal}>
               quest
             </p>
           </button>
         </div>
-        {/* <div className={s.titleCards}>
-          <p className={`${s.challengeTitle} challenge`} onClick={addCard}>
-            challenge
-          </p>
-          <p className={`${s.questTitle} quest`} onClick={addCard}>
-            quest
-          </p>
-        </div> */}
       </div>
     </div>
   );
