@@ -64,7 +64,11 @@ const Card = ({ data, card, isNewCard }) => {
     setdeleteModal(!deleteModal);
   }
 
-  function onedit() {
+  function onedit(e) {
+    console.log(e)
+    if(!card.isActive){
+      return
+    }
     if (!edit) setedit(true);
   }
 
@@ -123,6 +127,7 @@ const Card = ({ data, card, isNewCard }) => {
           <CompletedCard />
         </li>
       ) : ( */}
+
 
       <li
         className={`${s.card} ${
