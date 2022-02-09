@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 import s from './TimePickers.module.css';
 
-export default function TimeDatePicker() {
+export default function TimeDatePicker({ time }) {
   const [value, setValue] = useState('week');
 
   const onChange = data => {
@@ -19,9 +19,18 @@ export default function TimeDatePicker() {
       'Friday',
       'Saturday',
     ];
-    const dayName = days[data.getDay()];
-    console.log(dayName, 'data');
+    let dayName = days[data.getDay()];
+    const hours = data.getHours();
+    const minutes = data.getMinutes();
+    const times = `${hours}:${minutes}`;
+    const dateNaw = new Date().getDate();
+    if (data.getDate() === new Date().getDate()) {
+      dayName = 'today';
+    } else if (Number(data.getDate()) === Number(dateNaw) + 1) {
+      dayName = 'Tomorrow';
+    }
     setValue({ dayName });
+    time({ time: times, dayName, data });
   };
 
   return (
@@ -30,9 +39,7 @@ export default function TimeDatePicker() {
         <DateTimePicker
           renderInput={props => <TextField {...props} />}
           value={value}
-          onChange={newValue => {
-            setValue(newValue);
-          }}
+          onChange={onChange}
           ampm={false}
           ampmInClock={true}
           className={s.rooter}

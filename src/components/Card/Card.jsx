@@ -29,11 +29,12 @@ const Card = ({ data, card, isNewCard }) => {
   const [difficult, setdifficult] = useState('');
   const [value, setvalue] = useState('');
   const [categoryCart, setcategoryCart] = useState('family');
+  const [timeDate, settimeDate] = useState('');
 
   const dispatch = useDispatch();
   const cardFromState = useSelector(newTodoCard);
 
-  // console.log(card)
+  console.log(card);
 
   useEffect(() => {
     setdifficult(card.level);
@@ -83,7 +84,7 @@ const Card = ({ data, card, isNewCard }) => {
     const newCard = {
       level: card.level,
       title: value,
-      time: Date.now(),
+      time: timeDate,
       category: categoryCart,
       type: card.type,
     };
@@ -119,6 +120,10 @@ const Card = ({ data, card, isNewCard }) => {
   function changeType(data) {
     setcategoryCart(data);
     categoryModalHandler();
+  }
+
+  function takeTime(time) {
+    settimeDate(time);
   }
 
   return (
@@ -222,9 +227,14 @@ const Card = ({ data, card, isNewCard }) => {
           </>
         )}
 
-        <p className={s.cardDate}>
-          <TimeDatePicker />
-        </p>
+        <div className={s.cardDate}>
+          <p className={s.timeText}>
+            {timeDate.dayName}
+            {!edit && timeDate.time}
+          </p>
+          {edit && <TimeDatePicker time={takeTime} />}
+          {isNewCard && <TimeDatePicker time={takeTime} />}
+        </div>
 
         <div className={s.bottomMenu}>
           {edit ? (
