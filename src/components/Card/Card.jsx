@@ -18,6 +18,7 @@ import saveIcon from "../../images/save.svg";
 import CompletedCard from "../CompletedCard/CompletedCard";
 import { newTodoCard } from "../../redux/todos/todosSelector";
 import ChallengeCard from "../modal/ChallengeCard/ChallengeCard";
+import trophy from "./trophy.svg";
 
 const Card = ({ data, card, isNewCard }) => {
   const [categoryModal, setcategoryModal] = useState(false);
@@ -30,6 +31,8 @@ const Card = ({ data, card, isNewCard }) => {
 
   const dispatch = useDispatch();
   const cardFromState = useSelector(newTodoCard);
+
+  console.log(card)
 
   useEffect(() => {
     setdifficult(card.level);
@@ -73,11 +76,11 @@ const Card = ({ data, card, isNewCard }) => {
     setedit(false);
 
     const newCard = {
-      level: difficult,
+      level: card.level,
       title: value,
       time: Date.now(),
       category: categoryCart,
-      type: "TASK",
+      type: card.type,
     };
     dispatch(changeTodo({ id: card._id, ...newCard }));
   }
@@ -120,10 +123,10 @@ const Card = ({ data, card, isNewCard }) => {
           <CompletedCard />
         </li>
       ) : ( */}
-      {card.type === "CHALLENGE" ? (
-        <ChallengeCard />
-      ) : (
-        <li className={s.card} onClick={onedit}>
+
+
+      
+        <li className={`${s.card} ${card.type==="CHALLENGE"? s.challenge : s.task}`} onClick={onedit}>
           {modal && <DifficultModal change={change} />}
           {deleteModal && <DeleteModule change={deleteHandler} />}
           {categoryModal && <CategoryModal change={changeType} />}
@@ -165,11 +168,14 @@ const Card = ({ data, card, isNewCard }) => {
                   {card.level}
                 </span>
               </>
-            )}
-
-            <span className={s.cardCategoryStart} onClick={isChallenge}>
-              &#9733;
-            </span>
+          )}
+          {/* STAR OR TROPHY ICON*/}
+          {card.type === "CHALLENGE" ? <img
+          src={trophy}
+          alt=""
+          className={s.cardCategoryStart}
+          onClick={changeType}
+        />: <span  className={s.cardCategoryStart}> &#9733;</span>}
           </p>
           {edit && !isNewCard && <p className={s.editTitle}>edit quest</p>}
           {isNewCard && <p className={s.editTitle}>Create New Quest</p>}
@@ -178,15 +184,18 @@ const Card = ({ data, card, isNewCard }) => {
             <form className={s.form}>
               <input
                 autoFocus
-                className={s.input}
+                className={`${s.input} ${card.type==="CHALLENGE" && s.inputChallenge}`}
                 type="text"
                 value={value}
-                // placeholder={"enter name"}
                 onChange={changeValue}
               />
             </form>
-          ) : (
-            <h2 className={s.cardTitle}>{card.title}</h2>
+        ) : (
+            <>
+              {/* header CHALLENGE */}
+            {card.type==="CHALLENGE" ? <h2 className={s.challengeHeader}>CHALLENGE</h2>: <span className={s.taskHeader}>TASK</span>}
+              <h2 className={`${s.cardTitle} ${card.type==="CHALLENGE" && s.cardTitle_challenge}`}>{card.title}</h2>
+            </>
           )}
 
           <p className={s.cardDate}>{card.time}</p>
@@ -204,7 +213,13 @@ const Card = ({ data, card, isNewCard }) => {
             ) : (
               <>
                 <p
-                  className={`${s.cardType} ${card.category.toLowerCase()}`}
+                  className={`${s.cardType} 
+                  ${card.category === "LEARNING" && s.learning}
+                  ${card.category === "LEISURE" && s.leisure}
+                  ${card.category === "FAMILY" && s.family}
+                  ${card.category === "HEALTH" && s.health}
+                  ${card.category === "STUFF" && s.stuff}
+                  ${card.category === "WORK" && s.work}`}
                   onClick={categoryModalHandler}
                 >
                   {card.category}
@@ -242,7 +257,7 @@ const Card = ({ data, card, isNewCard }) => {
             )}
           </div>
         </li>
-      )}
+     
 
       {/* )} */}
     </>
