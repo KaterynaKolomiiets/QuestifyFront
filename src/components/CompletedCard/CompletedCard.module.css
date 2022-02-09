@@ -17,7 +17,7 @@
 }
 
 .contentBox {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   display: flex;
   align-items: center;
   margin-top: 5px;
@@ -25,6 +25,8 @@
 
 .content {
   font-size: 11px;
+  font-family: 'HelveticaNeueCyr-Medium';
+  line-height: 1;
 }
 
 .link {
@@ -52,6 +54,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  font-family: 'HelveticaNeueCyr-Medium';
 }
 
 .image {
@@ -72,7 +75,7 @@
   cursor: pointer;
   border: none;
   padding-top: 5px;
-  padding-bottom: 15px;
+  
 }
 
 .arrow {
@@ -160,28 +163,18 @@
   fill: var(--background-card);
 }
 
-.hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-}
 .card {
   justify-content: space-around;
   position: relative;
   display: flex;
   flex-direction: column;
-
+  width: 205px;
   margin-top: 20px;
   padding: 20px;
-  background: var(--background-card);
   box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
     3px 4px 4px rgba(21, 57, 90, 0.03);
   border-radius: 10px;
+  background: var(--background-card);
 }
 .cardSet {
   display: flex;
@@ -192,9 +185,14 @@
   margin-top: -20px;
 }
 
+span {
+  color:var(--font-secondary);
+  font-family: 'HelveticaNeueCyr-Medium';
+}
+
 @media screen and (min-width: 768px) {
   .card {
-    width: calc((100% / 3) - 27px);
+    /* width: calc((100% / 3) - 27px); */
 
     margin-left: 27px;
 
@@ -214,7 +212,7 @@
   .card {
     margin-left: 27px;
 
-    width: 204px;
+    width: 205px;
     height: 199px;
   }
 }
@@ -223,5 +221,6 @@
 @media only screen and (min-width: 1024px) and (orientation: landscape) {
   .card {
     width: calc((100% / 4) - 27px);
+    width: 205px;
   }
 }

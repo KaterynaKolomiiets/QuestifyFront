@@ -29,6 +29,8 @@
 
 .content {
   font-size: 11px;
+  font-family: 'HelveticaNeueCyr-Medium';
+  line-height: 1;
 }
 
 .link {
@@ -56,6 +58,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  font-family: 'HelveticaNeueCyr-Medium';
 }
 
 .image {
@@ -168,12 +171,13 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 205px;
   margin-top: 20px;
   padding: 20px;
-  background: var(--primary);
   box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
     3px 4px 4px rgba(21, 57, 90, 0.03);
   border-radius: 10px;
+  background: var(--primary);
 }
 .cardSet {
   display: flex;
@@ -183,9 +187,14 @@
 
   margin-top: -20px;
 }
+
+span {
+  color:var(--font-secondary);
+  font-family: 'HelveticaNeueCyr-Medium';
+}
 @media screen and (min-width: 768px) {
   .card {
-    width: calc((100% / 3) - 27px);
+    /* width: calc((100% / 3) - 27px); */
 
     margin-left: 27px;
 
@@ -214,5 +223,8 @@
 @media only screen and (min-width: 1024px) and (orientation: landscape) {
   .card {
     width: calc((100% / 4) - 27px);
+    width: 205px;
   }
 }
+
+
