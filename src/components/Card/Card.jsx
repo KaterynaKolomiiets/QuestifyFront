@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   deleteTodo,
   changeTodo,
   deleteNewTodo,
   addNewCard,
   changeTodoStatus,
-} from "../../redux/todos/operation";
-import "../../utils/variables.css";
+} from '../../redux/todos/operation';
+import '../../utils/variables.css';
 
-import DifficultModal from "../modal/DifficultModal";
-import DeleteModule from "../modal/modalDelete";
-import s from "./Card.module.css";
-import CategoryModal from "../modal/CategoryModal";
+import DifficultModal from '../modal/DifficultModal';
+import DeleteModule from '../modal/modalDelete';
+import s from './Card.module.css';
+import CategoryModal from '../modal/CategoryModal';
 
 import saveIcon from "../../images/save.svg";
 import CompletedCard from "../CompletedCard/CompletedCard";
@@ -25,9 +25,9 @@ const Card = ({ data, card, isNewCard }) => {
   const [modal, setmodal] = useState(false);
   const [edit, setedit] = useState(false);
   const [deleteModal, setdeleteModal] = useState(false);
-  const [difficult, setdifficult] = useState("");
-  const [value, setvalue] = useState("");
-  const [categoryCart, setcategoryCart] = useState("family");
+  const [difficult, setdifficult] = useState('');
+  const [value, setvalue] = useState('');
+  const [categoryCart, setcategoryCart] = useState('family');
 
   const dispatch = useDispatch();
   const cardFromState = useSelector(newTodoCard);
@@ -106,7 +106,7 @@ const Card = ({ data, card, isNewCard }) => {
         type: cardFromState.type,
         time: Date.now(),
         level: difficult,
-      })
+      }),
     );
   };
 

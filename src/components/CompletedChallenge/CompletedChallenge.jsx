@@ -1,20 +1,19 @@
+
 import { CSSTransition } from 'react-transition-group';
 import Icons from '../../icons/sprite.svg';
 import Icon from '../Icon';
-import './CompletedStyle.css';
-import s from './CompletedCard.module.css';
+import s from './CompletedChallenge.module.css';
 
+const CompletedChallenge = () => {
 
-const CompletedCard = ({ taskName }) => {
   
-  return (
-    
+    return (
       <li className={s.card} >
-        <div className={s.questBox}>
+        <div className={s.challengeBox}>
           <div className={s.contentBox}>
             <p className={s.content}>COMPLETED:</p>
             <p className={s.link}>
-              <span className={s.linkText}>{taskName}</span>
+              <span className={s.linkText}>TASK NAME</span>
             </p>
           </div>
           <div className={s.awardBox}>
@@ -45,29 +44,17 @@ const CompletedCard = ({ taskName }) => {
             </svg>
 
             <div>
-              <CSSTransition
-                in={true}
-                appear={true}
-                timeout={1000}
-                classNames="target"
-                unmountOnExit
-              >
-                <svg className={s.iconTarget}>
-                  <use xlinkHref={`${Icons}#target`} />
-                </svg>
-              </CSSTransition>
-              <CSSTransition
-                in={true}
-                appear={true}
-                timeout={2000}
-                classNames="arrow"
-                unmountOnExit
-              >
-                <svg className={s.iconArrow}>
-                  <use xlinkHref={`${Icons}#arrow`} />
-                </svg>
-              </CSSTransition>
-            </div>
+            <CSSTransition in={true} appear={true} timeout={1000} classNames="trophy" unmountOnExit>
+              <svg className={s.iconTrophy}>
+                <use xlinkHref={`${Icons}#trophy-cup`} />
+              </svg>
+            </CSSTransition>
+            <CSSTransition in={true} appear={true} timeout={2000} classNames="first" unmountOnExit>
+              <svg className={s.iconFirst}>
+                <use xlinkHref={`${Icons}#first`} />
+              </svg>
+            </CSSTransition>
+          </div>
           </div>
           <button className={s.button}>
             <span>Continue</span>
@@ -75,8 +62,7 @@ const CompletedCard = ({ taskName }) => {
           </button>
         </div>
       </li>
-  
   );
 };
 
-export default CompletedCard;
+export default CompletedChallenge;
