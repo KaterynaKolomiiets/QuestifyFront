@@ -1,7 +1,7 @@
-@import "../../utils/variables.css";
+@import '../../utils/variables.css';
 
 .cardCategoryName {
-  font-family: "HelveticaNeueCyr-Medium";
+  font-family: 'HelveticaNeueCyr-Medium';
   font-size: 16px;
 
   color: var(--font-secondary);
@@ -19,7 +19,7 @@
   margin-left: auto;
 }
 .challengeHeader {
-  font-family: "HelveticaNeueCyr-Light";
+  font-family: 'HelveticaNeueCyr-Light';
   font-size: 12px;
   line-height: 12px;
   letter-spacing: 0.02em;
@@ -28,7 +28,7 @@
   margin-bottom: 10px;
 }
 .taskHeader {
-  font-family: "HelveticaNeueCyr-Medium";
+  font-family: 'HelveticaNeueCyr-Medium';
   font-size: 12px;
   line-height: 12px;
   visibility: hidden;
@@ -36,7 +36,7 @@
 }
 
 .cardTitle {
-  font-family: "HelveticaNeueCyr-Bold";
+  font-family: 'HelveticaNeueCyr-Bold';
   font-size: 16px;
   line-height: 1.37;
 
@@ -52,7 +52,7 @@
 }
 
 .cardDate {
-  font-family: "HelveticaNeueCyr-Light";
+  font-family: 'HelveticaNeueCyr-Light';
   font-size: 14px;
 
   color: var(--font-secondary);
@@ -65,7 +65,7 @@
 }
 
 .cardType {
-  font-family: "HelveticaNeueCyr-Medium";
+  font-family: 'HelveticaNeueCyr-Medium';
   font-size: 11px;
   line-height: 11px;
   letter-spacing: 0.02em;
@@ -87,7 +87,7 @@
 /* new style */
 
 .editTitle {
-  font-family: "HelveticaNeueCyr-Bold";
+  font-family: 'HelveticaNeueCyr-Bold';
 
   font-size: 12px;
   line-height: 12px;
@@ -98,7 +98,6 @@
   text-transform: uppercase;
 
   color: var(--font-secondary);
-
 }
 
 .bottomMenu {
@@ -126,7 +125,7 @@
 }
 
 .saveIcon::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 1px;
   height: 16px;
@@ -144,7 +143,7 @@
 }
 
 .cross::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 1px;
   height: 16px;
@@ -161,7 +160,7 @@
 .start {
   color: var(--font-accent);
 
-  font-family: "HelveticaNeueCyr-Medium";
+  font-family: 'HelveticaNeueCyr-Medium';
   font-size: 14px;
   line-height: 1;
   letter-spacing: 0.02em;
@@ -173,7 +172,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-
+  width: 205px;
   margin-top: 20px;
   padding: 20px;
   box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
@@ -181,11 +180,10 @@
   border-radius: 10px;
 }
 .task {
-    background: var(--background-card);
+  background: var(--background-card);
 }
 .challenge {
   background: var(--primary);
-
 }
 
 .form {
@@ -199,18 +197,16 @@
   border-bottom: 1px solid var(--font-accent);
   color: var(--font-input);
   margin-top: 4px;
-  caret-color:var(--font-accent);
-
+  caret-color: var(--font-accent);
 
   text-align: center;
-  font-family: "HelveticaNeueCyr-Bold";
+  font-family: 'HelveticaNeueCyr-Bold';
   font-size: 16px;
   line-height: 1.37;
 }
 .inputChallenge {
-  color:#ffffff;
+  color: #ffffff;
 }
-
 
 /* Options */
 
@@ -239,11 +235,11 @@
     margin-left: -27px;
   }
   .card {
-    width: calc((100% / 3) - 27px);
+    /* width: calc((100% / 3) - 27px); */
 
     margin-left: 27px;
 
-    width: 204px;
+    width: 205px;
     height: 199px;
   }
 
@@ -275,7 +271,7 @@
   }
 
   .cross::after {
-    content: "";
+    content: '';
     position: absolute;
     width: 1px;
     height: 16px;
@@ -296,7 +292,7 @@
   }
   .input:hover,
   .input:focus {
-    outline:none;
+    outline: none;
   }
 }
 
@@ -304,7 +300,8 @@
   .card {
     margin-left: 27px;
 
-    width: calc((100% / 5) - 27px);
+    /* width: calc((100% / 5) - 27px); */
+    width: 205px;
     height: 199px;
   }
 }
@@ -313,6 +310,7 @@
 @media only screen and (min-width: 1024px) and (orientation: landscape) {
   .card {
     width: calc((100% / 4) - 27px);
+    width: 205px;
   }
 }
 
@@ -339,5 +337,3 @@
 .work {
   background-color: var(--bg-card-work);
 }
-
-

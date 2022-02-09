@@ -3,34 +3,50 @@
   border-radius: 10px;
   position: absolute;
   padding: 10px 10px;
-  height: 250px;
-  width: 200px;
+  min-height: 250px;
+  width: 250px;
   top: 65px;
   left: -180%;
   display: block;
   cursor: auto;
+  overflow: scroll;
+  overflow-x: hidden;
 }
+
+.missingChallenges {
+  margin-top: 20%;
+  color: var(--font-primary);
+  font-weight: bold;
+  font-size: 24px;
+}
+/* .cardModal {
+  position: absolute;
+  width: 100px;
+  height: 50px;
+  border: 1px red solid;
+} */
+
 @media screen and (min-width: 768px) {
   .modal {
     padding: 15px 15px;
     left: -190%;
-    height: 300px;
-    width: 250px;
+    /* height: 300px; */
+    width: 300px;
     top: 70px;
     margin-left: -27px;
   }
 }
 @media screen and (min-width: 1280px) {
   .modal {
-    padding: 25px 25px;
+    /* padding: 25px 25px; */
     left: -180%;
-    height: 400px;
-    width: 350px;
+    /*     height: 400px; */
+    /*     width: 350px; */
   }
 }
 
 .modal::before {
-  content: "";
+  content: '';
   position: absolute;
   border: 10px solid transparent;
   border-bottom: 10px solid #7b8aa4;
@@ -76,7 +92,7 @@
 
 .itemTitle {
   color: var(--background-card);
-  font-family: "HelveticaNeueCyr-Bold";
+  font-family: 'HelveticaNeueCyr-Bold';
   font-size: 17px;
   line-height: 20px;
   margin-bottom: 5px;
@@ -91,7 +107,7 @@
 
 .itemTime {
   color: var(--font-secondary);
-  font-family: "HelveticaNeueCyr-Medium";
+  font-family: 'HelveticaNeueCyr-Medium';
   font-size: 14px;
 }
 @media screen and (min-width: 768px) {
@@ -105,7 +121,7 @@
   border-radius: 0px 15px 15px 0px;
   width: 88px;
   height: 20px;
-  font-family: "HelveticaNeueCyr-Medium";
+  font-family: 'HelveticaNeueCyr-Medium';
   font-style: normal;
   font-weight: normal;
   font-size: 11px;
