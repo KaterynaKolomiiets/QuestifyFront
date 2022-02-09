@@ -181,7 +181,7 @@ const Card = ({ data, card, isNewCard }) => {
                 className={s.input}
                 type="text"
                 value={value}
-                placeholder={"enter name"}
+                // placeholder={"enter name"}
                 onChange={changeValue}
               />
             </form>

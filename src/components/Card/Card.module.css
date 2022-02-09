@@ -63,9 +63,9 @@
 /* new style */
 
 .editTitle {
-  font-family: HelveticaNeueCyr;
+  font-family: "HelveticaNeueCyr-Bold";
 
-  font-weight: bold;
+  /* font-weight: bold; */
   font-size: 12px;
   line-height: 12px;
 
@@ -139,7 +139,7 @@
 .start {
   color: var(--font-accent);
 
-  font-family: HelveticaNeueCyr;
+  font-family: "HelveticaNeueCyr-Medium";
   font-size: 14px;
   line-height: 1;
   letter-spacing: 0.02em;
@@ -168,9 +168,11 @@
   border-left: none;
   border-right: none;
   background-color: inherit;
-  border-color: var(--font-accent);
+  border-bottom: 1px solid var(--font-accent);
   color: var(--font-input);
   margin-top: 4px;
+  caret-color:var(--font-accent);
+
 
   text-align: center;
   font-family: "HelveticaNeueCyr-Bold";
@@ -252,8 +254,6 @@
 
   .start {
     color: var(--font-accent);
-
-    font-family: HelveticaNeueCyr;
     font-size: 14px;
     line-height: 1;
     letter-spacing: 0.02em;
@@ -261,6 +261,10 @@
 
   .input {
     width: 100%;
+  }
+  .input:hover,
+  .input:focus {
+    outline:none;
   }
 }
 
