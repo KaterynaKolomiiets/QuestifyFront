@@ -17,6 +17,7 @@ const ChallengeCard = ({ data, card }) => {
     const card = { difficult, value, isChallenge: false };
     data(card);
   }
+console.log(data)
 
   function onclick() {
     setmodal(!modal);

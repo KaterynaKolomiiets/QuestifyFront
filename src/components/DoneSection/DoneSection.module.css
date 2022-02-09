@@ -1,69 +1,133 @@
+.section {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
 
-  .sectionDone {
-    width: 290px;
-    margin: 0 auto;
-    margin-top: 50px;
-  }
-  @media screen and (min-width: 768px) {
-    
-    .sectionDone {
-      width: 670px;
-      margin: 0 auto;
-      margin-top: 50px;
-    }
-  }
-  @media screen and (min-width: 1280px) {
-   
-    .sectionDone {
-      width: 1137px;
-      margin: 0 auto;
-      margin-top: 60px;
-    }
-  }
+  max-width: 290px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  
 
-  .IconDone {
-    fill: var(--font-accent);
+
+.cardSet {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  margin-top: -5px;
+}
+
+.card {
+  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+    3px 4px 4px rgba(21, 57, 90, 0.03);
+  border-radius: 10px;
+
+  background: var(--background-card);
+
+  padding: 20px;
+
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+}
+/* IPHONE LANDSCAPE MODE*/
+@media only screen and (min-width: 320px) and (orientation: landscape){
+  .section {
+    max-width: 100%;
   }
-
-  .btnDone {
-    z-index: 1;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 15px;
-    line-height: 1;
-    letter-spacing: 0.02em;
-    color: var(--font-primary);
-    background-color: transparent;
-    cursor: pointer;
-    border: none;
-    margin: 0;
-    width: 64px;
-    padding: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
+  .cardSet {
+    margin-left: -27px; 
+    flex-direction: row;
   }
-
-  .lineWrapper {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+  li{
+    width: calc((100% / 2) - 27px);
+    margin-left: 27px;
   }
+}
 
-  .lineWrapper::after {
-    content: "";
-    width: 100%;
-    height: 1px;
-    background-image: linear-gradient(
-      to right,
-      transparent 40%,
-      var(--bg-card-stuff) 40%
-    );
-    background-size: 20px 100%;
+@media screen and (min-width: 768px) {
+  .cardSet {
+    flex-direction: row;
+    margin-left: -27px;
   }
 
- 
+  .card {
+    width: calc((100% / 3) - 27px);
+    margin-left: 27px;
+  }
 
- 
+  .section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+
+    max-width: none;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .section {
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+  .cardSet {
+    max-width: 100%;
+    flex-direction: row;
+  }
+
+  .card {
+    width: calc((100% / 5) - 28px);
+    margin-left: 28px;
+  }
+}
+
+.IconDone {
+  fill: var(--font-accent);
+}
+
+.btnDone {
+  z-index: 1;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--font-primary);
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  margin: 0;
+  width: 64px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lineWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: -10px;
+}
+
+.lineWrapper::after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    transparent 40%,
+    var(--bg-card-stuff) 40%
+  );
+  background-size: 20px 100%;
+  margin-left: 60px;
+}
+
+
+
+

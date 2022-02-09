@@ -15,6 +15,12 @@
 
   width: 52px;
   height: 52px;
+  z-index: 150;
+}
+.ButtonAddCard:hover,
+.ButtonAddCard:focus {
+   background: var(--accent-hover);
+   box-shadow: 0 0 5px 2px var(--accent-hover);
 }
 @media screen and (min-width: 768px) {
   .ButtonAddCard {
@@ -28,6 +34,4 @@
     bottom: 40px;
   }
 }
-.ButtonAddCard:hover {
-  border: solid 1px #fff;
-}
+

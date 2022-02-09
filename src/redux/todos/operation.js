@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+// import api from "./interceptor";
 
 const token = {
   set(token) {
@@ -11,12 +12,13 @@ const token = {
 };
 export const addCardToState = createAsyncThunk(
   "todos/addCard",
-  async (_, thunkApi) => {
+  async (type, thunkApi) => {
     return {
-      title: "Enter your data",
+      title: "",
       category: "FAMILY",
-      type: "TASK",
+      type: type,
       time: Date.now(),
+      // time: new Date().toISOString(),
       level: "Normal",
     };
   }
@@ -46,7 +48,6 @@ export const showTodos = createAsyncThunk("todos/get", async (_, thunkApi) => {
     const { data } = await axios.get(
       `http://questify-project.herokuapp.com/api/todos/all`
     );
-    console.log(data);
     return data;
   } catch (err) {
     return thunkApi.rejectWithValue(err);
@@ -73,7 +74,6 @@ export const showTodosActive = createAsyncThunk(
       const { data } = await axios.get(
         `http://questify-project.herokuapp.com/api/todos/active`
       );
-      console.log(data);
       return data;
     } catch (err) {
       return thunkApi.rejectWithValue(err);

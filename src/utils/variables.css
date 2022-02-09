@@ -2,6 +2,7 @@
   --primary: #15395a;
   --secondary: #242a37;
   --accent: #ff851c;
+  --accent-hover: #f86b19;
 
   --background-main: #f2f3f7;
   --background-card: #ffffff;
@@ -11,6 +12,7 @@
   --bg-card-family: #ffe6d3;
   --bg-card-health: #cdf7ff;
   --bg-card-stuff: #b9c3c8;
+  --bg-card-work: #d3f6ce;
   --option-color: #db0837;
 
   --font-primary: #282828;

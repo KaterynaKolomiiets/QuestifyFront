@@ -1,4 +1,4 @@
-@import '../../utils/variables.css';
+@import "../../utils/variables.css";
 
 .cardCategoryName {
   font-family: "HelveticaNeueCyr-Medium";
@@ -62,6 +62,23 @@
 
 /* new style */
 
+.editTitle {
+  font-family: "HelveticaNeueCyr-Bold";
+
+  /* font-weight: bold; */
+  font-size: 12px;
+  line-height: 12px;
+
+  /* identical to box height */
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  color: var(--font-secondary);
+
+  margin-top: -30px;
+}
+
 .bottomMenu {
   display: flex;
   align-items: center;
@@ -70,6 +87,30 @@
 
 .cartCategory {
   cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  align-items: baseline;
+  margin-left: auto;
+}
+
+.saveIcon {
+  position: relative;
+  cursor: pointer;
+  width: 10px;
+  height: 10px;
+  margin-right: 17px;
+}
+
+.saveIcon::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 16px;
+  background-color: var(--font-secondary);
+  top: -40%;
+  right: -7px;
 }
 
 .cross {
@@ -90,10 +131,15 @@
   right: -7px;
 }
 
+.checked {
+  color: var(--font-button-cancel);
+  cursor: pointer;
+}
+
 .start {
   color: var(--font-accent);
 
-  font-family: HelveticaNeueCyr;
+  font-family: "HelveticaNeueCyr-Medium";
   font-size: 14px;
   line-height: 1;
   letter-spacing: 0.02em;
@@ -122,9 +168,11 @@
   border-left: none;
   border-right: none;
   background-color: inherit;
-  border-color: var(--font-accent);
+  border-bottom: 1px solid var(--font-accent);
   color: var(--font-input);
   margin-top: 4px;
+  caret-color:var(--font-accent);
+
 
   text-align: center;
   font-family: "HelveticaNeueCyr-Bold";
@@ -187,7 +235,7 @@
 
   .cross {
     color: var(--option-color);
-    margin-left: 28px;
+    /* margin-left: 28px; */
     margin-right: 14px;
     /* width: 10px;
     height: 10px; */
@@ -206,8 +254,6 @@
 
   .start {
     color: var(--font-accent);
-
-    font-family: HelveticaNeueCyr;
     font-size: 14px;
     line-height: 1;
     letter-spacing: 0.02em;
@@ -216,7 +262,21 @@
   .input {
     width: 100%;
   }
+  .input:hover,
+  .input:focus {
+    outline:none;
+  }
 }
+
+@media screen and (min-width: 1280px) {
+  .card {
+    margin-left: 27px;
+
+    width: 204px;
+    height: 199px;
+  }
+}
+
 /* IPAD MINI LAYOUT */
 @media only screen and (min-width: 1024px) and (orientation: landscape) {
   .card {

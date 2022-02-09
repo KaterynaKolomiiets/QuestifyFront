@@ -8,6 +8,7 @@ import ButtonAddCard from "../../components/ButtonAddCard";
 import s from "./HomePage.module.css";
 import { useSelector } from "react-redux";
 import Card from "../../components/Card";
+import DoneSection from "../../components/DoneSection/DoneSection";
 
 function HomePage() {
   // const todo = useSelector((state) => state.todos);
@@ -20,6 +21,7 @@ function HomePage() {
         <CardsToday />
         {/* <CardsTomorrow /> */}
         <ButtonAddCard />
+        <DoneSection />
       </Container>
     </section>
   );
