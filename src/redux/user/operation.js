@@ -1,21 +1,24 @@
-import axios from "axios";
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import api from "./interceptor";
+import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import api from './interceptor';
+import { get_cookie } from './helper';
 
-const BASE_URL = "http://questify-project.herokuapp.com/api/users";
+const BASE_URL = 'http://questify-project.herokuapp.com/api/users';
+
+// const BASE_URL = 'http://localhost:8083/api/users';
 
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
   unset() {
-    axios.defaults.headers.common.Authorization = "";
+    axios.defaults.headers.common.Authorization = '';
   },
 };
 
 export const userRegistration = createAsyncThunk(
-  "auth/registration",
-  async (user) => {
+  'auth/registration',
+  async user => {
     console.log(user);
     try {
       const { data } = await axios.post(`${BASE_URL}/registration`, user);
@@ -25,15 +28,17 @@ export const userRegistration = createAsyncThunk(
     } catch (error) {
       throw new Error(error);
     }
-  }
+  },
 );
-export const userLogin = createAsyncThunk("auth/login", async (user) => {
+export const userLogin = createAsyncThunk('auth/login', async user => {
   console.log(user);
   try {
     const { data } = await axios.post(`${BASE_URL}/login`, user);
     console.log(data);
+    localStorage.setItem('token', data.accessToken);
 
     document.cookie = `refreshToken=${data.refreshToken}`;
+
     token.set(data.accessToken);
 
     return data;
@@ -42,12 +47,18 @@ export const userLogin = createAsyncThunk("auth/login", async (user) => {
   }
 });
 
-export const userLogout = createAsyncThunk("auth/logout", async () => {
+export const userLogout = createAsyncThunk('auth/logout', async () => {
   try {
-    const { data } = await api.post(`${BASE_URL}/logout`);
+    const token = get_cookie('refreshToken');
+    const { data } = await api.get(`${BASE_URL}/logout`, {
+      withCredentials: true,
+      headers: {
+        update: `${token}`,
+      },
+    });
+    document.cookie = 'refreshToken=-1;expires=Thu, 01 Jan 1970 00:00:01 GMT';
     token.unset();
-    console.log(data);
-    document.cookie = "refreshToken=-1;expires=Thu, 01 Jan 1970 00:00:01 GMT";
+    console.log('data', data);
     return data;
   } catch (error) {
     throw new Error(error);
@@ -65,29 +76,31 @@ export const userLogout = createAsyncThunk("auth/logout", async () => {
 // });
 
 export const userRefresh = createAsyncThunk(
-  "auth/refresh",
+  'auth/refresh',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.user.token;
-    console.log(persistedToken);
 
     if (!persistedToken) {
-      return thunkAPI.rejectWithValue("User is logged out");
+      return thunkAPI.rejectWithValue('User is logged out');
     }
     token.set(persistedToken);
-    console.log(persistedToken);
     try {
+      const token = get_cookie('refreshToken');
       const { data } = await axios.get(`${BASE_URL}/refresh`, {
         withCredentials: true,
+        headers: {
+          update: `${token}`,
+        },
       });
+      localStorage.setItem('token', data.accessToken);
       console.log(data);
       document.cookie = `refreshToken=${data.refreshToken}`;
       return data;
-      document.cookie = `refreshToken=${data.refreshToken}`;
     } catch (error) {
       throw new Error(error);
     }
-  }
+  },
 );
 
 // export const userRefresh = createAsyncThunk("auth/refresh", async (user) => {
@@ -100,15 +113,18 @@ export const userRefresh = createAsyncThunk(
 //   }
 // });
 
-// export const userResetPassword = createAsyncThunk("auth/reset-password", async (user) => {
-//   try {
-//     const { data } = await axios.get(`${BASE_URL}/reset-password`, user);
+// export const userResetPassword = createAsyncThunk(
+//   "auth/reset-password",
+//   async (user) => {
+//     try {
+//       const { data } = await axios.get(`${BASE_URL}/reset-password`, user);
 //       console.log(data);
-//     return data;
-//   } catch (error) {
-//     throw new Error(error);
+//       return data;
+//     } catch (error) {
+//       throw new Error(error);
+//     }
 //   }
-// });
+// );
 
 // export const userChangePassword = createAsyncThunk("auth/change-password", async (user) => {
 //   try {
@@ -120,25 +136,30 @@ export const userRefresh = createAsyncThunk(
 //   }
 // });
 export const userResetPassword = createAsyncThunk(
-  "auth/reset-password",
-  async (user) => {
+  'auth/reset-password',
+  async user => {
     try {
-      const { data } = await axios.get(`${BASE_URL}/reset-password`, user);
+      console.log('user', user);
+      const { data } = await axios.post(`${BASE_URL}/reset-password`, user);
       return data;
     } catch (error) {
       throw new Error(error);
     }
-  }
+  },
 );
 
 export const userChangePassword = createAsyncThunk(
-  "auth/change-password",
-  async (user) => {
+  'auth/change-password',
+  async ({ password, link }) => {
+    console.log('linklink', link);
+    console.log('password', password);
     try {
-      const { data } = await axios.get(`${BASE_URL}/change-password`, user);
+      const { data } = await axios.post(`${BASE_URL}/change-password/${link}`, {
+        password,
+      });
       return data;
     } catch (error) {
       throw new Error(error);
     }
-  }
+  },
 );
