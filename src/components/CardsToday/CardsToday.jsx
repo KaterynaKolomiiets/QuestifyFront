@@ -58,7 +58,17 @@ const CardsToday = () => {
             isNewCard={isNewCard}
           />
         )}
-        {todos?.map((card) => {
+        {/* new code KATERYNA */}
+         
+        {todos?.map((card) => <Card key={card._id}
+              card={card}
+          data={takeData} />)}
+        
+        
+
+        {/* COMMENTED BY KATERYNA */}
+      
+          {/* {todos?.map((card) => {
           return card.isChallenge ? (
             <ChallengeCard
               key={card._id}
@@ -74,9 +84,12 @@ const CardsToday = () => {
               // ondelete={deleteCard}
             />
           );
-        })}
-        <CompletedChallenge />
+        })} */}
+         {/* COMMENTED BY KATERYNA */}
       </ul>
+
+
+
       {/* RENDER TODOS */}
 
       {/* <ul className={s.cardSet}>
