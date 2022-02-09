@@ -123,7 +123,7 @@ button {
   /* Chrome < 4, Legacy iOS */
 }
 
-/* .learning {
+.learning {
   background-color: var(--bg-card-learning);
 }
 
@@ -140,7 +140,7 @@ button {
 }
 
 .health {
-  background-color: var(--font-accent);
+  background-color: var(--bg-card-health);
 }
 
 .stuff {
@@ -148,7 +148,7 @@ button {
 }
 .work {
   background-color: var(--bg-card-work);
-} */
+}
 
 
 

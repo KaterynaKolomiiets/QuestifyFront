@@ -32,7 +32,7 @@ const Card = ({ data, card, isNewCard }) => {
   const dispatch = useDispatch();
   const cardFromState = useSelector(newTodoCard);
 
-  console.log(card)
+  // console.log(card)
 
   useEffect(() => {
     setdifficult(card.level);
@@ -64,7 +64,11 @@ const Card = ({ data, card, isNewCard }) => {
     setdeleteModal(!deleteModal);
   }
 
-  function onedit() {
+  function onedit(e) {
+    console.log(e)
+    if(!card.isActive){
+      return
+    }
     if (!edit) setedit(true);
   }
 
@@ -126,7 +130,7 @@ const Card = ({ data, card, isNewCard }) => {
 
 
       
-        <li className={`${s.card} ${card.type==="CHALLENGE"? s.challenge : s.task}`} onClick={onedit}>
+      <li className={`${s.card} ${card.type === "CHALLENGE" ? s.challenge : s.task}`} onClick={onedit}>
           {modal && <DifficultModal change={change} />}
           {deleteModal && <DeleteModule change={deleteHandler} />}
           {categoryModal && <CategoryModal change={changeType} />}
