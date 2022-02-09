@@ -6,7 +6,7 @@
 
   color: var(--font-secondary);
 
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 
   display: flex;
   align-items: center;
@@ -18,26 +18,50 @@
 .cardCategoryStart {
   margin-left: auto;
 }
+.challengeHeader {
+  font-family: "HelveticaNeueCyr-Light";
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--font-secondary);
+  margin-bottom: 10px;
+}
+.taskHeader {
+  font-family: "HelveticaNeueCyr-Medium";
+  font-size: 12px;
+  line-height: 12px;
+  visibility: hidden;
+  margin-bottom: 10px;
+}
 
 .cardTitle {
   font-family: "HelveticaNeueCyr-Bold";
-  font-size: 20px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 1.37;
 
   color: var(--font-primary);
 
   margin: 0 auto;
   margin-bottom: 10px;
+
+  text-align: center;
+}
+.cardTitle_challenge {
+  color: #ffffff;
 }
 
 .cardDate {
-  font-family: "HelveticaNeueCyr-Medium";
+  font-family: "HelveticaNeueCyr-Light";
   font-size: 14px;
 
   color: var(--font-secondary);
 
   margin: 0 auto;
   margin-bottom: 40px;
+
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .cardType {
@@ -65,7 +89,6 @@
 .editTitle {
   font-family: "HelveticaNeueCyr-Bold";
 
-  /* font-weight: bold; */
   font-size: 12px;
   line-height: 12px;
 
@@ -76,7 +99,6 @@
 
   color: var(--font-secondary);
 
-  margin-top: -30px;
 }
 
 .bottomMenu {
@@ -128,7 +150,7 @@
   height: 16px;
   background-color: var(--font-secondary);
   top: 10%;
-  right: -7px;
+  right: -8px;
 }
 
 .checked {
@@ -154,10 +176,16 @@
 
   margin-top: 20px;
   padding: 20px;
-  background: var(--background-card);
   box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
     3px 4px 4px rgba(21, 57, 90, 0.03);
   border-radius: 10px;
+}
+.task {
+    background: var(--background-card);
+}
+.challenge {
+  background: var(--primary);
+
 }
 
 .form {
@@ -176,9 +204,13 @@
 
   text-align: center;
   font-family: "HelveticaNeueCyr-Bold";
-  font-size: 20px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 1.37;
 }
+.inputChallenge {
+  color:#ffffff;
+}
+
 
 /* Options */
 
@@ -272,7 +304,7 @@
   .card {
     margin-left: 27px;
 
-    width: 204px;
+    width: calc((100% / 5) - 27px);
     height: 199px;
   }
 }
@@ -283,3 +315,29 @@
     width: calc((100% / 4) - 27px);
   }
 }
+
+.learning {
+  background-color: var(--bg-card-learning);
+}
+
+.leisure {
+  background-color: var(--bg-card-leisure);
+}
+
+.family {
+  background-color: var(--bg-card-family);
+}
+
+.health {
+  background-color: var(--bg-card-health);
+}
+
+.stuff {
+  background-color: var(--bg-card-stuff);
+}
+
+.work {
+  background-color: var(--bg-card-work);
+}
+
+

@@ -1,4 +1,4 @@
-.cardSet {
+/* .cardSet {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -183,8 +183,6 @@
     color: var(--option-color);
     margin-left: 27px;
     margin-right: 14px;
-    /* width: 10px;
-    height: 10px; */
     position: relative;
   }
 
@@ -241,10 +239,10 @@
   margin-right: 10px;
 }
 
-/* IPAD MINI LAYOUT */
+
 @media only screen and (min-width: 1024px) and (orientation: landscape) {
   .card {
     width: calc((100% / 4) - 27px);
 
   }
-}
+} */
