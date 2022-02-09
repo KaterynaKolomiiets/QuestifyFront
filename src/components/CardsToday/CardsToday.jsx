@@ -16,6 +16,7 @@ import {
   showTodosActive,
   showTodosDone,
 } from "../../redux/todos/operation";
+import CompletedChallenge from "../CompletedChallenge";
 
 const CardsToday = () => {
   const dispatch = useDispatch();
@@ -74,6 +75,7 @@ const CardsToday = () => {
             />
           );
         })}
+        <CompletedChallenge />
       </ul>
       {/* RENDER TODOS */}
 
