@@ -1,14 +1,12 @@
-.questBox {
+
+.challengeBox {
+  box-shadow: -3px -4px 4px var(rgba(21, 57, 90, 0.03)),
+    3px 4px 4px var(rgba(21, 57, 90, 0.03));
   border-radius: 10px;
   text-align: center;
   font-size: 12px;
   line-height: 1;
-  /* z-index: 100; */
-}
 
-.questBox {
-  background-color: var(--background-card);
-  color: #000;
 }
 
 .challengeBox {
@@ -16,11 +14,17 @@
   color: var(--background-card);
 }
 
+
+.challengeBox:hover,
+.challengeBox:focus {
+  box-shadow: -3px 0px 5px rgba(21, 57, 90, 0.4),
+    3px 5px 5px rgba(21, 57, 90, 0.4);
+}
+
 .contentBox {
   margin-bottom: 10px;
   display: flex;
   align-items: center;
-  margin-top: 5px;
 }
 
 .content {
@@ -66,19 +70,18 @@
   justify-content: space-between;
   margin: 0 auto;
   width: 80px;
-  color: var(--font-secondary);
+  color: var(--bg-card-stuff);
   line-height: 1;
   background-color: transparent;
   cursor: pointer;
   border: none;
   padding-top: 5px;
-  padding-bottom: 15px;
 }
 
 .arrow {
   color: var(--font-accent);
   fill: currentColor;
-  height: 10px;
+  height: 8px;
 }
 
 .button:focus .arrow,
@@ -160,25 +163,14 @@
   fill: var(--background-card);
 }
 
-.hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-}
 .card {
   justify-content: space-around;
   position: relative;
   display: flex;
   flex-direction: column;
-
   margin-top: 20px;
   padding: 20px;
-  background: var(--background-card);
+  background: var(--primary);
   box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
     3px 4px 4px rgba(21, 57, 90, 0.03);
   border-radius: 10px;
@@ -191,7 +183,6 @@
 
   margin-top: -20px;
 }
-
 @media screen and (min-width: 768px) {
   .card {
     width: calc((100% / 3) - 27px);
