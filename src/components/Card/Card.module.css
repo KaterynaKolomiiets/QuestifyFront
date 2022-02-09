@@ -57,6 +57,16 @@
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
+  font-family: 'HelveticaNeueCyr-Light';
+  font-size: 14px;
+
+  color: var(--font-secondary);
+
+  margin: 0 auto;
+  margin-bottom: 40px;
+
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .cardType {
@@ -176,7 +186,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-
+  width: 205px;
   margin-top: 20px;
   padding: 20px;
   box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
@@ -239,11 +249,11 @@
     margin-left: -27px;
   }
   .card {
-    width: calc((100% / 3) - 27px);
+    /* width: calc((100% / 3) - 27px); */
 
     margin-left: 27px;
 
-    width: 204px;
+    width: 205px;
     height: 199px;
   }
 
@@ -304,7 +314,8 @@
   .card {
     margin-left: 27px;
 
-    width: calc((100% / 5) - 27px);
+    /* width: calc((100% / 5) - 27px); */
+    width: 205px;
     height: 199px;
   }
 }
@@ -313,6 +324,7 @@
 @media only screen and (min-width: 1024px) and (orientation: landscape) {
   .card {
     width: calc((100% / 4) - 27px);
+    width: 205px;
   }
 }
 

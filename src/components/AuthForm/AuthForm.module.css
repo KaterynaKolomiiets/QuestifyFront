@@ -89,3 +89,12 @@
   bottom: 72.5px;
   right: 10px;
 }
+
+.forgotPassword {
+  position: absolute;
+  bottom: 50px;
+  left: 2px;
+  font-size: 12px;
+  text-decoration: none;
+  color: black;
+}
