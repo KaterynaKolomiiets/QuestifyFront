@@ -105,3 +105,10 @@
 .IconStarSvg:hover {
   fill: var(--accent);
 }
+
+.svgtTitle {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+}

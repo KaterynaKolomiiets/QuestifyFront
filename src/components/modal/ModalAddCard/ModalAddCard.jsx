@@ -36,10 +36,7 @@ const ModalAddCard = ({ toggleModal }) => {
             >
               <use className="challenge" xlinkHref={`${icons}#icon-trophy`} />
             </svg>
-            <p
-              className={`${s.challengeTitle} challenge`}
-              onClick={toggleModal}
-            >
+            <p className={`${s.svgtTitle} challenge`} onClick={toggleModal}>
               challenge
             </p>
           </button>
@@ -56,7 +53,7 @@ const ModalAddCard = ({ toggleModal }) => {
             >
               <use xlinkHref={`${icons}#icon-star`} />
             </svg>
-            <p className={`${s.questTitle} quest`} onClick={toggleModal}>
+            <p className={`${s.svgtTitle} quest`} onClick={toggleModal}>
               quest
             </p>
           </button>
