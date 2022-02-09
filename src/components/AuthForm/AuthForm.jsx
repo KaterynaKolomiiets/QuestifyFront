@@ -16,6 +16,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { userLogin, userRegistration } from "../../redux/user/operation";
 
 import s from "./AuthForm.module.css";
+import { Link } from "react-router-dom";
 
 function AuthForm({ showRegisterForm }) {
   const dispatch = useDispatch();
@@ -134,8 +135,9 @@ function AuthForm({ showRegisterForm }) {
         <VisibilityOffIcon className={s.show_hide_password} onClick={togglePasswordVisibility} />
       }
       <p className={s.errorMessage}>{passwordError}</p>
-
+      <Link to="/reset" className={s.forgotPassword}>Forgot Password?</Link>
       {/* К Н О П К А   g o ! */}
+
       <button className={s.auth_form_button} type="submit">
         go!
       </button>
