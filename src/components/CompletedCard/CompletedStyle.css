@@ -1,0 +1,65 @@
+.target-appear {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  
+  .target-appear-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 500ms ease-in 500ms, transform 500ms ease 500ms;
+  }
+  
+  .leftClouds-appear {
+    transform: translateX(-15%);
+  }
+  
+  .leftClouds-appear-active {
+    transform: translateX(0);
+    transition: transform 1000ms ease-in 250ms;
+  }
+  
+  .rightClouds-appear {
+    transform: translateX(15%);
+  }
+  
+  .rightClouds-appear-active {
+    transform: translateX(0);
+    transition: transform 1000ms ease-in 250ms;
+  }
+  
+  .arrow-appear {
+    opacity: 0;
+    transform: translate(100%, -90%);
+  }
+  
+  .arrow-appear-active {
+    opacity: 1;
+    transform: translate(0, 0);
+    transition: transform 500ms ease 1000ms, opacity 250ms ease-in 1000ms;
+  }
+  
+  .trophy-appear {
+    opacity: 0;
+    transform: rotate(360deg);
+  }
+  
+  .trophy-appear-active {
+    opacity: 1;
+    transform: rotate(720deg);
+    transition: opacity 500ms ease-in 500ms, transform 500ms ease 500ms;
+  }
+  
+  .first-appear {
+    opacity: 0;
+    color: var(--accent);
+    transform: scale(2);
+  }
+  
+  .first-appear-active {
+    opacity: 1;
+    color: var(--accent);
+    transform: scale(1);
+    transition: opacity 500ms ease-in 1000ms, transform 500ms ease 1000ms,
+      color 500ms ease-in 1000ms;
+  }
+  
