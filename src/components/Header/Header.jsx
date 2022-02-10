@@ -21,7 +21,10 @@ const Header = () => {
   const [showChallenges, setShowChallenges] = useState(false);
   const dispatch = useDispatch();
   const user = useSelector(getUser);
+  const err = useSelector(error);
+  const authErr = useSelector(getError);
   const toggleModal = () => setShowModal(prevState => !prevState);
+
   const challengeModal = () => {
     console.log('CLICK Button!', showChallenges);
     setShowChallenges(prevState => !prevState);
@@ -41,10 +44,13 @@ const Header = () => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   const err = useSelector(error);
+
   useEffect(() => {
     if (err) Notify.failure(`Attention! ${err.message}`);
   }, [err]);
+
   const onLogout = () => {
     dispatch(userLogout({ email: user.email, password: user.password }));
   };
@@ -82,7 +88,7 @@ const Header = () => {
                 <use xlinkHref={`${icons}#challenge-icon`} />
               </svg>
               {showChallenges && (
-                <ChallengeModal /* challengeModal={challengeModal}  */ />
+                <ChallengeModal /* challengeModal={challengeModal} */ />
               )}
             </button>
             <button type="button" className={s.BtnLogout} onClick={toggleModal}>

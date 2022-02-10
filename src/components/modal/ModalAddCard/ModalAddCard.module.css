@@ -1,3 +1,15 @@
+.backdrop {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  cursor: default;
+  width: 98vw;
+  height: 96vh;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
 .exitModal {
   position: fixed;
   display: block;
@@ -69,7 +81,6 @@
   width: 80px;
 }
 
-
 .challengeIconSvg,
 .IconStarSvg {
   fill: var(--font-accent);
@@ -81,7 +92,6 @@
   width: 45px;
   height: 45px;
   margin-bottom: -5px;
-  
 }
 
 .challengeIconBtn:hover .challengeIconSvg,
