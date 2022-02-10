@@ -58,6 +58,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  color: var(--font-accent);
   font-family: 'HelveticaNeueCyr-Medium';
 }
 
@@ -188,7 +189,7 @@
   margin-top: -20px;
 }
 
-span {
+.continue {
   color:var(--font-secondary);
   font-family: 'HelveticaNeueCyr-Medium';
 }

@@ -13,16 +13,12 @@
   border: 1px solid transparent;
   box-shadow: 0 0 5px 2px #ff851c;
 
-  transition: background-color var(--transition-duration) var(--transition-timing),
-  box-shadow var(--transition-duration) var(--transition-timing);
-
   width: 52px;
   height: 52px;
   z-index: 150;
 }
 .ButtonAddCard:hover,
 .ButtonAddCard:focus {
-  outline: none;
    background: var(--accent-hover);
    box-shadow: 0 0 5px 2px var(--accent-hover);
 }
