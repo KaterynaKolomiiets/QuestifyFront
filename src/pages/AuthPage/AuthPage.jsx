@@ -12,8 +12,7 @@ function AuthPage() {
   const showRegForm = () => setShowRegisterForm(true);
   const showLogForm = () => setShowRegisterForm(false);
   const authErr = useSelector(getError);
-  
-  console.log(authErr);
+
   useEffect(() => {
     if (authErr) Notify.failure(`Attention! ${authErr.message}`);
   }, [authErr]);

@@ -45,9 +45,10 @@ const Header = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const err = useSelector(error);
+
   useEffect(() => {
     if (err) Notify.failure(`Attention! ${err.message}`);
-    if (authErr) Notify.failure(`Attention! ${authErr.message}`);
   }, [err]);
 
   const onLogout = () => {
