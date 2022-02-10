@@ -4,10 +4,6 @@ import { Switch, Redirect } from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner';
 import { userRefresh } from './redux/user/operation';
 
-// import AuthPage from "./pages/AuthPage";
-// import HomePage from "./pages/HomePage";
-// import ModalNewCard from "./components/modal/ModalNewCard";
-
 import { routes, PublicRoute, PrivateRoute } from './routes';
 
 import './App.css';

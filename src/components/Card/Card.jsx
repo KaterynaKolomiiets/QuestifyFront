@@ -24,6 +24,7 @@ import trophy from './trophy.svg';
 import CompletedChallenge from '../CompletedChallenge';
 
 const Card = ({ data, card, isNewCard }) => {
+  // console.log(card)
   const [completed, setCompleted] = useState(false);
   const [categoryModal, setcategoryModal] = useState(false);
   const [modal, setmodal] = useState(false);
@@ -96,7 +97,9 @@ const Card = ({ data, card, isNewCard }) => {
       type: card.type,
       isActive: true,
     };
+    console.log(newCard);
     dispatch(changeTodo({ id: card._id, ...newCard }));
+    console.log(newCard)
   };
 
   const deleteNewCard = () => {
@@ -185,7 +188,7 @@ const Card = ({ data, card, isNewCard }) => {
                 </span>
               </>
             ) : (
-              <span className={card.isActive && s.setLevel} onClick={onclick}>
+              <span className={card.isActive ? s.setLevel: s.inectiveCard} onClick={onclick}>
                 <span
                   className={
                     (s.cardCategoryCircle,
@@ -207,7 +210,7 @@ const Card = ({ data, card, isNewCard }) => {
               <img
                 src={trophy}
                 alt=""
-                className={s.cardCategoryStart}
+                className={card.isActive? s.cardCategoryStart : s.cardCategoryStart_inective}
                 onClick={changeCompleted}
               />
             ) : (
@@ -259,8 +262,10 @@ const Card = ({ data, card, isNewCard }) => {
 
           <div className={s.cardDate}>
             <p className={s.timeText}>
+
               {timeDate.dayName}
               {!edit && !isNewCard && <>,&nbsp;{timeDate.time}</>}
+
             </p>
             {edit && <TimeDatePicker time={takeTime} />}
             {isNewCard && <TimeDatePicker time={takeTime} />}
