@@ -97,7 +97,7 @@ function ChangePassword() {
           type="button"
           onClick={onSubmit}
         >
-          Go
+          go!
             </button>
             </form>
         </section>
