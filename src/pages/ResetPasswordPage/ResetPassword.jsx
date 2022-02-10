@@ -30,7 +30,6 @@ function ResetPassword() {
       
     if (validateEmail(email)) {
       dispatch(userResetPassword({ email }))
-      
       alert('Вам на email отправлено письмо. Подтвердите регистрацию !');
     }
   };
@@ -69,7 +68,7 @@ function ResetPassword() {
           type="button"
           onClick={onSubmit}
         >
-          Go
+          go!
             </button>
             </form>
         </section>
