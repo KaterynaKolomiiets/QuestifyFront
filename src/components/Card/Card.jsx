@@ -96,6 +96,7 @@ const Card = ({ data, card, isNewCard }) => {
       category: categoryCart,
       type: card.type,
     };
+    console.log(newCard);
     dispatch(changeTodo({ id: card._id, ...newCard }));
   };
 
@@ -260,8 +261,10 @@ const Card = ({ data, card, isNewCard }) => {
 
           <div className={s.cardDate}>
             <p className={s.timeText}>
+
               {timeDate.dayName}
               {!edit && !isNewCard && <>,&nbsp;{timeDate.time}</>}
+
             </p>
             {edit && <TimeDatePicker time={takeTime} />}
             {isNewCard && <TimeDatePicker time={takeTime} />}
