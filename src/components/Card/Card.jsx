@@ -17,11 +17,12 @@ import TimeDatePicker from '../TimePickers';
 import dateAdapted from '../TimePickers/dateAdapted';
 
 import saveIcon from '../../images/save.svg';
-// import CompletedCard from '../CompletedCard/CompletedCard';
+import CompletedCard from '../CompletedCard/CompletedCard';
 import { newTodoCard } from '../../redux/todos/todosSelector';
 // import ChallengeCard from '../modal/ChallengeCard/ChallengeCard';
 import trophy from './trophy.svg';
 import CompletedChallenge from '../CompletedChallenge';
+import Icon from "../Icon"
 
 const Card = ({ data, card, isNewCard }) => {
 
@@ -72,7 +73,7 @@ const Card = ({ data, card, isNewCard }) => {
     setdeleteModal(!deleteModal);
   }
 
-  function onedit(e) {
+  const onedit = (e) => {
     console.log(e);
     if (!card.isActive) {
       return;
@@ -127,18 +128,18 @@ const Card = ({ data, card, isNewCard }) => {
   function takeTime(date) {
     settimeDate(date);
 
- const changeCompleted = () => {
-   setCompleted(true)
- }
+ 
 
   }
-
+  const changeCompleted = () => {
+    setCompleted(true)
+  }
 
   return (
     <>
       {completed ? (
 
-        card.type === "TASK" ? <CompletedCard  change={addTodosDone}title={card.title} id={card._id}/> : <CompletedChallenge  change={addTodosDone}title={card.title} id={card._id}/>
+        card.type === "TASK" ? <CompletedCard  changeCard={closeAndSave} change={addTodosDone} title={card.title} id={card._id}/> : <CompletedChallenge  change={addTodosDone}title={card.title} id={card._id}/>
 
       ) : (
 
@@ -199,7 +200,10 @@ const Card = ({ data, card, isNewCard }) => {
               onClick={changeCompleted}
             />
           ) : (
-            <span className={s.cardCategoryStart} onClick={changeCompleted}> &#9733;</span>
+            // <span className={s.cardCategoryStart} onClick={changeCompleted}> &#9733;</span>
+            <button type="button" className={s.cardCategoryStart}onClick={changeCompleted}>
+              <Icon className={s.starIcon} name="star" color="#00d7ff" size={15} />
+          </button>
           )}
         </p>
         {edit && !isNewCard && <p className={s.editTitle}>edit quest</p>}
