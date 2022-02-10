@@ -16,6 +16,7 @@ import {
   showTodosActive,
   showTodosDone,
 } from "../../redux/todos/operation";
+import { date } from "check-types";
 
 
 const CardsToday = () => {
@@ -44,10 +45,25 @@ const CardsToday = () => {
 
   // const dispatch = useDispatch();
 
-  console.log(todos);
+  // console.log(todos);
+
+  const dayNow = new Date(Date.now()).getDate();
+  const monthNow = new Date(Date.now()).getMonth();
+  const yearNow = new Date(Date.now()).getFullYear();
+
+  const checkIfToday = (date) => {
+
+    const year = new Date(date).getFullYear();
+    const month = new Date(date).getMonth();
+    const day = new Date(date).getDate();
+
+    return (year === yearNow ) && (month === monthNow) && ((day === dayNow) && true) 
+  }
+
 
   return (
-    <section className={s.section}>
+    <>
+      <section className={s.section}>
       <h2 className={s.title}>Today</h2>
       <ul className={s.cardSet}>
         {isNewCard && (
@@ -58,74 +74,36 @@ const CardsToday = () => {
             isNewCard={isNewCard}
           />
         )}
-        {/* new code KATERYNA */}
-         
-        {todos?.map((card) => <Card key={card._id}
+        {todos?.map(card => {
+          if (checkIfToday(card.time)) {
+            return <Card key={card._id}
               card={card}
-          data={takeData} />)}
-        
-        
-
-        {/* COMMENTED BY KATERYNA */}
-      
-          {/* {todos?.map((card) => {
-          return card.isChallenge ? (
-            <ChallengeCard
-              key={card._id}
-              card={card}
-              data={takeData}
-              // delete={deleteCard}
-            />
-          ) : (
-            <Card
-              key={card._id}
-              card={card}
-              data={takeData}
-              // ondelete={deleteCard}
-            />
-          );
-        })} */}
-         {/* COMMENTED BY KATERYNA */}
+          data={takeData} />
+          }
+        })}
       </ul>
-
-
-
-      {/* RENDER TODOS */}
-
-      {/* <ul className={s.cardSet}>
-        {todos?.map((todo) => (
-          <Card todo={todo} />
-        ))}
-      </ul> */}
-
-      {/* <ul className={s.cardSet}> */}
-      {/* {todos?.map((card) => {
-          return card.isChallenge ? (
-            <ChallengeCard key={card._id} card={card} data={takeData} delete={deleteCard}/>
-          )})} */}
-      {/* </ul> */}
-
-      {/* <ul className={s.cardSet}>
-        {todos?.map((item) => {
-          console.log(item.type);
-        })}
-        {todos?.map((todo) => (
-          <Card todo={todo} />
-        ))}
-        {data.map((card) => {
-          return card.type === "CHALLENGE" ? (
-            <ChallengeCard key={card._id} card={card} data={takeData} />
-          ) : (
-            <Card
-              key={card._id}
+      </section>
+      <section className={s.section}>
+      <h2 className={s.title}>Tomorrow</h2>
+      <ul className={s.cardSet}>
+        {isNewCard && (
+          <Card
+            key={newTodo._id}
+            card={newTodo}
+            // data={takeData}
+            isNewCard={isNewCard}
+          />
+        )}
+        {todos?.map(card => {
+          if (!checkIfToday(card.time)) {
+            return <Card key={card._id}
               card={card}
-              data={takeData}
-              // ondelete={deleteCard}
-            />
-          );
+          data={takeData} />
+          }
         })}
-      </ul> */}
-    </section>
+      </ul>
+      </section>
+    </>
   );
 };
 

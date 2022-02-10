@@ -24,6 +24,7 @@ import trophy from './trophy.svg';
 import CompletedChallenge from '../CompletedChallenge';
 
 const Card = ({ data, card, isNewCard }) => {
+  // console.log(card)
   const [completed, setCompleted] = useState(false);
   const [categoryModal, setcategoryModal] = useState(false);
   const [modal, setmodal] = useState(false);
