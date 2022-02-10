@@ -25,6 +25,10 @@
 .cardCategoryStart {
   margin-left: auto;
   cursor: pointer;
+  color: var(--font-accent);
+}
+.cardCategoryStart_inective{
+  margin-left: auto;
 }
 .challengeHeader {
   font-family: 'HelveticaNeueCyr-Light';

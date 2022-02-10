@@ -130,7 +130,10 @@ const Card = ({ data, card, isNewCard }) => {
  
 
   }
-const changeCompleted = () => {
+  const changeCompleted = () => {
+    if (!card.isActive) {
+    return
+  }
    setCompleted(true)
  }
 
@@ -148,9 +151,9 @@ const changeCompleted = () => {
         }`}
         onClick={onedit}
       >
-        {modal && <DifficultModal change={change} />}
+        {card.isActive && modal && <DifficultModal change={change} />}
         {deleteModal && <DeleteModule change={deleteHandler} />}
-        {categoryModal && <CategoryModal change={changeType} />}
+        {card.isActive && categoryModal && <CategoryModal change={changeType} />}
         <p className={s.cardCategoryName}>
           {edit ? (
             <>
@@ -200,7 +203,7 @@ const changeCompleted = () => {
               onClick={changeCompleted}
             />
           ) : (
-            <span className={s.cardCategoryStart} onClick={changeCompleted}> &#9733;</span>
+            <span className={card.isActive? s.cardCategoryStart: s.cardCategoryStart_inective} onClick={changeCompleted}> &#9733;</span>
           )}
         </p>
         {edit && !isNewCard && <p className={s.editTitle}>edit quest</p>}

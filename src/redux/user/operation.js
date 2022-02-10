@@ -3,9 +3,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import api from './interceptor';
 import { get_cookie } from './helper';
 
-// const BASE_URL = 'http://questify-project.herokuapp.com/api/users';
+const BASE_URL = 'http://questify-project.herokuapp.com/api/users';
 
-const BASE_URL = 'http://localhost:8083/api/users';
+// const BASE_URL = 'http://localhost:8083/api/users';
 
 const token = {
   set(token) {
