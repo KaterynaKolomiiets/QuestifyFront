@@ -52,6 +52,11 @@
 }
 
 .cardDate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
   font-family: 'HelveticaNeueCyr-Light';
   font-size: 14px;
 
@@ -132,6 +137,15 @@
   background-color: var(--font-secondary);
   top: -40%;
   right: -7px;
+}
+
+.timeText {
+  font-family: 'HelveticaNeueCyr';
+
+  font-size: 14px;
+  line-height: 14px;
+
+  letter-spacing: 0.02em;
 }
 
 .cross {

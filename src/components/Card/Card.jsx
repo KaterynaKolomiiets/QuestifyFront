@@ -13,15 +13,17 @@ import DifficultModal from '../modal/DifficultModal';
 import DeleteModule from '../modal/modalDelete';
 import s from './Card.module.css';
 import CategoryModal from '../modal/CategoryModal';
+import TimeDatePicker from '../TimePickers';
 
 import saveIcon from '../../images/save.svg';
-import CompletedCard from '../CompletedCard/CompletedCard';
+// import CompletedCard from '../CompletedCard/CompletedCard';
 import { newTodoCard } from '../../redux/todos/todosSelector';
-import ChallengeCard from '../modal/ChallengeCard/ChallengeCard';
+// import ChallengeCard from '../modal/ChallengeCard/ChallengeCard';
 import trophy from './trophy.svg';
 import CompletedChallenge from '../CompletedChallenge';
 
 const Card = ({ data, card, isNewCard }) => {
+
    const[completed, setCompleted] = useState(false);
   const [categoryModal, setcategoryModal] = useState(false);
   const [modal, setmodal] = useState(false);
@@ -30,6 +32,7 @@ const Card = ({ data, card, isNewCard }) => {
   const [difficult, setdifficult] = useState('');
   const [value, setvalue] = useState('');
   const [categoryCart, setcategoryCart] = useState('family');
+  const [timeDate, settimeDate] = useState('');
 
   const dispatch = useDispatch();
   const cardFromState = useSelector(newTodoCard);
@@ -67,9 +70,9 @@ const Card = ({ data, card, isNewCard }) => {
   }
 
   function onedit(e) {
-    console.log(e)
-    if(!card.isActive){
-      return
+    console.log(e);
+    if (!card.isActive) {
+      return;
     }
     if (!edit) setedit(true);
   }
@@ -84,7 +87,7 @@ const Card = ({ data, card, isNewCard }) => {
     const newCard = {
       level: card.level,
       title: value,
-      time: Date.now(),
+      time: timeDate,
       category: categoryCart,
       type: card.type,
     };
@@ -121,9 +124,17 @@ const Card = ({ data, card, isNewCard }) => {
     setcategoryCart(data);
     categoryModalHandler();
   }
+
  const changeCompleted = () => {
    setCompleted(true)
  }
+
+
+  function takeTime(time) {
+    settimeDate(time);
+  }
+
+
   return (
     <>
       {completed ? (
@@ -131,7 +142,6 @@ const Card = ({ data, card, isNewCard }) => {
         card.type === "TASK" ? <CompletedCard  change={addTodosDone}title={card.title} id={card._id}/> : <CompletedChallenge  change={addTodosDone}title={card.title} id={card._id}/>
 
       ) : (
-
 
       <li
         className={`${s.card} ${
@@ -175,13 +185,10 @@ const Card = ({ data, card, isNewCard }) => {
               >
                 &#9679;
               </span>
-              {card.isActive ? (
-                <span className={s.cardCategory} onClick={onclick}>
-                  {card.level}
-                </span>
-              ) : (
-                <span className={s.cardCategory}>{card.level}</span>
-              )}
+
+              <span className={s.cardCategory} onClick={onclick}>
+                {card.level}
+              </span>
             </>
           )}
           {/* STAR OR TROPHY ICON*/}
@@ -229,7 +236,14 @@ const Card = ({ data, card, isNewCard }) => {
           </>
         )}
 
-        <p className={s.cardDate}>{card.time}</p>
+        <div className={s.cardDate}>
+          <p className={s.timeText}>
+            {timeDate.dayName}
+            {!edit && timeDate.time}
+          </p>
+          {edit && <TimeDatePicker time={takeTime} />}
+          {isNewCard && <TimeDatePicker time={takeTime} />}
+        </div>
 
         <div className={s.bottomMenu}>
           {edit ? (
