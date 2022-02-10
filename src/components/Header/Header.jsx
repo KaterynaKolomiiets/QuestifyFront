@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-import { getUser } from '../../redux/user/selectors';
+import { getError, getUser } from '../../redux/user/selectors';
 import { userLogout } from '../../redux/user/operation';
 
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
@@ -39,8 +39,10 @@ const Header = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const err = useSelector(error);
+  const authErr = useSelector(getError);
   useEffect(() => {
     if (err) Notify.failure(`Attention! ${err.message}`);
+    if (authErr) Notify.failure(`Attention! ${authErr.message}`);
   }, [err]);
   const onLogout = () => {
     dispatch(userLogout({ email: user.email, password: user.password }));

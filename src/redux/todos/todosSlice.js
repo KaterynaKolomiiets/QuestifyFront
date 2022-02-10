@@ -30,7 +30,7 @@ const todoSliceAll = createSlice({
     [addNewCard.rejected]: (state, action) => {
       state.error = {
         status: action.payload.response.status,
-        message: action.payload.message,
+        message: action.payload.response.data.message,
       };
     },
     [deleteNewTodo.fulfilled](state, action) {
@@ -40,7 +40,7 @@ const todoSliceAll = createSlice({
     [deleteNewTodo.rejected](state, action) {
       state.error = {
         status: action.payload.response.status,
-        message: action.payload.message,
+        message: action.payload.response.data.message,
       };
     },
     [addCardToState.fulfilled](state, action) {
@@ -49,7 +49,7 @@ const todoSliceAll = createSlice({
     [addCardToState.rejected](state, action) {
       state.error = {
         status: action.payload.response.status,
-        message: action.payload.message,
+        message: action.payload.response.data.message,
       };
     },
 
@@ -60,7 +60,7 @@ const todoSliceAll = createSlice({
     [showTodosDone.rejected](state, action) {
       state.error = {
         status: action.payload.response.status,
-        message: action.payload.message,
+        message: action.payload.response.data.message,
       };
     },
 
@@ -70,7 +70,7 @@ const todoSliceAll = createSlice({
     [showTodosActive.rejected](state, action) {
       state.error = {
         status: action.payload.response.status,
-        message: action.payload.message,
+        message: action.payload.response.data.message,
       };
     },
 
@@ -81,7 +81,7 @@ const todoSliceAll = createSlice({
     [addTodo.rejected]: (state, action) => {
       state.error = {
         status: action.payload.response.status,
-        message: action.payload.message,
+        message: action.payload.response.data.message,
       };
     },
     [deleteTodo.fulfilled]: (state, action) => {
@@ -96,7 +96,7 @@ const todoSliceAll = createSlice({
     [deleteTodo.rejected]: (state, action) => {
       state.error = {
         status: action.payload.response.status,
-        message: action.payload.message,
+        message: action.payload.response.data.message,
       };
     },
 
@@ -110,7 +110,7 @@ const todoSliceAll = createSlice({
     [changeTodoStatus.rejected]: (state, action) => {
       state.error = {
         status: action.payload.response.status,
-        message: action.payload.message,
+        message: action.payload.response.data.message,
       };
     },
 

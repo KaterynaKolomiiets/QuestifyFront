@@ -34,7 +34,7 @@ export const addNewCard = createAsyncThunk(
   'todos/addNewCard',
   async (todo, thunkApi) => {
     try {
-      const { data } = await axios.post(
+      const { data } = await api.post(
         `http://questify-project.herokuapp.com/api/todos/add`,
         todo,
       );
@@ -46,7 +46,7 @@ export const addNewCard = createAsyncThunk(
 );
 export const showTodos = createAsyncThunk('todos/get', async (_, thunkApi) => {
   try {
-    const { data } = await axios.get(
+    const { data } = await api.get(
       `http://questify-project.herokuapp.com/api/todos/all`,
     );
     return data;
@@ -58,7 +58,7 @@ export const showTodosDone = createAsyncThunk(
   'todos/done',
   async (_, thunkApi) => {
     try {
-      const { data } = await axios.get(
+      const { data } = await api.get(
         `http://questify-project.herokuapp.com/api/todos/completed`,
       );
 
@@ -72,7 +72,7 @@ export const showTodosActive = createAsyncThunk(
   'todos/active',
   async (_, thunkApi) => {
     try {
-      const { data } = await axios.get(
+      const { data } = await api.get(
         `http://questify-project.herokuapp.com/api/todos/active`,
       );
       return data;
@@ -83,11 +83,11 @@ export const showTodosActive = createAsyncThunk(
 );
 export const addTodo = createAsyncThunk('todo/add', async (todo, thunkApi) => {
   try {
-    const { data } = await axios.post(
+    const { data } = await api.post(
       `http://questify-project.herokuapp.com/api/todos/add`,
       todo,
     );
-
+    console.log(data);
     return data;
   } catch (err) {
     return thunkApi.rejectWithValue(err);
@@ -98,7 +98,7 @@ export const changeTodoStatus = createAsyncThunk(
   'todo/changeStatus',
   async ({ id, isActive }, thunkApi) => {
     try {
-      const { data } = await axios.patch(
+      const { data } = await api.patch(
         `http://questify-project.herokuapp.com/api/todos/status/${id}`,
         { isActive: isActive },
       );
@@ -113,7 +113,7 @@ export const changeTodo = createAsyncThunk(
   'todo/change',
   async ({ id, ...item }, thunkApi) => {
     try {
-      const { data } = await axios.put(
+      const { data } = await api.put(
         `http://questify-project.herokuapp.com/api/todos/update/${id}`,
         item,
       );
@@ -129,7 +129,7 @@ export const deleteTodo = createAsyncThunk(
   async (id, thunkApi) => {
     try {
       console.log(id, 'action');
-      const { data } = await axios.delete(
+      const { data } = await api.delete(
         `http://questify-project.herokuapp.com/api/todos/remove/${id}`,
         id,
       );
