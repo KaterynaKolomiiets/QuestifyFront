@@ -44,7 +44,9 @@ const Card = ({ data, card, isNewCard }) => {
     setdifficult(card.level);
     setvalue(card.title);
     setcategoryCart(card.category);
-    settimeDate(card.time);
+    let coverct = new Date(card.time);
+    coverct = dateAdapted(coverct);
+    settimeDate(coverct);
   }, []);
 
   function onclick() {
@@ -59,6 +61,7 @@ const Card = ({ data, card, isNewCard }) => {
     setdifficult(data);
     onclick();
   }
+
   function deleteHandler(bool) {
     if (bool) {
       dispatch(deleteTodo(card._id));
@@ -93,6 +96,7 @@ const Card = ({ data, card, isNewCard }) => {
       category: categoryCart,
       type: card.type,
     };
+    console.log(newCard);
     dispatch(changeTodo({ id: card._id, ...newCard }));
   };
 
@@ -106,10 +110,13 @@ const Card = ({ data, card, isNewCard }) => {
         title: value,
         category: categoryCart,
         type: cardFromState.type,
-        time: Date.now(),
+        time: timeDate.data,
         level: difficult,
       }),
     );
+    const adapded = dateAdapted(timeDate.data);
+    settimeDate(adapded);
+    console.log(adapded, 'adapded');
   };
 
   const addTodosDone = () => {
@@ -254,7 +261,10 @@ const Card = ({ data, card, isNewCard }) => {
 
           <div className={s.cardDate}>
             <p className={s.timeText}>
-              {timeDate.dayName},&nbsp;{!edit && timeDate.time}
+
+              {timeDate.dayName}
+              {!edit && !isNewCard && <>,&nbsp;{timeDate.time}</>}
+
             </p>
             {edit && <TimeDatePicker time={takeTime} />}
             {isNewCard && <TimeDatePicker time={takeTime} />}
