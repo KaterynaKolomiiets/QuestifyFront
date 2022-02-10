@@ -98,6 +98,7 @@ const Card = ({ data, card, isNewCard }) => {
     };
     console.log(newCard);
     dispatch(changeTodo({ id: card._id, ...newCard }));
+    console.log(newCard)
   };
 
   const deleteNewCard = () => {
@@ -187,7 +188,7 @@ const Card = ({ data, card, isNewCard }) => {
                 </span>
               </>
             ) : (
-              <span className={card.isActive && s.setLevel} onClick={onclick}>
+              <span className={card.isActive ? s.setLevel: s.inectiveCard} onClick={onclick}>
                 <span
                   className={
                     (s.cardCategoryCircle,
@@ -209,7 +210,7 @@ const Card = ({ data, card, isNewCard }) => {
               <img
                 src={trophy}
                 alt=""
-                className={s.cardCategoryStart}
+                className={card.isActive? s.cardCategoryStart : s.cardCategoryStart_inective}
                 onClick={changeCompleted}
               />
             ) : (
