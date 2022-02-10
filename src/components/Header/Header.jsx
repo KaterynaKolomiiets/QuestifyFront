@@ -22,7 +22,6 @@ const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector(getUser);
   const err = useSelector(error);
-  const authErr = useSelector(getError);
   const toggleModal = () => setShowModal(prevState => !prevState);
 
   const challengeModal = () => {
@@ -44,8 +43,6 @@ const Header = () => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const err = useSelector(error);
 
   useEffect(() => {
     if (err) Notify.failure(`Attention! ${err.message}`);
