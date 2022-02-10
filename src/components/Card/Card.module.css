@@ -1,5 +1,8 @@
 @import '../../utils/variables.css';
 
+.wrapper {
+  /*   border: 1px red solid; */
+}
 .cardCategoryName {
   font-family: 'HelveticaNeueCyr-Medium';
   font-size: 16px;
