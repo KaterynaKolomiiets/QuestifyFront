@@ -45,7 +45,7 @@ export default function TimeDatePicker({ time }) {
       dayName = 'Tomorrow';
     } else if (Number(data.getDate()) >= Number(dateNaw) + 7) {
       const day = data.getDate();
-      const month = monthNames[data.getMonth() + 1];
+      const month = monthNames[data.getMonth()];
       dayName = `${day}/${month}`;
     }
     setValue({ dayName });
