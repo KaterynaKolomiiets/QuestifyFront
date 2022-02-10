@@ -16,12 +16,13 @@ import CategoryModal from '../modal/CategoryModal';
 import TimeDatePicker from '../TimePickers';
 
 import saveIcon from '../../images/save.svg';
-import CompletedCard from '../CompletedCard/CompletedCard';
+// import CompletedCard from '../CompletedCard/CompletedCard';
 import { newTodoCard } from '../../redux/todos/todosSelector';
-import ChallengeCard from '../modal/ChallengeCard/ChallengeCard';
+// import ChallengeCard from '../modal/ChallengeCard/ChallengeCard';
 import trophy from './trophy.svg';
 
 const Card = ({ data, card, isNewCard }) => {
+ 
   const [categoryModal, setcategoryModal] = useState(false);
   const [modal, setmodal] = useState(false);
   const [edit, setedit] = useState(false);
