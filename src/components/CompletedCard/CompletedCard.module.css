@@ -167,7 +167,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 205px;
+  width: 100%;
   margin-top: 20px;
   padding: 20px;
   box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
