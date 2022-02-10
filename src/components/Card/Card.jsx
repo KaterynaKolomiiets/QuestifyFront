@@ -14,6 +14,7 @@ import DeleteModule from '../modal/modalDelete';
 import s from './Card.module.css';
 import CategoryModal from '../modal/CategoryModal';
 import TimeDatePicker from '../TimePickers';
+import dateAdapted from '../TimePickers/dateAdapted';
 
 import saveIcon from '../../images/save.svg';
 import CompletedCard from '../CompletedCard/CompletedCard';
@@ -29,17 +30,19 @@ const Card = ({ data, card, isNewCard }) => {
   const [difficult, setdifficult] = useState('');
   const [value, setvalue] = useState('');
   const [categoryCart, setcategoryCart] = useState('family');
-  const [timeDate, settimeDate] = useState('');
+  const [timeDate, settimeDate] = useState(new Date());
+  // const [adaptedTime, setadaptedTime] = useState('');
 
   const dispatch = useDispatch();
   const cardFromState = useSelector(newTodoCard);
-
-  console.log(card);
+  // console.log(adaptedTime);
+  // console.log(card);
 
   useEffect(() => {
     setdifficult(card.level);
     setvalue(card.title);
     setcategoryCart(card.category);
+    settimeDate(card.time);
   }, []);
 
   function onclick() {
@@ -84,16 +87,11 @@ const Card = ({ data, card, isNewCard }) => {
     const newCard = {
       level: card.level,
       title: value,
-      time: timeDate,
+      time: timeDate.data,
       category: categoryCart,
       type: card.type,
     };
     dispatch(changeTodo({ id: card._id, ...newCard }));
-  }
-
-  function isChallenge() {
-    const card = { difficult, value, isChallenge: true };
-    data(card);
   }
 
   const deleteNewCard = () => {
@@ -122,8 +120,8 @@ const Card = ({ data, card, isNewCard }) => {
     categoryModalHandler();
   }
 
-  function takeTime(time) {
-    settimeDate(time);
+  function takeTime(date) {
+    settimeDate(date);
   }
 
   return (
@@ -229,8 +227,7 @@ const Card = ({ data, card, isNewCard }) => {
 
         <div className={s.cardDate}>
           <p className={s.timeText}>
-            {timeDate.dayName}
-            {!edit && timeDate.time}
+            {timeDate.dayName},&nbsp;{!edit && timeDate.time}
           </p>
           {edit && <TimeDatePicker time={takeTime} />}
           {isNewCard && <TimeDatePicker time={takeTime} />}
