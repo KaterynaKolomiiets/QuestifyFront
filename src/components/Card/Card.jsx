@@ -17,12 +17,15 @@ import TimeDatePicker from '../TimePickers';
 import dateAdapted from '../TimePickers/dateAdapted';
 
 import saveIcon from '../../images/save.svg';
-import CompletedCard from '../CompletedCard/CompletedCard';
+// import CompletedCard from '../CompletedCard/CompletedCard';
 import { newTodoCard } from '../../redux/todos/todosSelector';
-import ChallengeCard from '../modal/ChallengeCard/ChallengeCard';
+// import ChallengeCard from '../modal/ChallengeCard/ChallengeCard';
 import trophy from './trophy.svg';
+import CompletedChallenge from '../CompletedChallenge';
 
 const Card = ({ data, card, isNewCard }) => {
+
+   const[completed, setCompleted] = useState(false);
   const [categoryModal, setcategoryModal] = useState(false);
   const [modal, setmodal] = useState(false);
   const [edit, setedit] = useState(false);
@@ -81,7 +84,7 @@ const Card = ({ data, card, isNewCard }) => {
     setvalue(e.target.value);
   }
 
-  function closeAndSave() {
+  const closeAndSave = () => {
     setedit(false);
 
     const newCard = {
@@ -120,17 +123,24 @@ const Card = ({ data, card, isNewCard }) => {
     categoryModalHandler();
   }
 
+
   function takeTime(date) {
     settimeDate(date);
+
+ const changeCompleted = () => {
+   setCompleted(true)
+ }
+
   }
+
 
   return (
     <>
-      {/* {card.time < Date.now() ? (
-        <li>
-          <CompletedCard />
-        </li>
-      ) : ( */}
+      {completed ? (
+
+        card.type === "TASK" ? <CompletedCard  change={addTodosDone}title={card.title} id={card._id}/> : <CompletedChallenge  change={addTodosDone}title={card.title} id={card._id}/>
+
+      ) : (
 
       <li
         className={`${s.card} ${
@@ -186,10 +196,10 @@ const Card = ({ data, card, isNewCard }) => {
               src={trophy}
               alt=""
               className={s.cardCategoryStart}
-              onClick={changeType}
+              onClick={changeCompleted}
             />
           ) : (
-            <span className={s.cardCategoryStart}> &#9733;</span>
+            <span className={s.cardCategoryStart} onClick={changeCompleted}> &#9733;</span>
           )}
         </p>
         {edit && !isNewCard && <p className={s.editTitle}>edit quest</p>}
@@ -291,7 +301,7 @@ const Card = ({ data, card, isNewCard }) => {
         </div>
       </li>
 
-      {/* )} */}
+      )} 
     </>
   );
 };

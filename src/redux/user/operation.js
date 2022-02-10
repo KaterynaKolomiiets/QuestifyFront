@@ -18,11 +18,9 @@ const token = {
 
 export const userRegistration = createAsyncThunk(
   'auth/registration',
-  async user => {
-    console.log(user);
+  async (user, thunkApi) => {
     try {
       const { data } = await axios.post(`${BASE_URL}/registration`, user);
-      console.log(data);
       token.set(data.accessToken);
       return data;
     } catch (error) {
@@ -30,22 +28,23 @@ export const userRegistration = createAsyncThunk(
     }
   },
 );
-export const userLogin = createAsyncThunk('auth/login', async user => {
-  console.log(user);
-  try {
-    const { data } = await axios.post(`${BASE_URL}/login`, user);
-    console.log(data);
-    localStorage.setItem('token', data.accessToken);
+export const userLogin = createAsyncThunk(
+  'auth/login',
+  async (user, thunkApi) => {
+    try {
+      const { data } = await axios.post(`${BASE_URL}/login`, user);
+      localStorage.setItem('token', data.accessToken);
 
-    document.cookie = `refreshToken=${data.refreshToken}`;
+      document.cookie = `refreshToken=${data.refreshToken}`;
 
-    token.set(data.accessToken);
-
-    return data;
-  } catch (error) {
-    throw new Error(error);
-  }
-});
+      token.set(data.accessToken);
+      console.log(data);
+      return data;
+    } catch (error) {
+      thunkApi(error);
+    }
+  },
+);
 
 export const userLogout = createAsyncThunk('auth/logout', async () => {
   try {

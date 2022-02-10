@@ -4,16 +4,16 @@ import Icons from '../../icons/sprite.svg';
 import Icon from '../Icon';
 import s from './CompletedChallenge.module.css';
 
-const CompletedChallenge = () => {
+const CompletedChallenge = ({change, title, id}) => {
 
   
     return (
-      <li className={s.card} >
+      <li className={s.card} key={id} >
         <div className={s.challengeBox}>
           <div className={s.contentBox}>
             <p className={s.content}>COMPLETED:</p>
             <p className={s.link}>
-              <span className={s.linkText}>TASK NAME</span>
+              <span className={s.linkText}>{title}</span>
             </p>
           </div>
           <div className={s.awardBox}>
@@ -56,7 +56,7 @@ const CompletedChallenge = () => {
             </CSSTransition>
           </div>
           </div>
-          <button className={s.button}>
+          <button className={s.button} onClick={change}>
             <span>Continue</span>
             <Icon className={s.arrow} name={'arrow-right'} />
           </button>
