@@ -6,6 +6,7 @@ import Container from '../../components/Container';
 import AuthForm from '../../components/AuthForm';
 import { getError } from '../../redux/user/selectors';
 
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import s from './AuthPage.module.css';
 
 function AuthPage() {
@@ -15,7 +16,6 @@ function AuthPage() {
   const showLogForm = () => setShowRegisterForm(false);
 
   const authErr = useSelector(getError);
-  console.log(authErr);
 
   useEffect(() => {
     if (authErr) Notify.failure(`Attention! ${authErr.message}`);

@@ -1,3 +1,15 @@
+.backdrop {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  cursor: default;
+  width: 98vw;
+  height: 96vh;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
 .exitModal {
   position: fixed;
   display: block;
@@ -73,6 +85,7 @@
 .IconStarSvg {
   fill: var(--font-accent);
   filter: drop-shadow(1px 2px 3px rgb(0 0 0 / 0.4));
+  transition: fill var(--transition-duration) var(--transition-timing);
 }
 
 .challengeIconSvg {
@@ -80,6 +93,14 @@
   height: 45px;
   margin-bottom: -5px;
 }
+
+.challengeIconBtn:hover .challengeIconSvg,
+.challengeIconBtn:focus .challengeIconSvg,
+.iconStarBtn:hover .IconStarSvg,
+.iconStarBtn:focus .IconStarSvg {
+  fill: var(--accent);
+}
+
 @media screen and (min-width: 768px) {
   .challengeIconSvg {
     width: 52px;
@@ -99,12 +120,12 @@
   }
 }
 
-.challengeIconSvg:hover,
+/* .challengeIconSvg:hover,
 .challengeIconSvg:focus,
 .IconStarSvg:hover,
 .IconStarSvg:hover {
   fill: var(--accent);
-}
+} */
 
 .svgtTitle {
   text-transform: uppercase;

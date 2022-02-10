@@ -81,8 +81,8 @@
   }
 
   .card {
-    width: calc((100% / 5) - 28px);
-    margin-left: 28px;
+    width: calc((100% / 5) - 27px);
+    margin-left: 27px;
   }
 }
 

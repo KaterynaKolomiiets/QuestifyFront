@@ -11,12 +11,23 @@
   display: flex;
   align-items: center;
 }
+
+.setLevel {
+  cursor: pointer;
+}
+
 .cardCategoryCircle {
   margin-right: 10px;
 }
 
 .cardCategoryStart {
   margin-left: auto;
+  cursor: pointer;
+  color: var(--font-accent);
+}
+.cardCategoryStart_inective {
+  margin-left: auto;
+  cursor: default;
 }
 .challengeHeader {
   font-family: 'HelveticaNeueCyr-Light';
@@ -85,8 +96,23 @@
 
   margin-left: -20px;
 
+  cursor: pointer;
+
   display: flex;
   align-items: center;
+}
+.inectiveCard {
+  cursor: default;
+}
+.arrowDown {
+  color: var(--font-accent);
+  margin-left: 7px;
+
+  visibility: hidden;
+}
+.cardType:hover .arrowDown,
+.cardType:focus .arrowDown {
+  visibility: visible;
 }
 
 /* new style */
@@ -192,6 +218,7 @@
   box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
     3px 4px 4px rgba(21, 57, 90, 0.03);
   border-radius: 10px;
+  width: 100%;
 }
 .task {
   background: var(--background-card);
@@ -247,13 +274,14 @@
     padding-right: 50px;
 
     margin-left: -27px;
+
   }
   .card {
-    /* width: calc((100% / 3) - 27px); */
+    width: calc((100% / 3) - 27px);
 
     margin-left: 27px;
 
-    width: 205px;
+    /* width: 205px; */
     height: 199px;
   }
 
@@ -315,8 +343,8 @@
   .card {
     margin-left: 27px;
 
-    /* width: calc((100% / 5) - 27px); */
-    width: 205px;
+    width: calc((100% / 5) - 27px);
+    /* width: 205px; */
     height: 199px;
   }
 }
@@ -325,7 +353,7 @@
 @media only screen and (min-width: 1024px) and (orientation: landscape) {
   .card {
     width: calc((100% / 4) - 27px);
-    width: 205px;
+    /* width: 205px; */
   }
 }
 
@@ -352,3 +380,5 @@
 .work {
   background-color: var(--bg-card-work);
 }
+
+

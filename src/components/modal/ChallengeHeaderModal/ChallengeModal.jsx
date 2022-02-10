@@ -11,33 +11,32 @@ import Card from '../../Card';
 const ChallengeModal = ({ challengeModal }) => {
   const todos = useSelector(todosActive);
   const dispatch = useDispatch();
-  console.log('todos', todos);
 
   const clickBackdrop = event => {
-    if (event.currentTarget === event.target) {
+    if (event.currentTarget !== event.target) {
       challengeModal();
     }
   };
 
-  useEffect(() => {
+  /*   useEffect(() => {
     dispatch(showTodosActive());
-  }, []);
+  }, []); */
 
   return (
-    <div className={s.modal} onClick={clickBackdrop}>
-      {/*       <div className={s.modalDiv}> */}
+    <div className={s.backdrop} /* onClick={clickBackdrop} */>
       {todos.some(item => item.type === 'CHALLENGE') ? (
-        <ul>
-          {todos
-            .filter(item => item.type === 'CHALLENGE')
-            .map(card => {
-              return <Card key={card._id} card={card} />;
-            })}
-        </ul>
+        <div className={s.modal}>
+          <ul>
+            {todos
+              .filter(item => item.type === 'CHALLENGE')
+              .map(card => {
+                return <Card key={card._id} card={card} />;
+              })}
+          </ul>
+        </div>
       ) : (
         <p className={s.missingChallenges}> Challenges are missing</p>
       )}
-      {/* </div> */}
     </div>
   );
 };

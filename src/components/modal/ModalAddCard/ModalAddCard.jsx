@@ -20,7 +20,7 @@ const ModalAddCard = ({ toggleModal }) => {
   };
 
   return (
-    <div className={s.backdrop} onClick={clickBackdrop}>
+    <div className={s.backdrop} onClick={toggleModal}>
       <div className={s.exitModal}>
         <div className={s.btnDiv}>
           <button

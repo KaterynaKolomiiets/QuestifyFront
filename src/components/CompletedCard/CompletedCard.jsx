@@ -9,19 +9,18 @@ import s from './CompletedCard.module.css';
 // import { changeTodo } from '../../redux/todos/operation';
 
 
-const CompletedCard = ({ change, title,id }) => {
+const CompletedCard = ({ change, title,id, changeCard }) => {
  
  
   return (
     <>
-      {/* {changeCard.map((card) => {
-        return ( */}
-        <li className={s.card} key={id}>
+     
+        <li className={s.card} >
         <div className={s.questBox}>
           <div className={s.contentBox}>
-            <p className={s.content}>COMPLETED:</p>
+            <p className={s.content} >COMPLETED:</p>
             <p className={s.link}>
-              <span className={s.linkText}>{title}</span>
+              <span className={s.linkText} >{title}</span>
             </p>
           </div>
           <div className={s.awardBox}>
