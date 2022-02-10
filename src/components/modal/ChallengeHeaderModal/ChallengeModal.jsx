@@ -11,13 +11,12 @@ import Card from '../../Card';
 const ChallengeModal = ({ challengeModal }) => {
   const todos = useSelector(todosActive);
   const dispatch = useDispatch();
-  console.log('todos', todos);
 
-  /*   const clickBackdrop = event => {
-    if (event.currentTarget === event.target) {
+  const clickBackdrop = event => {
+    if (event.currentTarget !== event.target) {
       challengeModal();
     }
-  }; */
+  };
 
   /*   useEffect(() => {
     dispatch(showTodosActive());
