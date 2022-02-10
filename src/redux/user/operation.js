@@ -62,6 +62,7 @@ export const userLogout = createAsyncThunk(
       document.cookie = 'refreshToken=-1;expires=Thu, 01 Jan 1970 00:00:01 GMT';
       // token.unset();
       localStorage.removeItem('token');
+      console.log('ok');
       console.log('data', data);
       return data;
     } catch (error) {
