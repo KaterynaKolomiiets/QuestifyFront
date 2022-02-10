@@ -37,7 +37,6 @@ const Card = ({ data, card, isNewCard }) => {
 
   const dispatch = useDispatch();
   const cardFromState = useSelector(newTodoCard);
-  const coverct = new Date(card.time);
 
   useEffect(() => {
     setdifficult(card.level);
