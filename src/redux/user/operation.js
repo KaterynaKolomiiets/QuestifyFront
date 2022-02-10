@@ -46,23 +46,31 @@ export const userLogin = createAsyncThunk(
   },
 );
 
-export const userLogout = createAsyncThunk('auth/logout', async () => {
-  try {
-    const token = get_cookie('refreshToken');
-    const { data } = await api.get(`${BASE_URL}/logout`, {
-      withCredentials: true,
-      headers: {
-        update: `${token}`,
-      },
-    });
-    document.cookie = 'refreshToken=-1;expires=Thu, 01 Jan 1970 00:00:01 GMT';
-    token.unset();
-    console.log('data', data);
-    return data;
-  } catch (error) {
-    throw new Error(error);
-  }
-});
+
+export const userLogout = createAsyncThunk(
+  'auth/logout',
+  async (_, thunkAPI) => {
+    try {
+      localStorage.removeItem('isloggedIn');
+      const token = get_cookie('refreshToken');
+      const { data } = await api.get(`${BASE_URL}/logout`, {
+        withCredentials: true,
+        headers: {
+          update: `${token}`,
+        },
+      });
+      document.cookie = 'refreshToken=-1;expires=Thu, 01 Jan 1970 00:00:01 GMT';
+      // token.unset();
+      localStorage.removeItem('token');
+      console.log('ok');
+      console.log('data', data);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  },
+);
+
 // check address
 // export const userActivate = createAsyncThunk("auth/activate", async (id) => {
 //   try {
@@ -102,15 +110,7 @@ export const userRefresh = createAsyncThunk(
   },
 );
 
-// export const userRefresh = createAsyncThunk("auth/refresh", async (user) => {
-//   try {
-//     const { data } = await axios.get(`${BASE_URL}/refresh`, user);
-//       console.log(data);
-//     return data;
-//   } catch (error) {
-//     throw new Error(error);
-//   }
-// });
+
 
 // export const userResetPassword = createAsyncThunk(
 //   "auth/reset-password",
