@@ -9,7 +9,7 @@
   left: -180%;
   display: block;
   cursor: auto;
-  overflow: scroll;
+  overflow: auto;
   overflow-x: hidden;
 }
 
@@ -139,5 +139,3 @@
     margin-top: 15px;
   }
 }
-
-
