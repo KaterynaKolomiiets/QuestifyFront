@@ -41,7 +41,6 @@
   line-height: 18px;
   letter-spacing: 0.02em;
   color: var(--font-accent);
-  cursor: default;
 }
 @media screen and (min-width: 768px) {
   .logo {
@@ -110,7 +109,6 @@
 
 .svgLogout {
   fill: #3e4e6c;
-  transition: fill var(--transition-duration) var(--transition-timing);
 }
 
 .svgLogout:hover,

@@ -1,6 +1,5 @@
 @import '../../utils/variables.css';
 
-
 .cardCategoryName {
   font-family: 'HelveticaNeueCyr-Medium';
   font-size: 16px;
@@ -11,24 +10,18 @@
 
   display: flex;
   align-items: center;
-
 }
-
-.setLevel {
-  cursor: pointer;
-}
-
 .cardCategoryCircle {
   margin-right: 10px;
 }
 
 .cardCategoryStart {
   margin-left: auto;
+  color: var(--font-secondary);
+  background-color: transparent;
   cursor: pointer;
-  color: var(--font-accent);
-}
-.cardCategoryStart_inective{
-  margin-left: auto;
+  border: none;
+  
 }
 .challengeHeader {
   font-family: 'HelveticaNeueCyr-Light';
@@ -67,8 +60,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
+
   font-family: 'HelveticaNeueCyr-Light';
   font-size: 14px;
 
@@ -76,6 +68,7 @@
 
   margin: 0 auto;
   margin-bottom: 40px;
+  margin-top: 10px;
 
   white-space: nowrap;
   overflow: hidden;
@@ -97,23 +90,8 @@
 
   margin-left: -20px;
 
-  cursor: pointer;
-
   display: flex;
   align-items: center;
-}
-.inectiveCard{
-  cursor:default;
-}
-.arrowDown {
-  color: var(--font-accent);
-  margin-left: 7px;
-
-  visibility: hidden;
-}
-.cardType:hover .arrowDown,
-.cardType:focus .arrowDown {
-  visibility:visible;
 }
 
 /* new style */
@@ -266,6 +244,10 @@
   margin-right: 10px;
 }
 
+.starIcon {
+  filter: drop-shadow(0px 3px 4px rgba(0, 215, 255, 0.25));
+}
+
 @media screen and (min-width: 768px) {
   .cardSet {
     flex-direction: row;
@@ -290,7 +272,7 @@
   }
 
   .cardCategoryName {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .cardDate {
