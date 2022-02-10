@@ -17,6 +17,11 @@
 
 .cardCategoryStart {
   margin-left: auto;
+  color: var(--font-secondary);
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  
 }
 .challengeHeader {
   font-family: 'HelveticaNeueCyr-Light';
@@ -239,6 +244,10 @@
   margin-right: 10px;
 }
 
+.starIcon {
+  filter: drop-shadow(0px 3px 4px rgba(0, 215, 255, 0.25));
+}
+
 @media screen and (min-width: 768px) {
   .cardSet {
     flex-direction: row;
@@ -263,7 +272,7 @@
   }
 
   .cardCategoryName {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .cardDate {

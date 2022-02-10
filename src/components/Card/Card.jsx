@@ -22,6 +22,7 @@ import { newTodoCard } from '../../redux/todos/todosSelector';
 // import ChallengeCard from '../modal/ChallengeCard/ChallengeCard';
 import trophy from './trophy.svg';
 import CompletedChallenge from '../CompletedChallenge';
+import Icon from "../Icon"
 
 const Card = ({ data, card, isNewCard }) => {
   const [completed, setCompleted] = useState(false);
@@ -72,7 +73,9 @@ const Card = ({ data, card, isNewCard }) => {
     setdeleteModal(!deleteModal);
   }
 
-  function onedit(e) {
+
+  const onedit = (e) => {
+    console.log(e);
     if (!card.isActive) {
       return;
     }
@@ -127,15 +130,21 @@ const Card = ({ data, card, isNewCard }) => {
 
   function takeTime(date) {
     settimeDate(date);
+
+
+ 
+
+  }
+  const changeCompleted = () => {
+    setCompleted(true)
   }
 
-  const changeCompleted = () => {
-    setCompleted(true);
-  };
+ 
 
   return (
     <>
       {completed ? (
+
         card.type === 'TASK' ? (
           <CompletedCard
             change={addTodosDone}
@@ -245,6 +254,25 @@ const Card = ({ data, card, isNewCard }) => {
               </h2>
             </>
           )}
+
+          {/* STAR OR TROPHY ICON*/}
+          {card.type === 'CHALLENGE' ? (
+            <img
+              src={trophy}
+              alt=""
+              className={s.cardCategoryStart}
+              onClick={changeCompleted}
+            />
+          ) : (
+            // <span className={s.cardCategoryStart} onClick={changeCompleted}> &#9733;</span>
+            <button type="button" className={s.cardCategoryStart}onClick={changeCompleted}>
+              <Icon className={s.starIcon} name="star" color="#00d7ff" size={15} />
+          </button>
+          )}
+        </p>
+        {edit && !isNewCard && <p className={s.editTitle}>edit quest</p>}
+        {isNewCard && <p className={s.editTitle}>Create New Quest</p>}
+
 
           <div className={s.cardDate}>
             <p className={s.timeText}>
