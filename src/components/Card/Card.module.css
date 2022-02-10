@@ -1,6 +1,5 @@
 @import '../../utils/variables.css';
 
-
 .cardCategoryName {
   font-family: 'HelveticaNeueCyr-Medium';
   font-size: 16px;
@@ -11,7 +10,6 @@
 
   display: flex;
   align-items: center;
-
 }
 
 .setLevel {
@@ -27,7 +25,7 @@
   cursor: pointer;
   color: var(--font-accent);
 }
-.cardCategoryStart_inective{
+.cardCategoryStart_inective {
   margin-left: auto;
 }
 .challengeHeader {
@@ -102,8 +100,8 @@
   display: flex;
   align-items: center;
 }
-.inectiveCard{
-  cursor:default;
+.inectiveCard {
+  cursor: default;
 }
 .arrowDown {
   color: var(--font-accent);
@@ -113,7 +111,7 @@
 }
 .cardType:hover .arrowDown,
 .cardType:focus .arrowDown {
-  visibility:visible;
+  visibility: visible;
 }
 
 /* new style */

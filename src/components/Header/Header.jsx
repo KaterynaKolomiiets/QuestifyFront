@@ -22,7 +22,10 @@ const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector(getUser);
   const toggleModal = () => setShowModal(prevState => !prevState);
-  const challengeModal = () => setShowChallenges(prevState => !prevState);
+  const challengeModal = () => {
+    console.log('CLICK Button!', showChallenges);
+    setShowChallenges(prevState => !prevState);
+  };
 
   const modalEscape = e => {
     if (e.code === 'Escape') {
@@ -81,7 +84,7 @@ const Header = () => {
                 <use xlinkHref={`${icons}#challenge-icon`} />
               </svg>
               {showChallenges && (
-                <ChallengeModal challengeModal={challengeModal} />
+                <ChallengeModal /* challengeModal={challengeModal}  */ />
               )}
             </button>
             <button type="button" className={s.BtnLogout} onClick={toggleModal}>

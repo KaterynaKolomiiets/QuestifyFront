@@ -1,15 +1,31 @@
+.backdrop {
+  /*   border: 2px green solid;
+  background-color: RGBA(0, 0, 0, 0.1); */
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  cursor: default;
+  width: 98vw;
+  height: 96vh;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
 .modal {
   background-color: var(--font-tertiary);
   border-radius: 10px;
   position: absolute;
-  padding: 10px 10px;
+  padding: 0 20px;
   min-height: 250px;
+  max-height: 80vh;
   width: 250px;
-  top: 65px;
-  left: -180%;
+  top: 56px;
+  right: 10%;
+  /*   left: -180%; */
   display: block;
-  cursor: auto;
-  overflow: scroll;
+  /* cursor: auto; */
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
@@ -28,18 +44,18 @@
 
 @media screen and (min-width: 768px) {
   .modal {
-    padding: 15px 15px;
-    left: -190%;
+    /* padding: 15px 15px; */
+    /* left: -190%; */
     /* height: 300px; */
     width: 300px;
-    top: 70px;
+    top: 65px;
     margin-left: -27px;
   }
 }
 @media screen and (min-width: 1280px) {
   .modal {
     /* padding: 25px 25px; */
-    left: -180%;
+    /* left: -180%; */
     /*     height: 400px; */
     /*     width: 350px; */
   }
@@ -50,8 +66,10 @@
   position: absolute;
   border: 10px solid transparent;
   border-bottom: 10px solid #7b8aa4;
-  left: 72%;
-  top: -19px;
+  /* left: 72%; */
+  /* top: -19px; */
+  top: 0px;
+  left: 10px;
 }
 @media screen and (min-width: 768px) {
   .modal::before {
@@ -139,5 +157,3 @@
     margin-top: 15px;
   }
 }
-
-
