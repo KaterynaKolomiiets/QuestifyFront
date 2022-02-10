@@ -1,22 +1,21 @@
-import Card from "../Card";
+import Card from '../Card';
 
-import "../../utils/variables.css";
-import s from "./CardsToday.module.css";
+import '../../utils/variables.css';
+import s from './CardsToday.module.css';
 
-import { useDispatch, useSelector } from "react-redux";
-import { newTodoCard, todosActive } from "../../redux/todos/todosSelector";
-import { useEffect, useState } from "react";
-import ChallengeCard from "../modal/ChallengeCard/ChallengeCard";
+import { useDispatch, useSelector } from 'react-redux';
+import { newTodoCard, todosActive } from '../../redux/todos/todosSelector';
+import { useEffect, useState } from 'react';
+import ChallengeCard from '../modal/ChallengeCard/ChallengeCard';
 
-import data from "./temporaryData.json";
+import data from './temporaryData.json';
 
 import {
   deleteTodo,
   changeTodo,
   showTodosActive,
   showTodosDone,
-} from "../../redux/todos/operation";
-
+} from '../../redux/todos/operation';
 
 const CardsToday = () => {
   const dispatch = useDispatch();
@@ -51,24 +50,17 @@ const CardsToday = () => {
       <h2 className={s.title}>Today</h2>
       <ul className={s.cardSet}>
         {isNewCard && (
-          <Card
-            key={newTodo._id}
-            card={newTodo}
-            // data={takeData}
-            isNewCard={isNewCard}
-          />
+          <Card key={newTodo._id} card={newTodo} isNewCard={isNewCard} />
         )}
         {/* new code KATERYNA */}
-         
-        {todos?.map((card) => <Card key={card._id}
-              card={card}
-          data={takeData} />)}
-        
-        
+
+        {todos?.map(card => (
+          <Card key={card._id} card={card} />
+        ))}
 
         {/* COMMENTED BY KATERYNA */}
-      
-          {/* {todos?.map((card) => {
+
+        {/* {todos?.map((card) => {
           return card.isChallenge ? (
             <ChallengeCard
               key={card._id}
@@ -85,10 +77,8 @@ const CardsToday = () => {
             />
           );
         })} */}
-         {/* COMMENTED BY KATERYNA */}
+        {/* COMMENTED BY KATERYNA */}
       </ul>
-
-
 
       {/* RENDER TODOS */}
 

@@ -13,7 +13,7 @@ const token = {
 };
 export const addCardToState = createAsyncThunk(
   'todos/addCard',
-  async (type, thunkAPI) => {
+  async (type, thunkApi) => {
     return {
       title: '',
       category: 'FAMILY',
@@ -26,13 +26,13 @@ export const addCardToState = createAsyncThunk(
 );
 export const deleteNewTodo = createAsyncThunk(
   'todos/deleteNewToto',
-  async (_, thunkAPI) => {
+  async (_, thunkApi) => {
     return null;
   },
 );
 export const addNewCard = createAsyncThunk(
   'todos/addNewCard',
-  async (todo, thunkAPI) => {
+  async (todo, thunkApi) => {
     try {
       const { data } = await api.post(
         `http://questify-project.herokuapp.com/api/todos/add`,
@@ -40,23 +40,23 @@ export const addNewCard = createAsyncThunk(
       );
       return data;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err);
+      return thunkApi.rejectWithValue(err);
     }
   },
 );
-export const showTodos = createAsyncThunk('todos/get', async (_, thunkAPI) => {
+export const showTodos = createAsyncThunk('todos/get', async (_, thunkApi) => {
   try {
     const { data } = await api.get(
       `http://questify-project.herokuapp.com/api/todos/all`,
     );
     return data;
   } catch (err) {
-    return thunkAPI.rejectWithValue(err);
+    return thunkApi.rejectWithValue(err);
   }
 });
 export const showTodosDone = createAsyncThunk(
   'todos/done',
-  async (_, thunkAPI) => {
+  async (_, thunkApi) => {
     try {
       const { data } = await api.get(
         `http://questify-project.herokuapp.com/api/todos/completed`,
@@ -64,24 +64,24 @@ export const showTodosDone = createAsyncThunk(
 
       return data;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err);
+      return thunkApi.rejectWithValue(err);
     }
   },
 );
 export const showTodosActive = createAsyncThunk(
   'todos/active',
-  async (_, thunkAPI) => {
+  async (_, thunkApi) => {
     try {
       const { data } = await api.get(
         `http://questify-project.herokuapp.com/api/todos/active`,
       );
       return data;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err);
+      return thunkApi.rejectWithValue(err);
     }
   },
 );
-export const addTodo = createAsyncThunk('todo/add', async (todo, thunkAPI) => {
+export const addTodo = createAsyncThunk('todo/add', async (todo, thunkApi) => {
   try {
     const { data } = await api.post(
       `http://questify-project.herokuapp.com/api/todos/add`,
@@ -90,13 +90,13 @@ export const addTodo = createAsyncThunk('todo/add', async (todo, thunkAPI) => {
     console.log(data);
     return data;
   } catch (err) {
-    return thunkAPI.rejectWithValue(err);
+    return thunkApi.rejectWithValue(err);
   }
 });
 
 export const changeTodoStatus = createAsyncThunk(
   'todo/changeStatus',
-  async ({ id, isActive }, thunkAPI) => {
+  async ({ id, isActive }, thunkApi) => {
     try {
       const { data } = await api.patch(
         `http://questify-project.herokuapp.com/api/todos/status/${id}`,
@@ -104,14 +104,14 @@ export const changeTodoStatus = createAsyncThunk(
       );
       return data;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err);
+      return thunkApi.rejectWithValue(err);
     }
   },
 );
 
 export const changeTodo = createAsyncThunk(
   'todo/change',
-  async ({ id, ...item }, thunkAPI) => {
+  async ({ id, ...item }, thunkApi) => {
     try {
       const { data } = await api.put(
         `http://questify-project.herokuapp.com/api/todos/update/${id}`,
@@ -119,14 +119,14 @@ export const changeTodo = createAsyncThunk(
       );
       return data;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err);
+      return thunkApi.rejectWithValue(err);
     }
   },
 );
 
 export const deleteTodo = createAsyncThunk(
   'todo/delete',
-  async (id, thunkAPI) => {
+  async (id, thunkApi) => {
     try {
       console.log(id, 'action');
       const { data } = await api.delete(
@@ -135,7 +135,7 @@ export const deleteTodo = createAsyncThunk(
       );
       return id;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err);
+      return thunkApi.rejectWithValue(err);
     }
   },
 );

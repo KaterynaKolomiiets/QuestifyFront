@@ -68,7 +68,7 @@ function ResetPassword() {
           type="button"
           onClick={onSubmit}
         >
-          go!
+          Go
             </button>
             </form>
         </section>

@@ -18,23 +18,22 @@ const token = {
 
 export const userRegistration = createAsyncThunk(
   'auth/registration',
-  async (user, thunkAPI) => {
+  async (user, thunkApi) => {
     try {
       const { data } = await axios.post(`${BASE_URL}/registration`, user);
       token.set(data.accessToken);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      throw new Error(error);
     }
   },
 );
 export const userLogin = createAsyncThunk(
   'auth/login',
-  async (user, thunkAPI) => {
+  async (user, thunkApi) => {
     try {
       const { data } = await axios.post(`${BASE_URL}/login`, user);
       localStorage.setItem('token', data.accessToken);
-      localStorage.setItem('isloggedIn', true);
 
       document.cookie = `refreshToken=${data.refreshToken}`;
 
@@ -42,33 +41,28 @@ export const userLogin = createAsyncThunk(
       console.log(data);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      thunkApi(error);
     }
   },
 );
 
-export const userLogout = createAsyncThunk(
-  'auth/logout',
-  async (_, thunkAPI) => {
-    try {
-      localStorage.removeItem('isloggedIn');
-      const token = get_cookie('refreshToken');
-      const { data } = await api.get(`${BASE_URL}/logout`, {
-        withCredentials: true,
-        headers: {
-          update: `${token}`,
-        },
-      });
-      document.cookie = 'refreshToken=-1;expires=Thu, 01 Jan 1970 00:00:01 GMT';
-      // token.unset();
-      localStorage.removeItem('token');
-      console.log('data', data);
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
-  },
-);
+export const userLogout = createAsyncThunk('auth/logout', async () => {
+  try {
+    const token = get_cookie('refreshToken');
+    const { data } = await api.get(`${BASE_URL}/logout`, {
+      withCredentials: true,
+      headers: {
+        update: `${token}`,
+      },
+    });
+    document.cookie = 'refreshToken=-1;expires=Thu, 01 Jan 1970 00:00:01 GMT';
+    token.unset();
+    console.log('data', data);
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
+});
 // check address
 // export const userActivate = createAsyncThunk("auth/activate", async (id) => {
 //   try {
@@ -101,10 +95,9 @@ export const userRefresh = createAsyncThunk(
       localStorage.setItem('token', data.accessToken);
       console.log(data);
       document.cookie = `refreshToken=${data.refreshToken}`;
-      console.log(data);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      throw new Error(error);
     }
   },
 );
@@ -143,20 +136,20 @@ export const userRefresh = createAsyncThunk(
 // });
 export const userResetPassword = createAsyncThunk(
   'auth/reset-password',
-  async (user, thunkAPI) => {
+  async user => {
     try {
       console.log('user', user);
       const { data } = await axios.post(`${BASE_URL}/reset-password`, user);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      throw new Error(error);
     }
   },
 );
 
 export const userChangePassword = createAsyncThunk(
   'auth/change-password',
-  async ({ password, link }, thunkAPI) => {
+  async ({ password, link }) => {
     console.log('linklink', link);
     console.log('password', password);
     try {
@@ -165,7 +158,7 @@ export const userChangePassword = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      throw new Error(error);
     }
   },
 );
