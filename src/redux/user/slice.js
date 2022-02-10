@@ -8,7 +8,7 @@ import {
 } from './operation';
 
 const initialState = {
-  userinfo: { name: null, email: null, isActivated: false, name: null },
+  userinfo: { name: null, email: null, isActivated: false, name: null, isLoggedIn: false },
   token: null,
   error: null,
 };
@@ -21,6 +21,7 @@ const userSlice = createSlice({
     [userLogin.fulfilled]: (state, action) => {
       state.userinfo = action.payload.user;
       state.token = action.payload.accessToken;
+      state.userinfo.isLoggedIn = true;
     },
     [userLogin.rejected]: (state, action) => {
       state.error = {
@@ -42,7 +43,8 @@ const userSlice = createSlice({
       };
     },
     [userRefresh.fulfilled]: (state, action) => {
-      state.userinfo = action.payload.user;
+      console.log(state.userinfo);
+      state.userinfo = { ...action.payload.user, ...state.userinfo };
       state.token = action.payload.accessToken;
     },
     [userRefresh.rejected]: (state, action) => {
