@@ -350,12 +350,12 @@
 }
 
 /* IPAD MINI LAYOUT */
-@media only screen and (min-width: 1024px) and (orientation: landscape) {
+/* @media only screen and (min-width: 1024px) and (orientation: landscape) {
   .card {
     width: calc((100% / 4) - 27px);
-    /* width: 205px; */
+   
   }
-}
+} */
 
 .learning {
   background-color: var(--bg-card-learning);
