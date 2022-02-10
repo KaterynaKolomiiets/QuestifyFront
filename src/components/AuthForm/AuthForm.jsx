@@ -5,14 +5,6 @@ import { getError } from '../../redux/user/selectors';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
-// import {
-//   deleteTodo,
-//   showTodosActive,
-//   showTodosDone,
-//   changeTodoStatus,
-//   changeTodo,
-// } from "../../redux/todos/operation";
-
 import { userLogin, userRegistration } from '../../redux/user/operation';
 
 import s from './AuthForm.module.css';

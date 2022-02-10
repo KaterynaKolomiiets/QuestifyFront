@@ -1,21 +1,25 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 import Container from '../../components/Container';
 import AuthForm from '../../components/AuthForm';
-import s from './AuthPage.module.css';
-import { useSelector } from 'react-redux';
 import { getError } from '../../redux/user/selectors';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
+import s from './AuthPage.module.css';
 
 function AuthPage() {
   const [showRegisterForm, setShowRegisterForm] = useState(false);
 
   const showRegForm = () => setShowRegisterForm(true);
   const showLogForm = () => setShowRegisterForm(false);
+
   const authErr = useSelector(getError);
 
   useEffect(() => {
     if (authErr) Notify.failure(`Attention! ${authErr.message}`);
   }, [authErr]);
+
   return (
     <div className={s.wrapper}>
       <Container>
