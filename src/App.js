@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Switch, Redirect } from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner';
 import { userRefresh } from './redux/user/operation';
-import { getIsLoggedIn } from './redux/user/selectors';
 
 // import AuthPage from "./pages/AuthPage";
 // import HomePage from "./pages/HomePage";
@@ -32,7 +31,6 @@ function App() {
   const isUserLoggedIn = localStorage.getItem('isloggedIn');
 
   useEffect(() => {
-    console.log(isUserLoggedIn);
     if (isUserLoggedIn) {
       dispatch(userRefresh());
     }
@@ -52,11 +50,11 @@ function App() {
             <AuthPage />
           </PublicRoute>
 
-          <PublicRoute path="/reset" restricted>
+          <PublicRoute path={routes.reset} restricted>
             <ResetPage />
           </PublicRoute>
 
-          <PublicRoute path="/api/users/change-password/:link" restricted>
+          <PublicRoute path={routes.changePassword} restricted>
             <ChangePassword />
           </PublicRoute>
 
