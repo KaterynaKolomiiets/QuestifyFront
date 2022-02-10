@@ -130,7 +130,10 @@ const Card = ({ data, card, isNewCard }) => {
  
 
   }
-const changeCompleted = () => {
+  const changeCompleted = () => {
+    if (!card.isActive) {
+    return
+  }
    setCompleted(true)
  }
 
@@ -148,9 +151,9 @@ const changeCompleted = () => {
         }`}
         onClick={onedit}
       >
-        {modal && <DifficultModal change={change} />}
+        {card.isActive && modal && <DifficultModal change={change} />}
         {deleteModal && <DeleteModule change={deleteHandler} />}
-        {categoryModal && <CategoryModal change={changeType} />}
+        {card.isActive && categoryModal && <CategoryModal change={changeType} />}
         <p className={s.cardCategoryName}>
           {edit ? (
             <>
@@ -171,7 +174,8 @@ const changeCompleted = () => {
               </span>
             </>
           ) : (
-            <>
+            <span className={card.isActive && s.setLevel} onClick={onclick}>
+            
               <span
                 className={
                   (s.cardCategoryCircle,
@@ -185,10 +189,10 @@ const changeCompleted = () => {
                 &#9679;
               </span>
 
-              <span className={s.cardCategory} onClick={onclick}>
+              <span className={s.cardCategory} >
                 {card.level}
               </span>
-            </>
+            </span>
           )}
           {/* STAR OR TROPHY ICON*/}
           {card.type === 'CHALLENGE' ? (
@@ -199,7 +203,7 @@ const changeCompleted = () => {
               onClick={changeCompleted}
             />
           ) : (
-            <span className={s.cardCategoryStart} onClick={changeCompleted}> &#9733;</span>
+            <span className={card.isActive? s.cardCategoryStart: s.cardCategoryStart_inective} onClick={changeCompleted}> &#9733;</span>
           )}
         </p>
         {edit && !isNewCard && <p className={s.editTitle}>edit quest</p>}
@@ -262,10 +266,12 @@ const changeCompleted = () => {
                   ${card.category === 'FAMILY' && s.family}
                   ${card.category === 'HEALTH' && s.health}
                   ${card.category === 'STUFF' && s.stuff}
-                  ${card.category === 'WORK' && s.work}`}
+                  ${card.category === 'WORK' && s.work}
+                  ${!card.isActive && s.inectiveCard}
+                  `}
                 onClick={categoryModalHandler}
               >
-                {card.category}
+                      {card.category} {card.isActive && <i className={s.arrowDown}>&#9207;</i>}
               </p>
             </>
           )}
