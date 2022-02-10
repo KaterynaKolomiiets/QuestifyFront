@@ -8,15 +8,13 @@ import {
 } from './operation';
 
 const initialState = {
-  userinfo: {
-    name: null,
-    email: null,
-    isActivated: false,
-    name: null,
-    isLoggedIn: false,
-  },
+  userinfo: { name: null, email: null, isActivated: false },
+  // name: null,
+  // email: null,
+  isActivated: false,
   token: null,
   error: null,
+  //   isLoading: false,
 };
 
 const userSlice = createSlice({
@@ -27,7 +25,6 @@ const userSlice = createSlice({
     [userLogin.fulfilled]: (state, action) => {
       state.userinfo = action.payload.user;
       state.token = action.payload.accessToken;
-      state.userinfo.isLoggedIn = true;
     },
     [userLogin.rejected]: (state, action) => {
       state.error = {

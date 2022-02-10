@@ -24,8 +24,7 @@ import trophy from './trophy.svg';
 import CompletedChallenge from '../CompletedChallenge';
 
 const Card = ({ data, card, isNewCard }) => {
-
-   const[completed, setCompleted] = useState(false);
+  const [completed, setCompleted] = useState(false);
   const [categoryModal, setcategoryModal] = useState(false);
   const [modal, setmodal] = useState(false);
   const [edit, setedit] = useState(false);
@@ -38,14 +37,15 @@ const Card = ({ data, card, isNewCard }) => {
 
   const dispatch = useDispatch();
   const cardFromState = useSelector(newTodoCard);
-  // console.log(adaptedTime);
-  // console.log(card);
 
   useEffect(() => {
     setdifficult(card.level);
     setvalue(card.title);
     setcategoryCart(card.category);
-    settimeDate(card.time);
+    let coverct = new Date(card.time);
+    coverct = dateAdapted(coverct);
+
+    settimeDate(coverct);
   }, []);
 
   function onclick() {
@@ -73,7 +73,6 @@ const Card = ({ data, card, isNewCard }) => {
   }
 
   function onedit(e) {
-    console.log(e);
     if (!card.isActive) {
       return;
     }
@@ -95,7 +94,7 @@ const Card = ({ data, card, isNewCard }) => {
       type: card.type,
     };
     dispatch(changeTodo({ id: card._id, ...newCard }));
-  }
+  };
 
   const deleteNewCard = () => {
     dispatch(deleteNewTodo());
@@ -107,10 +106,13 @@ const Card = ({ data, card, isNewCard }) => {
         title: value,
         category: categoryCart,
         type: cardFromState.type,
-        time: Date.now(),
+        time: timeDate.data,
         level: difficult,
       }),
     );
+    const adapded = dateAdapted(timeDate.data);
+    settimeDate(adapded);
+    console.log(adapded, 'adapded');
   };
 
   const addTodosDone = () => {
@@ -123,185 +125,194 @@ const Card = ({ data, card, isNewCard }) => {
     categoryModalHandler();
   }
 
-
   function takeTime(date) {
     settimeDate(date);
-
- 
-
   }
-const changeCompleted = () => {
-   setCompleted(true)
- }
+
+  const changeCompleted = () => {
+    setCompleted(true);
+  };
 
   return (
     <>
       {completed ? (
-
-        card.type === "TASK" ? <CompletedCard  change={addTodosDone}title={card.title} id={card._id}/> : <CompletedChallenge  change={addTodosDone}title={card.title} id={card._id}/>
-
-      ) : (
-
-      <li
-        className={`${s.card} ${
-          card.type === 'CHALLENGE' ? s.challenge : s.task
-        }`}
-        onClick={onedit}
-      >
-        {modal && <DifficultModal change={change} />}
-        {deleteModal && <DeleteModule change={deleteHandler} />}
-        {categoryModal && <CategoryModal change={changeType} />}
-        <p className={s.cardCategoryName}>
-          {edit ? (
-            <>
-              <span
-                className={
-                  (s.cardCategoryCircle,
-                  difficult === 'Normal'
-                    ? s.secondOption
-                    : difficult === 'Hard'
-                    ? s.thirdOption
-                    : s.firstOption)
-                }
-              >
-                &#9679;
-              </span>
-              <span className={s.cardCategory} onClick={onclick}>
-                {difficult}
-              </span>
-            </>
-          ) : (
-            <>
-              <span
-                className={
-                  (s.cardCategoryCircle,
-                  card.level === 'Normal'
-                    ? s.secondOption
-                    : card.level === 'Hard'
-                    ? s.thirdOption
-                    : s.firstOption)
-                }
-              >
-                &#9679;
-              </span>
-
-              <span className={s.cardCategory} onClick={onclick}>
-                {card.level}
-              </span>
-            </>
-          )}
-          {/* STAR OR TROPHY ICON*/}
-          {card.type === 'CHALLENGE' ? (
-            <img
-              src={trophy}
-              alt=""
-              className={s.cardCategoryStart}
-              onClick={changeCompleted}
-            />
-          ) : (
-            <span className={s.cardCategoryStart} onClick={changeCompleted}> &#9733;</span>
-          )}
-        </p>
-        {edit && !isNewCard && <p className={s.editTitle}>edit quest</p>}
-        {isNewCard && <p className={s.editTitle}>Create New Quest</p>}
-
-        {isNewCard || edit ? (
-          <form className={s.form}>
-            <input
-              autoFocus
-              className={`${s.input} ${
-                card.type === 'CHALLENGE' && s.inputChallenge
-              }`}
-              type="text"
-              value={value}
-              onChange={changeValue}
-            />
-          </form>
+        card.type === 'TASK' ? (
+          <CompletedCard
+            change={addTodosDone}
+            title={card.title}
+            id={card._id}
+          />
         ) : (
-          <>
-            {/* header CHALLENGE */}
-            {card.type === 'CHALLENGE' ? (
-              <h2 className={s.challengeHeader}>CHALLENGE</h2>
+          <CompletedChallenge
+            change={addTodosDone}
+            title={card.title}
+            id={card._id}
+          />
+        )
+      ) : (
+        <li
+          className={`${s.card} ${
+            card.type === 'CHALLENGE' ? s.challenge : s.task
+          }`}
+          onClick={onedit}
+        >
+          {modal && <DifficultModal change={change} />}
+          {deleteModal && <DeleteModule change={deleteHandler} />}
+          {categoryModal && <CategoryModal change={changeType} />}
+          <p className={s.cardCategoryName}>
+            {edit ? (
+              <>
+                <span
+                  className={
+                    (s.cardCategoryCircle,
+                    difficult === 'Normal'
+                      ? s.secondOption
+                      : difficult === 'Hard'
+                      ? s.thirdOption
+                      : s.firstOption)
+                  }
+                >
+                  &#9679;
+                </span>
+                <span className={s.cardCategory} onClick={onclick}>
+                  {difficult}
+                </span>
+              </>
             ) : (
-              <span className={s.taskHeader}>TASK</span>
+              <>
+                <span
+                  className={
+                    (s.cardCategoryCircle,
+                    card.level === 'Normal'
+                      ? s.secondOption
+                      : card.level === 'Hard'
+                      ? s.thirdOption
+                      : s.firstOption)
+                  }
+                >
+                  &#9679;
+                </span>
+
+                <span className={s.cardCategory} onClick={onclick}>
+                  {card.level}
+                </span>
+              </>
             )}
-            <h2
-              className={`${s.cardTitle} ${
-                card.type === 'CHALLENGE' && s.cardTitle_challenge
-              }`}
-            >
-              {card.title}
-            </h2>
-          </>
-        )}
-
-        <div className={s.cardDate}>
-          <p className={s.timeText}>
-            {timeDate.dayName},&nbsp;{!edit && timeDate.time}
+            {/* STAR OR TROPHY ICON*/}
+            {card.type === 'CHALLENGE' ? (
+              <img
+                src={trophy}
+                alt=""
+                className={s.cardCategoryStart}
+                onClick={changeCompleted}
+              />
+            ) : (
+              <span className={s.cardCategoryStart} onClick={changeCompleted}>
+                {' '}
+                &#9733;
+              </span>
+            )}
           </p>
-          {edit && <TimeDatePicker time={takeTime} />}
-          {isNewCard && <TimeDatePicker time={takeTime} />}
-        </div>
+          {edit && !isNewCard && <p className={s.editTitle}>edit quest</p>}
+          {isNewCard && <p className={s.editTitle}>Create New Quest</p>}
 
-        <div className={s.bottomMenu}>
-          {edit ? (
-            <>
-              <p
-                className={`${s.cardType} ${categoryCart.toLowerCase()}`}
-                onClick={categoryModalHandler}
-              >
-                {categoryCart}
-              </p>
-            </>
+          {isNewCard || edit ? (
+            <form className={s.form}>
+              <input
+                autoFocus
+                className={`${s.input} ${
+                  card.type === 'CHALLENGE' && s.inputChallenge
+                }`}
+                type="text"
+                value={value}
+                onChange={changeValue}
+              />
+            </form>
           ) : (
             <>
-              <p
-                className={`${s.cardType} 
+              {/* header CHALLENGE */}
+              {card.type === 'CHALLENGE' ? (
+                <h2 className={s.challengeHeader}>CHALLENGE</h2>
+              ) : (
+                <span className={s.taskHeader}>TASK</span>
+              )}
+              <h2
+                className={`${s.cardTitle} ${
+                  card.type === 'CHALLENGE' && s.cardTitle_challenge
+                }`}
+              >
+                {card.title}
+              </h2>
+            </>
+          )}
+
+          <div className={s.cardDate}>
+            <p className={s.timeText}>
+              {timeDate.dayName}
+              {!edit && !isNewCard && <>,&nbsp;{timeDate.time}</>}
+            </p>
+            {edit && <TimeDatePicker time={takeTime} />}
+            {isNewCard && <TimeDatePicker time={takeTime} />}
+          </div>
+
+          <div className={s.bottomMenu}>
+            {edit ? (
+              <>
+                <p
+                  className={`${s.cardType} ${categoryCart.toLowerCase()}`}
+                  onClick={categoryModalHandler}
+                >
+                  {categoryCart}
+                </p>
+              </>
+            ) : (
+              <>
+                <p
+                  className={`${s.cardType} 
                   ${card.category === 'LEARNING' && s.learning}
                   ${card.category === 'LEISURE' && s.leisure}
                   ${card.category === 'FAMILY' && s.family}
                   ${card.category === 'HEALTH' && s.health}
                   ${card.category === 'STUFF' && s.stuff}
                   ${card.category === 'WORK' && s.work}`}
-                onClick={categoryModalHandler}
-              >
-                {card.category}
-              </p>
-            </>
-          )}
+                  onClick={categoryModalHandler}
+                >
+                  {card.category}
+                </p>
+              </>
+            )}
 
-          {isNewCard && (
-            <>
-              <div className={s.buttons}>
-                <span className={s.cross} onClick={deleteNewCard}>
-                  &#10006;
-                </span>
-                <span onClick={addNewTodo} className={s.start}>
-                  START
-                </span>
-              </div>
-            </>
-          )}
-          {edit && !isNewCard && (
-            <>
-              <div className={s.buttons}>
-                <div className={s.saveIcon} onClick={closeAndSave}>
-                  <img src={saveIcon} alt="save card" />
+            {isNewCard && (
+              <>
+                <div className={s.buttons}>
+                  <span className={s.cross} onClick={deleteNewCard}>
+                    &#10006;
+                  </span>
+                  <span onClick={addNewTodo} className={s.start}>
+                    START
+                  </span>
                 </div>
+              </>
+            )}
+            {edit && !isNewCard && (
+              <>
+                <div className={s.buttons}>
+                  <div className={s.saveIcon} onClick={closeAndSave}>
+                    <img src={saveIcon} alt="save card" />
+                  </div>
 
-                <span className={s.cross} onClick={onDelete}>
-                  &#10006;
-                </span>
-                <span onClick={addTodosDone} className={s.checked}>
-                  &#10004;
-                </span>
-              </div>
-            </>
-          )}
-        </div>
-      </li>
-
-      )} 
+                  <span className={s.cross} onClick={onDelete}>
+                    &#10006;
+                  </span>
+                  <span onClick={addTodosDone} className={s.checked}>
+                    &#10004;
+                  </span>
+                </div>
+              </>
+            )}
+          </div>
+        </li>
+      )}
     </>
   );
 };

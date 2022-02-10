@@ -3,9 +3,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import api from './interceptor';
 import { get_cookie } from './helper';
 
-// const BASE_URL = 'http://questify-project.herokuapp.com/api/users';
+const BASE_URL = 'http://questify-project.herokuapp.com/api/users';
 
-const BASE_URL = 'http://localhost:8083/api/users';
+// const BASE_URL = 'http://localhost:8083/api/users';
 
 const token = {
   set(token) {
@@ -18,23 +18,22 @@ const token = {
 
 export const userRegistration = createAsyncThunk(
   'auth/registration',
-  async (user, thunkAPI) => {
+  async (user, thunkApi) => {
     try {
       const { data } = await axios.post(`${BASE_URL}/registration`, user);
       token.set(data.accessToken);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      throw new Error(error);
     }
   },
 );
 export const userLogin = createAsyncThunk(
   'auth/login',
-  async (user, thunkAPI) => {
+  async (user, thunkApi) => {
     try {
       const { data } = await axios.post(`${BASE_URL}/login`, user);
       localStorage.setItem('token', data.accessToken);
-      localStorage.setItem('isloggedIn', true);
 
       document.cookie = `refreshToken=${data.refreshToken}`;
 
@@ -42,10 +41,11 @@ export const userLogin = createAsyncThunk(
       console.log(data);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      thunkApi(error);
     }
   },
 );
+
 
 export const userLogout = createAsyncThunk(
   'auth/logout',
@@ -70,6 +70,7 @@ export const userLogout = createAsyncThunk(
     }
   },
 );
+
 // check address
 // export const userActivate = createAsyncThunk("auth/activate", async (id) => {
 //   try {
@@ -102,23 +103,14 @@ export const userRefresh = createAsyncThunk(
       localStorage.setItem('token', data.accessToken);
       console.log(data);
       document.cookie = `refreshToken=${data.refreshToken}`;
-      console.log(data);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      throw new Error(error);
     }
   },
 );
 
-// export const userRefresh = createAsyncThunk("auth/refresh", async (user) => {
-//   try {
-//     const { data } = await axios.get(`${BASE_URL}/refresh`, user);
-//       console.log(data);
-//     return data;
-//   } catch (error) {
-//     throw new Error(error);
-//   }
-// });
+
 
 // export const userResetPassword = createAsyncThunk(
 //   "auth/reset-password",
@@ -144,19 +136,19 @@ export const userRefresh = createAsyncThunk(
 // });
 export const userResetPassword = createAsyncThunk(
   'auth/reset-password',
-  async (user, thunkAPI) => {
+  async user => {
     try {
       const { data } = await axios.post(`${BASE_URL}/reset-password`, user);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      throw new Error(error);
     }
   },
 );
 
 export const userChangePassword = createAsyncThunk(
   'auth/change-password',
-  async ({ password, link }, thunkAPI) => {
+  async ({ password, link }) => {
     console.log('linklink', link);
     console.log('password', password);
     try {
@@ -165,7 +157,7 @@ export const userChangePassword = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      throw new Error(error);
     }
   },
 );
