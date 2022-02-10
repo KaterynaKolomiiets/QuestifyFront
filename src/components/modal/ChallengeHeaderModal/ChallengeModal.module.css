@@ -1,3 +1,20 @@
+/* полоса прокрутки (скроллбар) */
+::-webkit-scrollbar {
+  width: 14px; /* ширина для вертикального скролла */
+  background-color: #143861;
+}
+
+/* ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+  background-color: #0a99b3;
+  border-radius: 9em;
+  box-shadow: inset 1px 1px 10px #f3faf7;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #253861;
+}
+
 .backdrop {
   /*   border: 2px green solid;
   background-color: RGBA(0, 0, 0, 0.1); */
@@ -16,7 +33,7 @@
   background-color: var(--font-tertiary);
   border-radius: 10px;
   position: absolute;
-  padding: 0 20px;
+  padding: 0 20px 20px 20px;
   min-height: 250px;
   max-height: 80vh;
   width: 250px;
