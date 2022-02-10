@@ -97,6 +97,7 @@ const Card = ({ data, card, isNewCard }) => {
       type: card.type,
     };
     dispatch(changeTodo({ id: card._id, ...newCard }));
+    console.log(newCard)
   };
 
   const deleteNewCard = () => {
