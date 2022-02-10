@@ -1,14 +1,20 @@
-import { useState } from 'react';
-import Container from "../../components/Container";
-import AuthForm from "../../components/AuthForm";
-import s from "./AuthPage.module.css";
-
+import { useEffect, useState } from 'react';
+import Container from '../../components/Container';
+import AuthForm from '../../components/AuthForm';
+import s from './AuthPage.module.css';
+import { useSelector } from 'react-redux';
+import { getError } from '../../redux/user/selectors';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 function AuthPage() {
   const [showRegisterForm, setShowRegisterForm] = useState(false);
 
   const showRegForm = () => setShowRegisterForm(true);
   const showLogForm = () => setShowRegisterForm(false);
-  
+  const authErr = useSelector(getError);
+  console.log(authErr);
+  useEffect(() => {
+    if (authErr) Notify.failure(`Attention! ${authErr.message}`);
+  }, [authErr]);
   return (
     <div className={s.wrapper}>
       <Container>
@@ -22,17 +28,24 @@ function AuthPage() {
 
           <p className={s.txt__bottom}>
             Choose your name to
-
-            <button type='button' onClick={showRegForm} className={s.invisibleButton}>
+            <button
+              type="button"
+              onClick={showRegForm}
+              className={s.invisibleButton}
+            >
               sign up
             </button>
             or
-            <button type='button' onClick={showLogForm} className={s.invisibleButton}>
+            <button
+              type="button"
+              onClick={showLogForm}
+              className={s.invisibleButton}
+            >
               log in
             </button>
           </p>
 
-          <AuthForm showRegisterForm={ showRegisterForm }/>
+          <AuthForm showRegisterForm={showRegisterForm} />
         </section>
       </Container>
     </div>
