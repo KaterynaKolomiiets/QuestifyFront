@@ -86,14 +86,14 @@ const CardsToday = () => {
       <section className={s.section}>
       <h2 className={s.title}>Tomorrow</h2>
       <ul className={s.cardSet}>
-        {isNewCard && (
+        {/* {isNewCard && (
           <Card
             key={newTodo._id}
             card={newTodo}
             // data={takeData}
             isNewCard={isNewCard}
           />
-        )}
+        )} */}
         {todos?.map(card => {
           if (!checkIfToday(card.time)) {
             return <Card key={card._id}
