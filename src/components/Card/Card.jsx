@@ -35,6 +35,7 @@ const Card = ({ data, card, isNewCard }) => {
   const [categoryCart, setcategoryCart] = useState('family');
   const [timeDate, settimeDate] = useState(new Date());
   // const [adaptedTime, setadaptedTime] = useState('');
+  const [cardId, setCardId] = useState(null)
 
   const dispatch = useDispatch();
   const cardFromState = useSelector(newTodoCard);
@@ -79,6 +80,7 @@ const Card = ({ data, card, isNewCard }) => {
     if (!card.isActive) {
       return;
     }
+  
     if (!edit) setedit(true);
   }
 
@@ -168,7 +170,8 @@ const Card = ({ data, card, isNewCard }) => {
           {modal && <DifficultModal change={change} />}
           {deleteModal && <DeleteModule change={deleteHandler} />}
           {categoryModal && <CategoryModal change={changeType} />}
-          <p className={s.cardCategoryName}>
+            <p className={s.cardCategoryName}>
+              
             {edit ? (
               <>
                 <span
@@ -206,21 +209,21 @@ const Card = ({ data, card, isNewCard }) => {
                   {card.level}
                 </span>
               </>
-            )}
-            {/* STAR OR TROPHY ICON*/}
-            {card.type === 'CHALLENGE' ? (
-              <img
-                src={trophy}
-                alt=""
-                className={s.cardCategoryStart}
-                onClick={changeCompleted}
-              />
-            ) : (
-              <span className={s.cardCategoryStart} onClick={changeCompleted}>
-                {' '}
-                &#9733;
-              </span>
-            )}
+              )}
+              {/* STAR OR TROPHY ICON*/}
+          {card.type === 'CHALLENGE' ? (
+            <img
+              src={trophy}
+              alt=""
+              className={s.cardCategoryStart}
+              onClick={changeCompleted}
+            />
+          ) : (
+            // <span className={s.cardCategoryStart} onClick={changeCompleted}> &#9733;</span>
+            <button type="button" className={s.cardCategoryStart}onClick={changeCompleted}>
+              <Icon className={s.starIcon} name="star" color="#00d7ff" size={15} />
+          </button>
+          )}
           </p>
           {edit && !isNewCard && <p className={s.editTitle}>edit quest</p>}
           {isNewCard && <p className={s.editTitle}>Create New Quest</p>}
@@ -255,25 +258,7 @@ const Card = ({ data, card, isNewCard }) => {
             </>
           )}
 
-          {/* STAR OR TROPHY ICON*/}
-          {card.type === 'CHALLENGE' ? (
-            <img
-              src={trophy}
-              alt=""
-              className={s.cardCategoryStart}
-              onClick={changeCompleted}
-            />
-          ) : (
-            // <span className={s.cardCategoryStart} onClick={changeCompleted}> &#9733;</span>
-            <button type="button" className={s.cardCategoryStart}onClick={changeCompleted}>
-              <Icon className={s.starIcon} name="star" color="#00d7ff" size={15} />
-          </button>
-          )}
-        </p>
-        {edit && !isNewCard && <p className={s.editTitle}>edit quest</p>}
         {isNewCard && <p className={s.editTitle}>Create New Quest</p>}
-
-
           <div className={s.cardDate}>
             <p className={s.timeText}>
               {timeDate.dayName}
@@ -282,7 +267,6 @@ const Card = ({ data, card, isNewCard }) => {
             {edit && <TimeDatePicker time={takeTime} />}
             {isNewCard && <TimeDatePicker time={takeTime} />}
           </div>
-
           <div className={s.bottomMenu}>
             {edit ? (
               <>
