@@ -31,21 +31,21 @@ const userSlice = createSlice({
     },
     [userLogin.rejected]: (state, action) => {
       state.error = {
-        message: 'bad request', // fix this rout everyvere
+        message: action.payload.response.data.message,
       };
     },
     [userLogout.fulfilled]: (state, action) => initialState,
     [userLogout.rejected]: (state, action) => {
       state.error = {
         status: action.payload.status,
-        message: action.payload.message, // fix this rout everyvere
+        message: action.payload.response.data.message,
       };
     },
     [userRegistration.fulfilled]: (state, action) => action.payload.user,
     [userRegistration.rejected]: (state, action) => {
       state.error = {
         status: action.payload.status,
-        message: action.payload.message, // fix this rout everyvere
+        message: action.payload.response.data.message,
       };
     },
     [userRefresh.fulfilled]: (state, action) => {
@@ -58,7 +58,7 @@ const userSlice = createSlice({
     [userRefresh.rejected]: (state, action) => {
       state.error = {
         status: action.payload.status,
-        message: action.payload.message, // fix this rout everyvere
+        message: action.payload.response.data.message,
       };
     },
   },
