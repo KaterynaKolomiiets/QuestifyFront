@@ -104,9 +104,15 @@
   position: relative;
   overflow: hidden;
 }
+@media screen and (min-width: 1280px) {
+  .wrapper {
+    margin-top: calc(100vh - 850px);
+    /* margin-left: calc(100vw - 1280px); */
+  }
+}
 /* Фоновые изображения */
 .wrapper::before {
-  content: "";
+  content: '';
   position: absolute;
   z-index: -1;
 }
@@ -136,7 +142,7 @@
     top: 0;
     right: calc(768px - 436px - 707px);
 
-    background: url("../../images/bg_top_tab.png");
+    background: url('../../images/bg_top_tab.png');
     background-repeat: no-repeat;
   }
 }
@@ -148,13 +154,13 @@
     top: 0;
     right: calc(1280px - 840px - 707px);
 
-    background: url("../../images/bg_top_dsk.png");
+    background: url('../../images/bg_top_dsk.png');
     background-repeat: no-repeat;
   }
 }
 
 .wrapper::after {
-  content: "";
+  content: '';
   position: absolute;
   z-index: -2;
 }
@@ -184,7 +190,7 @@
     top: 275px;
     right: calc(768px - 1439px);
 
-    background: url("../../images/bg_btm_tab.png");
+    background: url('../../images/bg_btm_tab.png');
     background-repeat: no-repeat;
   }
 }
@@ -196,7 +202,7 @@
     top: 278px;
     right: calc(1280px - 1441px - 265px);
 
-    background: url("../../images/bg_btm_dsk.png");
+    background: url('../../images/bg_btm_dsk.png');
     background-repeat: no-repeat;
   }
 }

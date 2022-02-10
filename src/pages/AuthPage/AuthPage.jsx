@@ -6,7 +6,6 @@ import Container from '../../components/Container';
 import AuthForm from '../../components/AuthForm';
 import { getError } from '../../redux/user/selectors';
 
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import s from './AuthPage.module.css';
 
 function AuthPage() {
