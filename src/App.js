@@ -1,41 +1,47 @@
-import { useEffect, useState, Suspense, lazy } from "react";
-import { useDispatch } from "react-redux";
-import { Switch, Redirect } from "react-router-dom";
-import { TailSpin } from "react-loader-spinner";
-import { userRefresh } from "./redux/user/operation";
+import { useEffect, useState, Suspense, lazy } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Switch, Redirect } from 'react-router-dom';
+import { TailSpin } from 'react-loader-spinner';
+import { userRefresh } from './redux/user/operation';
+import { getIsLoggedIn } from './redux/user/selectors';
 
 // import AuthPage from "./pages/AuthPage";
 // import HomePage from "./pages/HomePage";
 // import ModalNewCard from "./components/modal/ModalNewCard";
 
-import { routes, PublicRoute, PrivateRoute } from "./routes";
+import { routes, PublicRoute, PrivateRoute } from './routes';
 
-import "./App.css";
+import './App.css';
 
 const AuthPage = lazy(() =>
-  import("./pages/AuthPage" /* webpackChunkName: 'AuthPage' */)
+  import('./pages/AuthPage' /* webpackChunkName: 'AuthPage' */),
 );
 const HomePage = lazy(() =>
-  import("./pages/HomePage" /* webpackChunkName: 'HomePage' */)
+  import('./pages/HomePage' /* webpackChunkName: 'HomePage' */),
 );
 const ResetPage = lazy(() =>
-  import("./pages/ResetPasswordPage" /* webpackChunkName: 'HomePage' */)
+  import('./pages/ResetPasswordPage' /* webpackChunkName: 'HomePage' */),
 );
 const ChangePassword = lazy(() =>
-  import("./pages/ChangePasswordPage" /* webpackChunkName: 'HomePage' */)
+  import('./pages/ChangePasswordPage' /* webpackChunkName: 'HomePage' */),
 );
 
 function App() {
   const dispatch = useDispatch(userRefresh);
+  const isUserLoggedIn = useSelector(getIsLoggedIn);
+
   useEffect(() => {
-    dispatch(userRefresh());
-  }, [dispatch]);
+    console.log(isUserLoggedIn)
+    if (isUserLoggedIn) {
+      dispatch(userRefresh());
+    }
+  });
 
   return (
     <div className="App">
       <Suspense
         fallback={
-          <div style={{ display: "flex", justifyContent: "center" }}>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
             <TailSpin color="#00BFFF" height={100} width={100} />
           </div>
         }
