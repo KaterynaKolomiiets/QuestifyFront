@@ -35,6 +35,7 @@ const Card = ({ data, card, isNewCard }) => {
   const [categoryCart, setcategoryCart] = useState('family');
   const [timeDate, settimeDate] = useState(new Date());
   // const [adaptedTime, setadaptedTime] = useState('');
+  const [cardId, setCardId] = useState(null)
 
   const dispatch = useDispatch();
   const cardFromState = useSelector(newTodoCard);
@@ -77,6 +78,7 @@ const Card = ({ data, card, isNewCard }) => {
     if (!card.isActive) {
       return;
     }
+  
     if (!edit) setedit(true);
   }
 
