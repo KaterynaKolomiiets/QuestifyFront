@@ -56,13 +56,16 @@
 
   width: 52px;
   height: 52px;
+
+  transition: background-color var(--transition-duration) var(--transition-timing),
+  box-shadow var(--transition-duration) var(--transition-timing);
 }
 .auth_form_button:hover,
 .auth_form_button:focus {
-  /* border: solid 1px #fff; */
+  outline: none;
   background:  var(--accent-hover);
   box-shadow: 0 0 5px 2px  var(--accent-hover);
-  outline: none;
+  
 }
 /* Цвет плейсхолдера */
 ::-webkit-input-placeholder {
@@ -95,6 +98,12 @@
   bottom: 50px;
   left: 2px;
   font-size: 12px;
-  text-decoration: none;
+  text-decoration: underline;
   color: black;
+  transition: color var(--transition-duration) var(--transition-timing);
+}
+.forgotPassword:hover,
+.forgotPassword:focus {
+  color: var(--font-accent);
+  text-decoration: underline;
 }

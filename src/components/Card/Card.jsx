@@ -22,7 +22,6 @@ import { newTodoCard } from '../../redux/todos/todosSelector';
 // import ChallengeCard from '../modal/ChallengeCard/ChallengeCard';
 import trophy from './trophy.svg';
 import CompletedChallenge from '../CompletedChallenge';
-import Icon from "../Icon"
 
 const Card = ({ data, card, isNewCard }) => {
   const [completed, setCompleted] = useState(false);
@@ -35,19 +34,17 @@ const Card = ({ data, card, isNewCard }) => {
   const [categoryCart, setcategoryCart] = useState('family');
   const [timeDate, settimeDate] = useState(new Date());
   // const [adaptedTime, setadaptedTime] = useState('');
-  const [cardId, setCardId] = useState(null)
 
   const dispatch = useDispatch();
   const cardFromState = useSelector(newTodoCard);
+  // console.log(adaptedTime);
+  // console.log(card);
 
   useEffect(() => {
     setdifficult(card.level);
     setvalue(card.title);
     setcategoryCart(card.category);
-    let coverct = new Date(card.time);
-    coverct = dateAdapted(coverct);
-
-    settimeDate(coverct);
+    settimeDate(card.time);
   }, []);
 
   function onclick() {
@@ -74,13 +71,11 @@ const Card = ({ data, card, isNewCard }) => {
     setdeleteModal(!deleteModal);
   }
 
-
-  const onedit = (e) => {
+  function onedit(e) {
     console.log(e);
     if (!card.isActive) {
       return;
     }
-  
     if (!edit) setedit(true);
   }
 
@@ -111,13 +106,10 @@ const Card = ({ data, card, isNewCard }) => {
         title: value,
         category: categoryCart,
         type: cardFromState.type,
-        time: timeDate.data,
+        time: Date.now(),
         level: difficult,
       }),
     );
-    const adapded = dateAdapted(timeDate.data);
-    settimeDate(adapded);
-    console.log(adapded, 'adapded');
   };
 
   const addTodosDone = () => {
@@ -132,21 +124,17 @@ const Card = ({ data, card, isNewCard }) => {
 
   function takeTime(date) {
     settimeDate(date);
-
-
- 
-
   }
   const changeCompleted = () => {
-    setCompleted(true)
-  }
-
- 
+    if (!card.isActive) {
+      return;
+    }
+    setCompleted(true);
+  };
 
   return (
     <>
       {completed ? (
-
         card.type === 'TASK' ? (
           <CompletedCard
             change={addTodosDone}
@@ -167,11 +155,12 @@ const Card = ({ data, card, isNewCard }) => {
           }`}
           onClick={onedit}
         >
-          {modal && <DifficultModal change={change} />}
+          {card.isActive && modal && <DifficultModal change={change} />}
           {deleteModal && <DeleteModule change={deleteHandler} />}
-          {categoryModal && <CategoryModal change={changeType} />}
-            <p className={s.cardCategoryName}>
-              
+          {card.isActive && categoryModal && (
+            <CategoryModal change={changeType} />
+          )}
+          <p className={s.cardCategoryName}>
             {edit ? (
               <>
                 <span
@@ -191,7 +180,7 @@ const Card = ({ data, card, isNewCard }) => {
                 </span>
               </>
             ) : (
-              <>
+              <span className={card.isActive && s.setLevel} onClick={onclick}>
                 <span
                   className={
                     (s.cardCategoryCircle,
@@ -205,25 +194,30 @@ const Card = ({ data, card, isNewCard }) => {
                   &#9679;
                 </span>
 
-                <span className={s.cardCategory} onClick={onclick}>
-                  {card.level}
-                </span>
-              </>
-              )}
-              {/* STAR OR TROPHY ICON*/}
-          {card.type === 'CHALLENGE' ? (
-            <img
-              src={trophy}
-              alt=""
-              className={s.cardCategoryStart}
-              onClick={changeCompleted}
-            />
-          ) : (
-            // <span className={s.cardCategoryStart} onClick={changeCompleted}> &#9733;</span>
-            <button type="button" className={s.cardCategoryStart}onClick={changeCompleted}>
-              <Icon className={s.starIcon} name="star" color="#00d7ff" size={15} />
-          </button>
-          )}
+                <span className={s.cardCategory}>{card.level}</span>
+              </span>
+            )}
+            {/* STAR OR TROPHY ICON*/}
+            {card.type === 'CHALLENGE' ? (
+              <img
+                src={trophy}
+                alt=""
+                className={s.cardCategoryStart}
+                onClick={changeCompleted}
+              />
+            ) : (
+              <span
+                className={
+                  card.isActive
+                    ? s.cardCategoryStart
+                    : s.cardCategoryStart_inective
+                }
+                onClick={changeCompleted}
+              >
+                {' '}
+                &#9733;
+              </span>
+            )}
           </p>
           {edit && !isNewCard && <p className={s.editTitle}>edit quest</p>}
           {isNewCard && <p className={s.editTitle}>Create New Quest</p>}
@@ -258,15 +252,14 @@ const Card = ({ data, card, isNewCard }) => {
             </>
           )}
 
-        {isNewCard && <p className={s.editTitle}>Create New Quest</p>}
           <div className={s.cardDate}>
             <p className={s.timeText}>
-              {timeDate.dayName}
-              {!edit && !isNewCard && <>,&nbsp;{timeDate.time}</>}
+              {timeDate.dayName},&nbsp;{!edit && timeDate.time}
             </p>
             {edit && <TimeDatePicker time={takeTime} />}
             {isNewCard && <TimeDatePicker time={takeTime} />}
           </div>
+
           <div className={s.bottomMenu}>
             {edit ? (
               <>
@@ -286,10 +279,13 @@ const Card = ({ data, card, isNewCard }) => {
                   ${card.category === 'FAMILY' && s.family}
                   ${card.category === 'HEALTH' && s.health}
                   ${card.category === 'STUFF' && s.stuff}
-                  ${card.category === 'WORK' && s.work}`}
+                  ${card.category === 'WORK' && s.work}
+                  ${!card.isActive && s.inectiveCard}
+                  `}
                   onClick={categoryModalHandler}
                 >
-                  {card.category}
+                  {card.category}{' '}
+                  {card.isActive && <i className={s.arrowDown}>&#9207;</i>}
                 </p>
               </>
             )}
