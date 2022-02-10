@@ -28,14 +28,15 @@ const ChangePassword = lazy(() =>
 
 function App() {
   const dispatch = useDispatch(userRefresh);
-  const isUserLoggedIn = useSelector(getIsLoggedIn);
+  // const isUserLoggedIn = useSelector(getIsLoggedIn);
+  const isUserLoggedIn = localStorage.getItem('isloggedIn');
 
   useEffect(() => {
-    console.log(isUserLoggedIn)
+    console.log(isUserLoggedIn);
     if (isUserLoggedIn) {
       dispatch(userRefresh());
     }
-  });
+  }, [dispatch]);
 
   return (
     <div className="App">
