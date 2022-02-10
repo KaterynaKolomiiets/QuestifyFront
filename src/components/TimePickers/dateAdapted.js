@@ -24,17 +24,24 @@ const dateAdapted = data => {
   ];
   let dayName = days[data.getDay()];
   const hours = data.getHours();
-  const minutes = data.getMinutes();
+  const minutes = (data.getMinutes() < 10 ? '0' : '') + data.getMinutes();
   const times = `${hours}:${minutes}`;
   const dateNaw = new Date().getDate();
-  if (data.getDate() === new Date().getDate()) {
+  const day = data.getDate();
+  const month = monthNames[data.getMonth()];
+
+  if (
+    data.getMonth() === new Date().getMonth() &&
+    data.getDate() === new Date().getDate()
+  ) {
     dayName = 'Today';
-  } else if (Number(data.getDate()) === Number(dateNaw) + 1) {
+  } else if (
+    data.getMonth() + 1 === new Date().getMonth() &&
+    new Date().getDate() + 1 === dateNaw
+  ) {
     dayName = 'Tomorrow';
-  } else if (Number(data.getDate()) >= Number(dateNaw) + 7) {
-    const day = data.getDate();
-    const month = monthNames[data.getMonth() + 1];
-    dayName = `${day}/${month}`;
+  } else if (!Number(data.getDate()) >= Number(dateNaw) + 7) {
+    dayName = `${day}.${month}`;
   }
 
   return { time: times, dayName };
