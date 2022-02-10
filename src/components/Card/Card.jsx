@@ -127,12 +127,12 @@ const Card = ({ data, card, isNewCard }) => {
   function takeTime(date) {
     settimeDate(date);
 
- const changeCompleted = () => {
-   setCompleted(true)
- }
+ 
 
   }
-
+const changeCompleted = () => {
+   setCompleted(true)
+ }
 
   return (
     <>

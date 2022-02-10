@@ -8,13 +8,9 @@ import {
 } from './operation';
 
 const initialState = {
-  userinfo: { name: null, email: null, isActivated: false },
-  // name: null,
-  // email: null,
-  isActivated: false,
+  userinfo: { name: null, email: null, isActivated: false, name: null },
   token: null,
   error: null,
-  //   isLoading: false,
 };
 
 const userSlice = createSlice({
