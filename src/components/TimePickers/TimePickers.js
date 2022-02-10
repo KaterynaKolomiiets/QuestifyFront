@@ -26,7 +26,7 @@ export default function TimeDatePicker({ time }) {
     const times = `${hours}:${minutes}`;
     const dateNaw = new Date().getDate();
     if (data.getDate() === new Date().getDate()) {
-      dayName = 'today';
+      dayName = 'Today';
     } else if (Number(data.getDate()) === Number(dateNaw) + 1) {
       dayName = 'Tomorrow';
     }
