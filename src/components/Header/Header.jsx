@@ -40,6 +40,7 @@ const Header = () => {
     dispatch(userLogout({ email: user.email, password: user.password }));
   };
 
+  console.log('user', user);
   const userEmail = user.email;
   const avatarLetter = userEmail.substr(0, 1).toUpperCase();
 
@@ -52,7 +53,7 @@ const Header = () => {
             <Avatar sx={{ bgcolor: blueGrey[800] }} className={s.avatarLetter}>
               {avatarLetter}
             </Avatar>
-            <p className={s.userName}>{user.name}</p>
+            <p className={s.userName}>{user.email}</p>
           </div>
           <div className={s.userDataMobile}>
             <div className={s.avatarMobile}>
