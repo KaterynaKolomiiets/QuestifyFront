@@ -31,6 +31,7 @@ function App() {
     dispatch(userRefresh());
   }, [dispatch]);
 
+  console.log("test")
   return (
     <div className="App">
       <Suspense
