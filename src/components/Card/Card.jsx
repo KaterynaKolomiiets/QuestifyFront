@@ -109,7 +109,7 @@ const Card = ({ data, card, isNewCard }) => {
         title: value,
         category: categoryCart,
         type: cardFromState.type,
-        time: Date.now(),
+        time: timeDate.data,
         level: difficult,
       }),
     );
