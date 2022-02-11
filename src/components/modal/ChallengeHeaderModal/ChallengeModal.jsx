@@ -30,7 +30,9 @@ const ChallengeModal = ({ challengeModal }) => {
             {todos
               .filter(item => item.type === 'CHALLENGE')
               .map(card => {
-                return <Card key={card._id} card={card} />;
+                return (
+                  <Card key={card._id} card={card} isChallengeWindow={true} />
+                );
               })}
           </ul>
         </div>

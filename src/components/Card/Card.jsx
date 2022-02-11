@@ -22,7 +22,8 @@ import { newTodoCard } from '../../redux/todos/todosSelector';
 import trophy from './trophy.svg';
 import CompletedChallenge from '../CompletedChallenge';
 
-const Card = ({ data, card, isNewCard }) => {
+
+const Card = ({ data, card, isNewCard, isChallengeWindow }) => {
   const [completed, setCompleted] = useState(false);
   const [categoryModal, setcategoryModal] = useState(false);
   const [modal, setmodal] = useState(false);
@@ -153,7 +154,7 @@ const Card = ({ data, card, isNewCard }) => {
         <li
           className={`${s.card} ${
             card.type === 'CHALLENGE' ? s.challenge : s.task
-          }`}
+          } ${isChallengeWindow && s.challengeModal}`}
           onClick={onedit}
         >
           {isNewCard && modal && <DifficultModal change={change} />}
