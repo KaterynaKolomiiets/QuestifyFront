@@ -5,15 +5,36 @@ import s from './AuthPage.module.css';
 import { useSelector } from 'react-redux';
 import { getError } from '../../redux/user/selectors';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { getUserIP } from '../../redux/user/helper';
+
 
 function AuthPage() {
   const [showRegisterForm, setShowRegisterForm] = useState(false);
+  const [host, sethost] = useState('')
 
   const showRegForm = () => setShowRegisterForm(true);
   const showLogForm = () => setShowRegisterForm(false);
   const authErr = useSelector(getError);
   
-  console.log(authErr);
+  
+  useEffect(async () => { 
+    const get = localStorage.getItem('get');
+    if (!get) { 
+    const result = await getUserIP()
+    const ip = window.btoa(result)
+    sethost(ip)
+    }
+    localStorage.setItem('get', true);
+    
+    
+  }, [])
+
+  window.onbeforeunload = function() {
+  localStorage.removeItem('get');
+  return '';
+};
+  
+  
   useEffect(() => {
     if (authErr) Notify.failure(`Attention! ${authErr.message}`);
   }, [authErr]);
@@ -47,7 +68,7 @@ function AuthPage() {
             </button>
           </p>
 
-          <AuthForm showRegisterForm={showRegisterForm} />
+          <AuthForm showRegisterForm={showRegisterForm} host={host}/>
         </section>
       </Container>
     </div>

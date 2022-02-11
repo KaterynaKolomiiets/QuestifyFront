@@ -1,17 +1,23 @@
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Container from "../../components/Container";
 import s from "./ResetPassword.module.css";
 import { userResetPassword} from '../../redux/user/operation'
-import { useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import { useDispatch, useSelector } from 'react-redux';
+import { getError } from '../../redux/user/selectors';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { useHistory } from 'react-router-dom';
+
 
 function ResetPassword() {
   const dispatch = useDispatch();
- 
-  
+  const error = useSelector(getError)
+  const history = useHistory();
+  const firstUpdate = useRef(true);
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
+  
+
 
   const changeEmailValue = (event) => setEmail(event.target.value);
 
@@ -22,7 +28,7 @@ function ResetPassword() {
   };
 
   
-  
+
   const onSubmit = () => {
     !validateEmail(email)
     ? setEmailError("Некорректно введен e-mail.")
@@ -30,10 +36,32 @@ function ResetPassword() {
       
     if (validateEmail(email)) {
       dispatch(userResetPassword({ email }))
-      
-      alert('Вам на email отправлено письмо. Подтвердите регистрацию !');
     }
+    
   };
+
+
+  useEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
+      
+    if (error) {
+      return Notify.failure(`${error.message}`)
+    } else if (error === '' && firstUpdate.current === false) { 
+
+      Notify.success("We sent link for change password on your email!");
+      
+      setTimeout(() => {
+        history.push('/auth')
+      }, 5000);
+      
+    } 
+    
+  }, [error])
+
+
   
   return (
     <div className={s.wrapper}>

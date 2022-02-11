@@ -1,16 +1,22 @@
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Container from "../../components/Container";
 import s from "./ChangePassword.module.css";
 import { userChangePassword} from '../../redux/user/operation'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { getError } from '../../redux/user/selectors';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { useHistory } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
 
 function ChangePassword() {
   const dispatch = useDispatch();
+  const error = useSelector(getError)
+  const history = useHistory();
+  const firstUpdate = useRef(true);
  
   
   const [password, setPassword] = useState("");
@@ -42,10 +48,29 @@ function ChangePassword() {
       
     if (validatePassword(password)) {
       dispatch(userChangePassword({ password, link }))
-      // dispatch(userRegistration({ name, email, password }))
-      alert('Вам на email отправлено письмо. Подтвердите регистрацию !');
+      
     }
   };
+
+  useEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
+      
+    if (error) {
+      return Notify.failure(`${error.message}`)
+    } else if (error === '' && firstUpdate.current === false) { 
+
+      Notify.success("Your password change! You will be redirect to the authorization page in 5s");
+      
+      setTimeout(() => {
+        history.push('/auth')
+      }, 5000);
+      
+    } 
+    
+  }, [error])
   
   return (
     <div className={s.wrapper}>
