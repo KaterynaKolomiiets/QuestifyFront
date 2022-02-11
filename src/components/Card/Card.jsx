@@ -76,7 +76,6 @@ const Card = ({ data, card, isNewCard }) => {
   }
 
   function onedit(e) {
-    console.log(e);
     if (!card.isActive) {
       return;
     }
@@ -93,9 +92,10 @@ const Card = ({ data, card, isNewCard }) => {
     const newCard = {
       level: card.level,
       title: value,
-      time: timeDate.data,
+      time: timeDate.data || card.time,
       category: categoryCart,
       type: card.type,
+      isActive: true,
     };
     console.log(newCard);
     dispatch(changeTodo({ id: card._id, ...newCard }));
@@ -118,7 +118,6 @@ const Card = ({ data, card, isNewCard }) => {
     );
     const adapded = dateAdapted(timeDate.data);
     settimeDate(adapded);
-    console.log(adapded, 'adapded');
   };
 
   const addTodosDone = () => {

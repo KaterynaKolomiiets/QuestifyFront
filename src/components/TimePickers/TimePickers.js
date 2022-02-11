@@ -3,6 +3,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import { LocalizationProvider } from '@mui/lab';
 import { DateTimePicker } from '@mui/lab';
 import { useState } from 'react';
+import dateAdapted from './dateAdapted';
 
 import s from './TimePickers.module.css';
 
@@ -33,19 +34,26 @@ export default function TimeDatePicker({ time }) {
       'November',
       'December',
     ];
+
     let dayName = days[data.getDay()];
     const hours = data.getHours();
-    const minutes = data.getMinutes();
+    const minutes = (data.getMinutes() < 10 ? '0' : '') + data.getMinutes();
     const times = `${hours}:${minutes}`;
     const dateNaw = new Date().getDate();
-    if (data.getDate() === new Date().getDate()) {
+    if (
+      data.getMonth() === new Date().getMonth() &&
+      data.getDate() === new Date().getDate()
+    ) {
       dayName = 'Today';
-    } else if (Number(data.getDate()) === Number(dateNaw) + 1) {
+    } else if (
+      data.getMonth() === new Date().getMonth() &&
+      new Date().getDate() + 1 === Number(dateNaw)
+    ) {
       dayName = 'Tomorrow';
     } else if (Number(data.getDate()) >= Number(dateNaw) + 7) {
       const day = data.getDate();
       const month = monthNames[data.getMonth()];
-      dayName = `${day}/${month}`;
+      dayName = `${day}. ${month}`;
     }
     setValue({ dayName });
     time({ time: times, dayName, data });
