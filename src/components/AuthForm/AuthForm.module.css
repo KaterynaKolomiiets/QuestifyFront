@@ -28,10 +28,10 @@
   line-height: 1.167;
 
   border: none;
-  border-bottom: 1px solid  var(--font-accent);
+  border-bottom: 1px solid var(--font-accent);
   outline: transparent;
 
-  color:  var(--font-accent);
+  color: var(--font-accent);
   background: transparent;
 
   width: 100%;
@@ -48,43 +48,43 @@
 
   color: #ffffff;
 
-  background:  var(--accent);
+  background: var(--accent);
   border-radius: 50%;
   border: none;
 
-  box-shadow: 0 0 5px 2px  var(--accent);
+  box-shadow: 0 0 5px 2px var(--accent);
 
   width: 52px;
   height: 52px;
 
-  transition: background-color var(--transition-duration) var(--transition-timing),
-  box-shadow var(--transition-duration) var(--transition-timing);
+  transition: background-color var(--transition-duration)
+      var(--transition-timing),
+    box-shadow var(--transition-duration) var(--transition-timing);
 }
 .auth_form_button:hover,
 .auth_form_button:focus {
   outline: none;
-  background:  var(--accent-hover);
-  box-shadow: 0 0 5px 2px  var(--accent-hover);
-  
+  background: var(--accent-hover);
+  box-shadow: 0 0 5px 2px var(--accent-hover);
 }
 /* Цвет плейсхолдера */
 ::-webkit-input-placeholder {
-  color:  var(--font-accent);
+  color: var(--font-accent);
 }
 :-moz-placeholder {
-  color:  var(--font-accent);
+  color: var(--font-accent);
 }
 ::-moz-placeholder {
-  color:  var(--font-accent);
+  color: var(--font-accent);
 }
 :-ms-input-placeholder {
-  color:  var(--font-accent);
+  color: var(--font-accent);
 }
 
 .errorMessage {
   font-size: 11px;
   margin-top: 4px;
-  position: absolute;
+  /* position: absolute; */
 }
 
 .show_hide_password {
