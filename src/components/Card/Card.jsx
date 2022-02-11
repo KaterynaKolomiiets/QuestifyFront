@@ -23,7 +23,6 @@ import trophy from './trophy.svg';
 import CompletedChallenge from '../CompletedChallenge';
 
 const Card = ({ data, card, isNewCard }) => {
-
   const [completed, setCompleted] = useState(false);
   const [categoryModal, setcategoryModal] = useState(false);
   const [modal, setmodal] = useState(false);
@@ -157,6 +156,8 @@ const Card = ({ data, card, isNewCard }) => {
           }`}
           onClick={onedit}
         >
+          {isNewCard && modal && <DifficultModal change={change} />}
+          {isNewCard && categoryModal && <CategoryModal change={changeType} />}
           {card.isActive && modal && <DifficultModal change={change} />}
           {deleteModal && <DeleteModule change={deleteHandler} />}
           {card.isActive && categoryModal && (
@@ -178,11 +179,14 @@ const Card = ({ data, card, isNewCard }) => {
                   &#9679;
                 </span>
                 <span className={s.cardCategory} onClick={onclick}>
-                  {difficult}
+                  {card.level}
                 </span>
               </>
             ) : (
-              <span className={card.isActive ? s.setLevel: s.inectiveCard} onClick={onclick}>
+              <span
+                className={card.isActive ? s.setLevel : s.inectiveCard}
+                onClick={onclick}
+              >
                 <span
                   className={
                     (s.cardCategoryCircle,
@@ -204,7 +208,11 @@ const Card = ({ data, card, isNewCard }) => {
               <img
                 src={trophy}
                 alt=""
-                className={card.isActive? s.cardCategoryStart : s.cardCategoryStart_inective}
+                className={
+                  card.isActive
+                    ? s.cardCategoryStart
+                    : s.cardCategoryStart_inective
+                }
                 onClick={changeCompleted}
               />
             ) : (
@@ -256,17 +264,15 @@ const Card = ({ data, card, isNewCard }) => {
 
           <div className={s.cardDate}>
             <p className={s.timeText}>
-
               {timeDate.dayName}
               {!edit && !isNewCard && <>,&nbsp;{timeDate.time}</>}
-
             </p>
             {edit && <TimeDatePicker time={takeTime} />}
             {isNewCard && <TimeDatePicker time={takeTime} />}
           </div>
 
           <div className={s.bottomMenu}>
-            {edit ? (
+            {edit || isNewCard ? (
               <>
                 <p
                   className={`${s.cardType} ${categoryCart.toLowerCase()}`}
