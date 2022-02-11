@@ -4,6 +4,7 @@
   min-width: 320px;
 
   padding-top: 60px;
+  overflow-x: hidden;
 }
 @media screen and (min-width: 768px) {
   .dashboard {

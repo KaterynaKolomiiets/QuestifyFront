@@ -266,6 +266,11 @@
   margin-right: 10px;
 }
 
+.challengeModal {
+  width: 205px;
+  margin-left: 0;
+}
+
 @media screen and (min-width: 768px) {
   .cardSet {
     flex-direction: row;
@@ -274,7 +279,6 @@
     padding-right: 50px;
 
     margin-left: -27px;
-
   }
   .card {
     width: calc((100% / 3) - 27px);
@@ -337,6 +341,11 @@
   .input:focus {
     outline: none;
   }
+  .challengeModal {
+    width: 205px;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -346,6 +355,11 @@
     width: calc((100% / 5) - 27px);
     /* width: 205px; */
     height: 199px;
+  }
+  .challengeModal {
+    width: 205px;
+    margin: 0 auto;
+    margin-top: 20px;
   }
 }
 
@@ -380,5 +394,3 @@
 .work {
   background-color: var(--bg-card-work);
 }
-
-

@@ -22,8 +22,7 @@ import { newTodoCard } from '../../redux/todos/todosSelector';
 import trophy from './trophy.svg';
 import CompletedChallenge from '../CompletedChallenge';
 
-const Card = ({ data, card, isNewCard }) => {
-
+const Card = ({ data, card, isNewCard, isChallengeWindow }) => {
   const [completed, setCompleted] = useState(false);
   const [categoryModal, setcategoryModal] = useState(false);
   const [modal, setmodal] = useState(false);
@@ -154,7 +153,7 @@ const Card = ({ data, card, isNewCard }) => {
         <li
           className={`${s.card} ${
             card.type === 'CHALLENGE' ? s.challenge : s.task
-          }`}
+          } ${isChallengeWindow && s.challengeModal}`}
           onClick={onedit}
         >
           {card.isActive && modal && <DifficultModal change={change} />}
@@ -182,7 +181,10 @@ const Card = ({ data, card, isNewCard }) => {
                 </span>
               </>
             ) : (
-              <span className={card.isActive ? s.setLevel: s.inectiveCard} onClick={onclick}>
+              <span
+                className={card.isActive ? s.setLevel : s.inectiveCard}
+                onClick={onclick}
+              >
                 <span
                   className={
                     (s.cardCategoryCircle,
@@ -204,7 +206,11 @@ const Card = ({ data, card, isNewCard }) => {
               <img
                 src={trophy}
                 alt=""
-                className={card.isActive? s.cardCategoryStart : s.cardCategoryStart_inective}
+                className={
+                  card.isActive
+                    ? s.cardCategoryStart
+                    : s.cardCategoryStart_inective
+                }
                 onClick={changeCompleted}
               />
             ) : (
@@ -256,10 +262,8 @@ const Card = ({ data, card, isNewCard }) => {
 
           <div className={s.cardDate}>
             <p className={s.timeText}>
-
               {timeDate.dayName}
               {!edit && !isNewCard && <>,&nbsp;{timeDate.time}</>}
-
             </p>
             {edit && <TimeDatePicker time={takeTime} />}
             {isNewCard && <TimeDatePicker time={takeTime} />}
