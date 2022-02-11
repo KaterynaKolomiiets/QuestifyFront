@@ -3,7 +3,6 @@ import style from "../../../utils/variables.css";
 
 const ModalDelete = ({ change }) => {
   function deleteHandler(e) {
-    console.log(e.target);
     change(true);
   }
 

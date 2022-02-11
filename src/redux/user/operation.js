@@ -54,7 +54,6 @@ export const userLogin = createAsyncThunk(
       document.cookie = `refreshToken=${data.refreshToken}`;
 
       token.set(data.accessToken);
-      console.log(data);
       return data;
     } catch (error) {
 
@@ -79,7 +78,7 @@ export const userLogout = createAsyncThunk(
       document.cookie = 'refreshToken=-1;expires=Thu, 01 Jan 1970 00:00:01 GMT';
       // token.unset();
       localStorage.removeItem('token');
-      console.log('data', data);
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -90,7 +89,6 @@ export const userLogout = createAsyncThunk(
 // export const userActivate = createAsyncThunk("auth/activate", async (id) => {
 //   try {
 //     const { data } = await axios.get(`${BASE_URL}/activate/${id}`, id);
-//       console.log(data);
 //     return data;
 //   } catch (error) {
 //     throw new Error(error);
@@ -116,9 +114,9 @@ export const userRefresh = createAsyncThunk(
         },
       });
       localStorage.setItem('token', data.accessToken);
-      console.log(data);
+
       document.cookie = `refreshToken=${data.refreshToken}`;
-      console.log(data);
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -132,7 +130,6 @@ export const userRefresh = createAsyncThunk(
 //   async (user) => {
 //     try {
 //       const { data } = await axios.get(`${BASE_URL}/reset-password`, user);
-//       console.log(data);
 //       return data;
 //     } catch (error) {
 //       throw new Error(error);
@@ -143,7 +140,6 @@ export const userRefresh = createAsyncThunk(
 // export const userChangePassword = createAsyncThunk("auth/change-password", async (user) => {
 //   try {
 //     const { data } = await axios.get(`${BASE_URL}/change-password`, user);
-//       console.log(data);
 //     return data;
 //   } catch (error) {
 //     throw new Error(error);
@@ -153,7 +149,6 @@ export const userResetPassword = createAsyncThunk(
   'auth/reset-password',
   async (user, thunkAPI) => {
     try {
-      console.log('user', user);
       const { data } = await axios.post(`${BASE_URL}/reset-password`, user);
       return data;
     } catch (error) {

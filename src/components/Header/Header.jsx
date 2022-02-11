@@ -25,7 +25,6 @@ const Header = () => {
   const toggleModal = () => setShowModal(prevState => !prevState);
 
   const challengeModal = () => {
-    console.log('CLICK Button!', showChallenges);
     setShowChallenges(prevState => !prevState);
   };
 
@@ -51,7 +50,6 @@ const Header = () => {
     dispatch(userLogout({ email: user.email, password: user.password }));
   };
 
-  console.log('user', user);
   const userEmail = user.email;
   const avatarLetter = userEmail.substr(0, 1).toUpperCase();
 

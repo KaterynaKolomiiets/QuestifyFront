@@ -12,7 +12,7 @@ import DoneSection from '../../components/DoneSection/DoneSection';
 
 function HomePage() {
   // const todo = useSelector((state) => state.todos);
-  // console.log(todo);
+
 
   return (
     <section className={s.dashboard}>

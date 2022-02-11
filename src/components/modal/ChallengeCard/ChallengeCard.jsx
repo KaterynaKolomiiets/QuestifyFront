@@ -17,7 +17,6 @@
 //     const card = { difficult, value, isChallenge: false };
 //     data(card);
 //   }
-// console.log(data)
 
 //   function onclick() {
 //     setmodal(!modal);
@@ -31,7 +30,6 @@
 
 //   function deleteHandler(bool) {
 //     if (bool) {
-//       console.log(card);
 //       onDelete();
 //     }
 //     onDelete();
@@ -56,7 +54,6 @@
 //       value,
 //       data: Date.now(),
 //     };
-//     console.log(card);
 //   }
 
 //   return (

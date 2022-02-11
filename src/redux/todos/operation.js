@@ -87,7 +87,6 @@ export const addTodo = createAsyncThunk('todo/add', async (todo, thunkAPI) => {
       `http://questify-project.herokuapp.com/api/todos/add`,
       todo,
     );
-    console.log(data);
     return data;
   } catch (err) {
     return thunkAPI.rejectWithValue(err);
@@ -128,7 +127,6 @@ export const deleteTodo = createAsyncThunk(
   'todo/delete',
   async (id, thunkAPI) => {
     try {
-      console.log(id, 'action');
       const { data } = await api.delete(
         `http://questify-project.herokuapp.com/api/todos/remove/${id}`,
         id,

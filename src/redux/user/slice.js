@@ -51,10 +51,8 @@ const userSlice = createSlice({
       };
     },
     [userRefresh.fulfilled]: (state, action) => {
-      console.log('state1', { ...state.userinfo });
       state.userinfo = action.payload.user;
       state.userinfo.isLoggedIn = action.payload.user ? true : false;
-      console.log('state2', state.userinfo);
       state.token = action.payload.accessToken;
     },
     [userRefresh.rejected]: (state, action) => {

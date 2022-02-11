@@ -19,12 +19,11 @@ import dateAdapted from '../TimePickers/dateAdapted';
 import saveIcon from '../../images/save.svg';
 import CompletedCard from '../CompletedCard/CompletedCard';
 import { newTodoCard } from '../../redux/todos/todosSelector';
-// import ChallengeCard from '../modal/ChallengeCard/ChallengeCard';
 import trophy from './trophy.svg';
 import CompletedChallenge from '../CompletedChallenge';
 
 const Card = ({ data, card, isNewCard }) => {
-  // console.log(card)
+
   const [completed, setCompleted] = useState(false);
   const [categoryModal, setcategoryModal] = useState(false);
   const [modal, setmodal] = useState(false);
@@ -34,12 +33,9 @@ const Card = ({ data, card, isNewCard }) => {
   const [value, setvalue] = useState('');
   const [categoryCart, setcategoryCart] = useState('family');
   const [timeDate, settimeDate] = useState(new Date());
-  // const [adaptedTime, setadaptedTime] = useState('');
 
   const dispatch = useDispatch();
   const cardFromState = useSelector(newTodoCard);
-  // console.log(adaptedTime);
-  // console.log(card);
 
   useEffect(() => {
     setdifficult(card.level);
@@ -90,16 +86,14 @@ const Card = ({ data, card, isNewCard }) => {
     setedit(false);
 
     const newCard = {
-      level: card.level,
+      level: difficult,
       title: value,
       time: timeDate.data || card.time,
       category: categoryCart,
       type: card.type,
       isActive: true,
     };
-    console.log(newCard);
     dispatch(changeTodo({ id: card._id, ...newCard }));
-    console.log(newCard)
   };
 
   const deleteNewCard = () => {
@@ -192,9 +186,9 @@ const Card = ({ data, card, isNewCard }) => {
                 <span
                   className={
                     (s.cardCategoryCircle,
-                    card.level === 'Normal'
+                    difficult === 'Normal'
                       ? s.secondOption
-                      : card.level === 'Hard'
+                      : difficult === 'Hard'
                       ? s.thirdOption
                       : s.firstOption)
                   }
@@ -202,7 +196,7 @@ const Card = ({ data, card, isNewCard }) => {
                   &#9679;
                 </span>
 
-                <span className={s.cardCategory}>{card.level}</span>
+                <span className={s.cardCategory}>{difficult}</span>
               </span>
             )}
             {/* STAR OR TROPHY ICON*/}

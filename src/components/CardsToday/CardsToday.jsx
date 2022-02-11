@@ -45,7 +45,6 @@ const CardsToday = () => {
 
   // const dispatch = useDispatch();
 
-  // console.log(todos);
 
   const dayNow = new Date(Date.now()).getDate();
   const monthNow = new Date(Date.now()).getMonth();
