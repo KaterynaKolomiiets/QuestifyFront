@@ -1,5 +1,5 @@
-import { useEffect, useState, Suspense, lazy } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, Suspense, lazy } from 'react';
+import { useDispatch } from 'react-redux';
 import { Switch, Redirect } from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner';
 import { userRefresh } from './redux/user/operation';
@@ -30,6 +30,7 @@ function App() {
     if (isUserLoggedIn) {
       dispatch(userRefresh());
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   return (
@@ -61,9 +62,6 @@ function App() {
           <Redirect to={routes.auth} />
         </Switch>
       </Suspense>
-      {/* <AuthPage />
-
-      <HomePage /> */}
     </div>
   );
 }

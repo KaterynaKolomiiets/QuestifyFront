@@ -22,6 +22,7 @@ import { newTodoCard } from '../../redux/todos/todosSelector';
 import trophy from './trophy.svg';
 import CompletedChallenge from '../CompletedChallenge';
 
+
 const Card = ({ data, card, isNewCard, isChallengeWindow }) => {
   const [completed, setCompleted] = useState(false);
   const [categoryModal, setcategoryModal] = useState(false);
@@ -156,6 +157,8 @@ const Card = ({ data, card, isNewCard, isChallengeWindow }) => {
           } ${isChallengeWindow && s.challengeModal}`}
           onClick={onedit}
         >
+          {isNewCard && modal && <DifficultModal change={change} />}
+          {isNewCard && categoryModal && <CategoryModal change={changeType} />}
           {card.isActive && modal && <DifficultModal change={change} />}
           {deleteModal && <DeleteModule change={deleteHandler} />}
           {card.isActive && categoryModal && (
@@ -177,7 +180,7 @@ const Card = ({ data, card, isNewCard, isChallengeWindow }) => {
                   &#9679;
                 </span>
                 <span className={s.cardCategory} onClick={onclick}>
-                  {difficult}
+                  {card.level}
                 </span>
               </>
             ) : (
@@ -270,7 +273,7 @@ const Card = ({ data, card, isNewCard, isChallengeWindow }) => {
           </div>
 
           <div className={s.bottomMenu}>
-            {edit ? (
+            {edit || isNewCard ? (
               <>
                 <p
                   className={`${s.cardType} ${categoryCart.toLowerCase()}`}
