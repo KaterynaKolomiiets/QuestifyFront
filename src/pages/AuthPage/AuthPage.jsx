@@ -5,7 +5,9 @@ import s from './AuthPage.module.css';
 import { useSelector } from 'react-redux';
 import { getError } from '../../redux/user/selectors';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 import { getUserIP } from '../../redux/user/helper';
+
 
 
 function AuthPage() {
@@ -15,6 +17,7 @@ function AuthPage() {
   const showRegForm = () => setShowRegisterForm(true);
   const showLogForm = () => setShowRegisterForm(false);
   const authErr = useSelector(getError);
+
   
   
   useEffect(async () => { 
@@ -34,7 +37,7 @@ function AuthPage() {
   return '';
 };
   
-  
+
   useEffect(() => {
     if (authErr) Notify.failure(`Attention! ${authErr.message}`);
   }, [authErr]);

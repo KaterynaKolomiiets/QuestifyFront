@@ -103,7 +103,6 @@ function AuthForm({ showRegisterForm, host }) {
           onChange={changeNameValue}
           placeholder="Name"
           className={s.auth_form_input}
-          autoComplete="off"
           required
         />
       }
@@ -117,7 +116,6 @@ function AuthForm({ showRegisterForm, host }) {
         pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
         placeholder="Email"
         className={s.auth_form_input}
-        autoComplete="off"
         required
       />
       <p className={s.errorMessage}>{emailError}</p>
@@ -130,7 +128,6 @@ function AuthForm({ showRegisterForm, host }) {
         onChange={changePasswordValue}
         placeholder="Password"
         className={s.auth_form_input}
-        autoComplete="off"
         required
       />
       {
