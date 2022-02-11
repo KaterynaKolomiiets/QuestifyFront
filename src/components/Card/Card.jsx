@@ -121,7 +121,7 @@ const Card = ({ data, card, isNewCard }) => {
   };
 
   const addTodosDone = () => {
-    closeAndSave();
+    // closeAndSave();
     dispatch(changeTodoStatus({ id: card._id, isActive: false }));
   };
 
@@ -323,7 +323,7 @@ const Card = ({ data, card, isNewCard }) => {
                   <span className={s.cross} onClick={onDelete}>
                     &#10006;
                   </span>
-                  <span onClick={addTodosDone} className={s.checked}>
+                  <span onClick={changeCompleted} className={s.checked}>
                     &#10004;
                   </span>
                 </div>
