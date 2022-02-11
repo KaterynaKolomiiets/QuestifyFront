@@ -3,15 +3,10 @@ import Icons from '../../icons/sprite.svg';
 import Icon from '../Icon';
 import './CompletedStyle.css';
 import s from './CompletedCard.module.css';
-// import { useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { card, todosActive } from '../../redux/todos/todosSelector';
-// import { changeTodo } from '../../redux/todos/operation';
 
 
-const CompletedCard = ({ change, title,id, changeCard }) => {
- 
- 
+const CompletedCard = ({ change, title,onedit, card }) => {
+
   return (
     <>
      
@@ -19,7 +14,7 @@ const CompletedCard = ({ change, title,id, changeCard }) => {
         <div className={s.questBox}>
           <div className={s.contentBox}>
             <p className={s.content} >COMPLETED:</p>
-            <p className={s.link}>
+            <p className={s.link} >
               <span className={s.linkText} >{title}</span>
             </p>
           </div>
