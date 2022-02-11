@@ -10,8 +10,9 @@ import { userLogin, userRegistration } from '../../redux/user/operation';
 import s from './AuthForm.module.css';
 import { Link } from 'react-router-dom';
 
-function AuthForm({ showRegisterForm }) {
+function AuthForm({ showRegisterForm, host }) {
   const dispatch = useDispatch();
+  
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -47,6 +48,7 @@ function AuthForm({ showRegisterForm }) {
 
   const onRegistration = event => {
     event.preventDefault();
+    
 
     !validateEmail(email)
       ? setEmailError('Некорректно введен e-mail')
@@ -58,17 +60,17 @@ function AuthForm({ showRegisterForm }) {
 
     if (validateEmail(email) && validatePassword(password)) {
       setShowRegForm(false);
-      dispatch(userRegistration({ name, email, password }));
-      if (!authErr)
-        return Notiflix.Notify.info(
-          'На email отправлено письмо для подтверждения регистрации',
-        );
+
+      dispatch(userRegistration({ name, email, password, host }))
+      Notiflix.Notify.info('На email отправлено письмо для подтверждения регистрации');
+
     }
   };
 
   const onLogin = event => {
     event.preventDefault();
-
+    
+    
     !validateEmail(email)
       ? setEmailError('Некорректно введен e-mail')
       : setEmailError('');
@@ -78,7 +80,9 @@ function AuthForm({ showRegisterForm }) {
       : setPasswordError('');
 
     if (validateEmail(email) && validatePassword(password)) {
-      dispatch(userLogin({ email, password }));
+
+      dispatch(userLogin({ email, password, host }))
+
     }
   };
 

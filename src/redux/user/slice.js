@@ -5,6 +5,8 @@ import {
   userLogin,
   userLogout,
   userRefresh,
+  userResetPassword,
+  userChangePassword,
 } from './operation';
 
 const initialState = {
@@ -59,6 +61,24 @@ const userSlice = createSlice({
       state.error = {
         status: action.payload.status,
         message: action.payload.response.data.message,
+      };
+    },
+    [userResetPassword.fulfilled]: (state, action) => {
+      state.error = '';
+    },
+    [userResetPassword.rejected]: (state, action) => {
+      state.error = {
+        status: action.payload.status,
+        message: action.payload.response.data.message, // fix this rout everyvere
+      };
+    },
+    [userChangePassword.fulfilled]: (state, action) => {
+      state.error = '';
+    },
+    [userChangePassword.rejected]: (state, action) => {
+      state.error = {
+        status: action.payload.status,
+        message: action.payload.response.data.message, // fix this rout everyvere
       };
     },
   },

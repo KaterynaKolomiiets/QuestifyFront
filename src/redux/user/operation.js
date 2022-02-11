@@ -18,9 +18,17 @@ const token = {
 
 export const userRegistration = createAsyncThunk(
   'auth/registration',
-  async (user, thunkAPI) => {
+
+
+  async ({ host, ...user }, thunkAPI) => {
+
     try {
-      const { data } = await axios.post(`${BASE_URL}/registration`, user);
+      const { data } = await axios.post(`${BASE_URL}/registration`, user, {
+        withCredentials: true,
+        headers: {
+          hrmt: `${host}`,
+        },
+      });
       token.set(data.accessToken);
       return data;
     } catch (error) {
@@ -30,9 +38,16 @@ export const userRegistration = createAsyncThunk(
 );
 export const userLogin = createAsyncThunk(
   'auth/login',
-  async (user, thunkAPI) => {
+
+  async ({ host, ...user }, thunkAPI) => {
+
     try {
-      const { data } = await axios.post(`${BASE_URL}/login`, user);
+      const { data } = await axios.post(`${BASE_URL}/login`, user, {
+        withCredentials: true,
+        headers: {
+          hrmt: `${host}`,
+        },
+      });
       localStorage.setItem('token', data.accessToken);
       localStorage.setItem('isloggedIn', true);
 
@@ -42,7 +57,9 @@ export const userLogin = createAsyncThunk(
       console.log(data);
       return data;
     } catch (error) {
+
       return thunkAPI.rejectWithValue(error);
+
     }
   },
 );
@@ -109,15 +126,6 @@ export const userRefresh = createAsyncThunk(
   },
 );
 
-// export const userRefresh = createAsyncThunk("auth/refresh", async (user) => {
-//   try {
-//     const { data } = await axios.get(`${BASE_URL}/refresh`, user);
-//       console.log(data);
-//     return data;
-//   } catch (error) {
-//     throw new Error(error);
-//   }
-// });
 
 // export const userResetPassword = createAsyncThunk(
 //   "auth/reset-password",
@@ -156,9 +164,10 @@ export const userResetPassword = createAsyncThunk(
 
 export const userChangePassword = createAsyncThunk(
   'auth/change-password',
+
+
   async ({ password, link }, thunkAPI) => {
-    console.log('linklink', link);
-    console.log('password', password);
+
     try {
       const { data } = await axios.post(`${BASE_URL}/change-password/${link}`, {
         password,
