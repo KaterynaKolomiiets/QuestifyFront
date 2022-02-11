@@ -13,7 +13,6 @@ import { Link } from 'react-router-dom';
 function AuthForm({ showRegisterForm, host }) {
   const dispatch = useDispatch();
   
-
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -23,7 +22,9 @@ function AuthForm({ showRegisterForm, host }) {
 
   const [showRegForm, setShowRegForm] = useState(showRegisterForm);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
   const authErr = useSelector(getError);
+
   useEffect(() => {
     setShowRegForm(showRegisterForm);
   }, [showRegisterForm]);
@@ -51,11 +52,11 @@ function AuthForm({ showRegisterForm, host }) {
     
 
     !validateEmail(email)
-      ? setEmailError('Некорректно введен e-mail')
+      ? setEmailError('Некорректный e-mail')
       : setEmailError('');
 
     !validatePassword(password)
-      ? setPasswordError('Пароль должен быть от 4 до 16 символов')
+      ? setPasswordError('Пароль от 4 до 16 символов')
       : setPasswordError('');
 
     if (validateEmail(email) && validatePassword(password)) {
@@ -72,17 +73,15 @@ function AuthForm({ showRegisterForm, host }) {
     
     
     !validateEmail(email)
-      ? setEmailError('Некорректно введен e-mail')
+      ? setEmailError('Некорректный e-mail')
       : setEmailError('');
 
     !validatePassword(password)
-      ? setPasswordError('Пароль должен быть от 4 до 16 символов')
+      ? setPasswordError('Пароль от 4 до 16 символов')
       : setPasswordError('');
 
     if (validateEmail(email) && validatePassword(password)) {
-
       dispatch(userLogin({ email, password, host }))
-
     }
   };
 
@@ -133,16 +132,18 @@ function AuthForm({ showRegisterForm, host }) {
       />
       {isPasswordVisible ? (
         <VisibilityIcon
-          className={s.show_hide_password}
-          onClick={togglePasswordVisibility}
+        className={s.show_hide_password}
+        onClick={togglePasswordVisibility}
         />
-      ) : (
+        ) : (
         <VisibilityOffIcon
-          className={s.show_hide_password}
-          onClick={togglePasswordVisibility}
+        className={s.show_hide_password}
+        onClick={togglePasswordVisibility}
         />
       )}
-      <p className={s.errorMessage}>{passwordError}</p>
+      
+      {/* <p className={s.errorMessage}>{passwordError}</p> */}
+
       <Link to="/reset" className={s.forgotPassword}>
         Forgot Password?
       </Link>
