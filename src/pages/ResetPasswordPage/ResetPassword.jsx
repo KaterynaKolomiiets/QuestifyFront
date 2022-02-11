@@ -36,6 +36,7 @@ function ResetPassword() {
       
     if (validateEmail(email)) {
       dispatch(userResetPassword({ email }))
+
     }
     
   };
@@ -97,7 +98,7 @@ function ResetPassword() {
           type="button"
           onClick={onSubmit}
         >
-          Go
+          go!
             </button>
             </form>
         </section>

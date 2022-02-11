@@ -34,10 +34,10 @@
   margin-left: 7px;
   color: var(--font-accent);
   border-bottom: 1px solid var(--font-accent);
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
-.link:hover,
+/* .link:hover,
 .link:focus {
   color: var(--accent);
   border-bottom: 1px solid var(--accent);
@@ -46,7 +46,7 @@
 .link:active {
   color: #3f93b7;
   border-bottom: 1px solid #3f93b7;
-}
+} */
 
 .linkText {
   display: inline-block;
@@ -75,7 +75,6 @@
   cursor: pointer;
   border: none;
   padding-top: 5px;
-  
 }
 
 .arrow {
@@ -168,7 +167,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 205px;
+  width: 100%;
   margin-top: 20px;
   padding: 20px;
   box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
@@ -185,18 +184,18 @@
   margin-top: -20px;
 }
 
-span {
+.continue {
   color:var(--font-secondary);
   font-family: 'HelveticaNeueCyr-Medium';
 }
 
 @media screen and (min-width: 768px) {
   .card {
-    /* width: calc((100% / 3) - 27px); */
+    width: calc((100% / 3) - 27px);
 
     margin-left: 27px;
 
-    width: 204px;
+    /* width: 205px; */
     height: 199px;
   }
   .cardSet {
@@ -212,15 +211,10 @@ span {
   .card {
     margin-left: 27px;
 
-    width: 205px;
+    width: calc((100% / 5) - 27px);
+    /* width: 205px; */
     height: 199px;
   }
 }
 
-/* IPAD MINI LAYOUT */
-@media only screen and (min-width: 1024px) and (orientation: landscape) {
-  .card {
-    width: calc((100% / 4) - 27px);
-    width: 205px;
-  }
-}
+

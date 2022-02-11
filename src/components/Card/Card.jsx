@@ -24,6 +24,7 @@ import trophy from './trophy.svg';
 import CompletedChallenge from '../CompletedChallenge';
 
 const Card = ({ data, card, isNewCard }) => {
+  // console.log(card)
   const [completed, setCompleted] = useState(false);
   const [categoryModal, setcategoryModal] = useState(false);
   const [modal, setmodal] = useState(false);
@@ -37,6 +38,8 @@ const Card = ({ data, card, isNewCard }) => {
 
   const dispatch = useDispatch();
   const cardFromState = useSelector(newTodoCard);
+  // console.log(adaptedTime);
+  // console.log(card);
 
   useEffect(() => {
     setdifficult(card.level);
@@ -44,7 +47,6 @@ const Card = ({ data, card, isNewCard }) => {
     setcategoryCart(card.category);
     let coverct = new Date(card.time);
     coverct = dateAdapted(coverct);
-
     settimeDate(coverct);
   }, []);
 
@@ -60,6 +62,7 @@ const Card = ({ data, card, isNewCard }) => {
     setdifficult(data);
     onclick();
   }
+
   function deleteHandler(bool) {
     if (bool) {
       dispatch(deleteTodo(card._id));
@@ -89,11 +92,14 @@ const Card = ({ data, card, isNewCard }) => {
     const newCard = {
       level: card.level,
       title: value,
-      time: timeDate.data,
+      time: timeDate.data || card.time,
       category: categoryCart,
       type: card.type,
+      isActive: true,
     };
+    console.log(newCard);
     dispatch(changeTodo({ id: card._id, ...newCard }));
+    console.log(newCard)
   };
 
   const deleteNewCard = () => {
@@ -112,11 +118,10 @@ const Card = ({ data, card, isNewCard }) => {
     );
     const adapded = dateAdapted(timeDate.data);
     settimeDate(adapded);
-    console.log(adapded, 'adapded');
   };
 
   const addTodosDone = () => {
-    closeAndSave();
+    // closeAndSave();
     dispatch(changeTodoStatus({ id: card._id, isActive: false }));
   };
 
@@ -128,8 +133,10 @@ const Card = ({ data, card, isNewCard }) => {
   function takeTime(date) {
     settimeDate(date);
   }
-
   const changeCompleted = () => {
+    if (!card.isActive) {
+      return;
+    }
     setCompleted(true);
   };
 
@@ -156,9 +163,11 @@ const Card = ({ data, card, isNewCard }) => {
           }`}
           onClick={onedit}
         >
-          {modal && <DifficultModal change={change} />}
+          {card.isActive && modal && <DifficultModal change={change} />}
           {deleteModal && <DeleteModule change={deleteHandler} />}
-          {categoryModal && <CategoryModal change={changeType} />}
+          {card.isActive && categoryModal && (
+            <CategoryModal change={changeType} />
+          )}
           <p className={s.cardCategoryName}>
             {edit ? (
               <>
@@ -179,7 +188,7 @@ const Card = ({ data, card, isNewCard }) => {
                 </span>
               </>
             ) : (
-              <>
+              <span className={card.isActive ? s.setLevel: s.inectiveCard} onClick={onclick}>
                 <span
                   className={
                     (s.cardCategoryCircle,
@@ -193,21 +202,26 @@ const Card = ({ data, card, isNewCard }) => {
                   &#9679;
                 </span>
 
-                <span className={s.cardCategory} onClick={onclick}>
-                  {card.level}
-                </span>
-              </>
+                <span className={s.cardCategory}>{card.level}</span>
+              </span>
             )}
             {/* STAR OR TROPHY ICON*/}
             {card.type === 'CHALLENGE' ? (
               <img
                 src={trophy}
                 alt=""
-                className={s.cardCategoryStart}
+                className={card.isActive? s.cardCategoryStart : s.cardCategoryStart_inective}
                 onClick={changeCompleted}
               />
             ) : (
-              <span className={s.cardCategoryStart} onClick={changeCompleted}>
+              <span
+                className={
+                  card.isActive
+                    ? s.cardCategoryStart
+                    : s.cardCategoryStart_inective
+                }
+                onClick={changeCompleted}
+              >
                 {' '}
                 &#9733;
               </span>
@@ -248,8 +262,10 @@ const Card = ({ data, card, isNewCard }) => {
 
           <div className={s.cardDate}>
             <p className={s.timeText}>
+
               {timeDate.dayName}
               {!edit && !isNewCard && <>,&nbsp;{timeDate.time}</>}
+
             </p>
             {edit && <TimeDatePicker time={takeTime} />}
             {isNewCard && <TimeDatePicker time={takeTime} />}
@@ -274,10 +290,13 @@ const Card = ({ data, card, isNewCard }) => {
                   ${card.category === 'FAMILY' && s.family}
                   ${card.category === 'HEALTH' && s.health}
                   ${card.category === 'STUFF' && s.stuff}
-                  ${card.category === 'WORK' && s.work}`}
+                  ${card.category === 'WORK' && s.work}
+                  ${!card.isActive && s.inectiveCard}
+                  `}
                   onClick={categoryModalHandler}
                 >
-                  {card.category}
+                  {card.category}{' '}
+                  {card.isActive && <i className={s.arrowDown}>&#9207;</i>}
                 </p>
               </>
             )}
@@ -304,7 +323,7 @@ const Card = ({ data, card, isNewCard }) => {
                   <span className={s.cross} onClick={onDelete}>
                     &#10006;
                   </span>
-                  <span onClick={addTodosDone} className={s.checked}>
+                  <span onClick={changeCompleted} className={s.checked}>
                     &#10004;
                   </span>
                 </div>

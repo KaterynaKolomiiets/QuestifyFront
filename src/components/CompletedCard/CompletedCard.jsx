@@ -3,25 +3,19 @@ import Icons from '../../icons/sprite.svg';
 import Icon from '../Icon';
 import './CompletedStyle.css';
 import s from './CompletedCard.module.css';
-// import { useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { card, todosActive } from '../../redux/todos/todosSelector';
-// import { changeTodo } from '../../redux/todos/operation';
 
 
-const CompletedCard = ({ change, title,id }) => {
- 
- 
+const CompletedCard = ({ change, title,onedit, card }) => {
+
   return (
     <>
-      {/* {changeCard.map((card) => {
-        return ( */}
-        <li className={s.card} key={id}>
+     
+        <li className={s.card} >
         <div className={s.questBox}>
           <div className={s.contentBox}>
-            <p className={s.content}>COMPLETED:</p>
-            <p className={s.link}>
-              <span className={s.linkText}>{title}</span>
+            <p className={s.content} >COMPLETED:</p>
+            <p className={s.link} >
+              <span className={s.linkText} >{title}</span>
             </p>
           </div>
           <div className={s.awardBox}>

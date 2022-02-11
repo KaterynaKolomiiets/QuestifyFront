@@ -21,8 +21,13 @@ const Header = () => {
   const [showChallenges, setShowChallenges] = useState(false);
   const dispatch = useDispatch();
   const user = useSelector(getUser);
+  const err = useSelector(error);
   const toggleModal = () => setShowModal(prevState => !prevState);
-  const challengeModal = () => setShowChallenges(prevState => !prevState);
+
+  const challengeModal = () => {
+    console.log('CLICK Button!', showChallenges);
+    setShowChallenges(prevState => !prevState);
+  };
 
   const modalEscape = e => {
     if (e.code === 'Escape') {
@@ -38,16 +43,15 @@ const Header = () => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const err = useSelector(error);
-  const authErr = useSelector(getError);
+
   useEffect(() => {
     if (err) Notify.failure(`Attention! ${err.message}`);
-    if (authErr) Notify.failure(`Attention! ${authErr.message}`);
   }, [err]);
   const onLogout = () => {
     dispatch(userLogout({ email: user.email, password: user.password }));
   };
 
+  console.log('user', user);
   const userEmail = user.email;
   const avatarLetter = userEmail.substr(0, 1).toUpperCase();
 
@@ -60,7 +64,7 @@ const Header = () => {
             <Avatar sx={{ bgcolor: blueGrey[800] }} className={s.avatarLetter}>
               {avatarLetter}
             </Avatar>
-            <p className={s.userName}>{user.name}</p>
+            <p className={s.userName}>{user.email}</p>
           </div>
           <div className={s.userDataMobile}>
             <div className={s.avatarMobile}>
@@ -80,7 +84,7 @@ const Header = () => {
                 <use xlinkHref={`${icons}#challenge-icon`} />
               </svg>
               {showChallenges && (
-                <ChallengeModal challengeModal={challengeModal} />
+                <ChallengeModal /* challengeModal={challengeModal} */ />
               )}
             </button>
             <button type="button" className={s.BtnLogout} onClick={toggleModal}>
