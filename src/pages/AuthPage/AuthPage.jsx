@@ -23,9 +23,8 @@ function AuthPage() {
   const showLogForm = () => setShowRegisterForm(false);
 
   const authErr = useSelector(getError);
-
-
-  
+ 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => { 
     const get = localStorage.getItem('get');
     if (!get) { 
@@ -34,8 +33,6 @@ function AuthPage() {
     sethost(ip)
     }
     localStorage.setItem('get', true);
-    
-    
   }, [])
 
   window.onbeforeunload = function() {
