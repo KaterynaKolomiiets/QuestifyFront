@@ -1,0 +1,16 @@
+.cardTitle {
+    font-family: 'HelveticaNeueCyr-Bold';
+    font-size: 16px;
+    line-height: 1.37;
+
+    color: var(--font-primary);
+
+    margin: 0 auto;
+    margin-bottom: 10px;
+
+    text-align: center;
+}
+
+.cardTitle_challenge {
+    color: #ffffff;
+}

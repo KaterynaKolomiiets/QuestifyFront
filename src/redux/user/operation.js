@@ -5,8 +5,6 @@ import { get_cookie } from './helper';
 
 const BASE_URL = 'https://questify-project.herokuapp.com/api/users';
 
-// const BASE_URL = 'http://localhost:8083/api/users';
-
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -19,9 +17,7 @@ const token = {
 export const userRegistration = createAsyncThunk(
   'auth/registration',
 
-
   async ({ host, ...user }, thunkAPI) => {
-
     try {
       const { data } = await axios.post(`${BASE_URL}/registration`, user, {
         withCredentials: true,
@@ -40,7 +36,6 @@ export const userLogin = createAsyncThunk(
   'auth/login',
 
   async ({ host, ...user }, thunkAPI) => {
-
     try {
       const { data } = await axios.post(`${BASE_URL}/login`, user, {
         withCredentials: true,
@@ -56,9 +51,7 @@ export const userLogin = createAsyncThunk(
       token.set(data.accessToken);
       return data;
     } catch (error) {
-
       return thunkAPI.rejectWithValue(error);
-
     }
   },
 );
@@ -85,15 +78,6 @@ export const userLogout = createAsyncThunk(
     }
   },
 );
-// check address
-// export const userActivate = createAsyncThunk("auth/activate", async (id) => {
-//   try {
-//     const { data } = await axios.get(`${BASE_URL}/activate/${id}`, id);
-//     return data;
-//   } catch (error) {
-//     throw new Error(error);
-//   }
-// });
 
 export const userRefresh = createAsyncThunk(
   'auth/refresh',
@@ -124,27 +108,6 @@ export const userRefresh = createAsyncThunk(
   },
 );
 
-
-// export const userResetPassword = createAsyncThunk(
-//   "auth/reset-password",
-//   async (user) => {
-//     try {
-//       const { data } = await axios.get(`${BASE_URL}/reset-password`, user);
-//       return data;
-//     } catch (error) {
-//       throw new Error(error);
-//     }
-//   }
-// );
-
-// export const userChangePassword = createAsyncThunk("auth/change-password", async (user) => {
-//   try {
-//     const { data } = await axios.get(`${BASE_URL}/change-password`, user);
-//     return data;
-//   } catch (error) {
-//     throw new Error(error);
-//   }
-// });
 export const userResetPassword = createAsyncThunk(
   'auth/reset-password',
   async (user, thunkAPI) => {
@@ -160,9 +123,7 @@ export const userResetPassword = createAsyncThunk(
 export const userChangePassword = createAsyncThunk(
   'auth/change-password',
 
-
   async ({ password, link }, thunkAPI) => {
-
     try {
       const { data } = await axios.post(`${BASE_URL}/change-password/${link}`, {
         password,

@@ -1,67 +1,5 @@
 @import '../../utils/variables.css';
 
-.cardCategoryName {
-  font-family: 'HelveticaNeueCyr-Medium';
-  font-size: 16px;
-
-  color: var(--font-secondary);
-
-  margin-bottom: 20px;
-
-  display: flex;
-  align-items: center;
-}
-
-.setLevel {
-  cursor: pointer;
-}
-
-.cardCategoryCircle {
-  margin-right: 10px;
-}
-
-.cardCategoryStart {
-  margin-left: auto;
-  cursor: pointer;
-  color: var(--font-accent);
-}
-.cardCategoryStart_inective {
-  margin-left: auto;
-  cursor: default;
-}
-.challengeHeader {
-  font-family: 'HelveticaNeueCyr-Light';
-  font-size: 12px;
-  line-height: 12px;
-  letter-spacing: 0.02em;
-  text-align: center;
-  color: var(--font-secondary);
-  margin-bottom: 10px;
-}
-.taskHeader {
-  font-family: 'HelveticaNeueCyr-Medium';
-  font-size: 12px;
-  line-height: 12px;
-  visibility: hidden;
-  margin-bottom: 10px;
-}
-
-.cardTitle {
-  font-family: 'HelveticaNeueCyr-Bold';
-  font-size: 16px;
-  line-height: 1.37;
-
-  color: var(--font-primary);
-
-  margin: 0 auto;
-  margin-bottom: 10px;
-
-  text-align: center;
-}
-.cardTitle_challenge {
-  color: #ffffff;
-}
-
 .cardDate {
   display: flex;
   align-items: center;
@@ -80,50 +18,12 @@
   overflow: hidden;
 }
 
-.cardType {
-  font-family: 'HelveticaNeueCyr-Medium';
-  font-size: 11px;
-  line-height: 11px;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  border-radius: 0px 25px 25px 0px;
-
-  width: 120px;
-  height: 35px;
-
-  padding: 5px;
-  padding-left: 20px;
-
-  margin-left: -20px;
-
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-}
-.inectiveCard {
-  cursor: default;
-}
-.arrowDown {
-  color: var(--font-accent);
-  margin-left: 7px;
-
-  visibility: hidden;
-}
-.cardType:hover .arrowDown,
-.cardType:focus .arrowDown {
-  visibility: visible;
-}
-
-/* new style */
-
 .editTitle {
   font-family: 'HelveticaNeueCyr-Bold';
 
   font-size: 12px;
   line-height: 12px;
 
-  /* identical to box height */
   text-align: center;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -141,30 +41,6 @@
   cursor: pointer;
 }
 
-.buttons {
-  display: flex;
-  align-items: baseline;
-  margin-left: auto;
-}
-
-.saveIcon {
-  position: relative;
-  cursor: pointer;
-  width: 10px;
-  height: 10px;
-  margin-right: 17px;
-}
-
-.saveIcon::after {
-  content: '';
-  position: absolute;
-  width: 1px;
-  height: 16px;
-  background-color: var(--font-secondary);
-  top: -40%;
-  right: -7px;
-}
-
 .timeText {
   font-family: 'HelveticaNeueCyr';
 
@@ -172,39 +48,6 @@
   line-height: 14px;
 
   letter-spacing: 0.02em;
-}
-
-.cross {
-  color: var(--option-color);
-  margin-left: auto;
-  margin-right: 14px;
-  position: relative;
-  cursor: pointer;
-}
-
-.cross::after {
-  content: '';
-  position: absolute;
-  width: 1px;
-  height: 16px;
-  background-color: var(--font-secondary);
-  top: 10%;
-  right: -8px;
-}
-
-.checked {
-  color: var(--font-button-cancel);
-  cursor: pointer;
-}
-
-.start {
-  color: var(--font-accent);
-
-  font-family: 'HelveticaNeueCyr-Medium';
-  font-size: 14px;
-  line-height: 1;
-  letter-spacing: 0.02em;
-  cursor: pointer;
 }
 
 .card {
@@ -227,45 +70,6 @@
   background: var(--primary);
 }
 
-.form {
-  margin: 0 auto;
-}
-.input {
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  background-color: inherit;
-  border-bottom: 1px solid var(--font-accent);
-  color: var(--font-input);
-  margin-top: 4px;
-  caret-color: var(--font-accent);
-
-  text-align: center;
-  font-family: 'HelveticaNeueCyr-Bold';
-  font-size: 16px;
-  line-height: 1.37;
-}
-.inputChallenge {
-  color: #ffffff;
-}
-
-/* Options */
-
-.firstOption {
-  color: var(--font-accent);
-  margin-right: 10px;
-}
-
-.secondOption {
-  color: var(--font-button-cancel);
-  margin-right: 10px;
-}
-
-.thirdOption {
-  color: var(--option-color);
-  margin-right: 10px;
-}
-
 .challengeModal {
   width: 205px;
   margin-left: 0;
@@ -285,7 +89,6 @@
 
     margin-left: 27px;
 
-    /* width: 205px; */
     height: 199px;
   }
 
@@ -294,9 +97,6 @@
     height: 25px;
   }
 
-  .cardCategoryName {
-    font-size: 16px;
-  }
 
   .cardDate {
     margin: 0;
@@ -310,10 +110,7 @@
 
   .cross {
     color: var(--option-color);
-    /* margin-left: 28px; */
     margin-right: 14px;
-    /* width: 10px;
-    height: 10px; */
     position: relative;
   }
 
@@ -353,7 +150,6 @@
     margin-left: 27px;
 
     width: calc((100% / 5) - 27px);
-    /* width: 205px; */
     height: 199px;
   }
   .challengeModal {
@@ -361,36 +157,4 @@
     margin: 0 auto;
     margin-top: 20px;
   }
-}
-
-/* IPAD MINI LAYOUT */
-/* @media only screen and (min-width: 1024px) and (orientation: landscape) {
-  .card {
-    width: calc((100% / 4) - 27px);
-   
-  }
-} */
-
-.learning {
-  background-color: var(--bg-card-learning);
-}
-
-.leisure {
-  background-color: var(--bg-card-leisure);
-}
-
-.family {
-  background-color: var(--bg-card-family);
-}
-
-.health {
-  background-color: var(--bg-card-health);
-}
-
-.stuff {
-  background-color: var(--bg-card-stuff);
-}
-
-.work {
-  background-color: var(--bg-card-work);
 }

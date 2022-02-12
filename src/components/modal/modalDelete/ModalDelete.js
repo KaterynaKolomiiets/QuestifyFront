@@ -1,5 +1,5 @@
-import s from "./Delete.module.css";
-import style from "../../../utils/variables.css";
+import s from './Delete.module.css';
+import style from '../../../utils/variables.css';
 
 const ModalDelete = ({ change }) => {
   function deleteHandler(e) {

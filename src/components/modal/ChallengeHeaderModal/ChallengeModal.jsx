@@ -1,16 +1,11 @@
 import s from './ChallengeModal.module.css';
 
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-
+import { useSelector} from 'react-redux';
 import { todosActive } from '../../../redux/todos/todosSelector';
-import { showTodosActive } from '../../../redux/todos/operation';
-
 import Card from '../../Card';
 
 const ChallengeModal = ({ challengeModal }) => {
   const todos = useSelector(todosActive);
-  const dispatch = useDispatch();
 
   const clickBackdrop = event => {
     if (event.currentTarget !== event.target) {
@@ -18,12 +13,8 @@ const ChallengeModal = ({ challengeModal }) => {
     }
   };
 
-  /*   useEffect(() => {
-    dispatch(showTodosActive());
-  }, []); */
-
   return (
-    <div className={s.backdrop} /* onClick={clickBackdrop} */>
+    <div className={s.backdrop}>
       {todos.some(item => item.type === 'CHALLENGE') ? (
         <div className={s.modal}>
           <ul>
@@ -37,7 +28,7 @@ const ChallengeModal = ({ challengeModal }) => {
           </ul>
         </div>
       ) : (
-        <p className={s.missingChallenges}> Challenges are missing</p>
+        <p className={s.missingChallenges}> No current challenges</p>
       )}
     </div>
   );

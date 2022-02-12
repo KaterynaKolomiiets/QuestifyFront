@@ -1,12 +1,12 @@
-import s from "./ModalWindow.module.css";
-import closeBtn from "../../../images/closeBtn.png";
+import s from './ModalWindow.module.css';
+import closeBtn from '../../../images/closeBtn.png';
 
-import { createPortal } from "react-dom";
+import { createPortal } from 'react-dom';
 
 const ModalWindow = ({ toggleModal, children }) => {
-  const portalModal = document.querySelector("#nodalRoot");
+  const portalModal = document.querySelector('#nodalRoot');
 
-  const clickBackdrop = (event) => {
+  const clickBackdrop = event => {
     if (event.currentTarget === event.target) {
       toggleModal();
     }
@@ -21,7 +21,7 @@ const ModalWindow = ({ toggleModal, children }) => {
         {children}
       </div>
     </div>,
-    portalModal
+    portalModal,
   );
 };
 

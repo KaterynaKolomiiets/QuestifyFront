@@ -1,0 +1,54 @@
+.buttons {
+    display: flex;
+    align-items: baseline;
+    margin-left: auto;
+}
+
+.saveIcon {
+    position: relative;
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+    margin-right: 17px;
+}
+
+.saveIcon::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 16px;
+    background-color: var(--font-secondary);
+    top: -40%;
+    right: -7px;
+}
+.cross {
+    color: var(--option-color);
+    margin-left: auto;
+    margin-right: 14px;
+    position: relative;
+    cursor: pointer;
+}
+
+.cross::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 16px;
+    background-color: var(--font-secondary);
+    top: 10%;
+    right: -8px;
+}
+.checked {
+    color: var(--font-button-cancel);
+    cursor: pointer;
+}
+
+.start {
+    color: var(--font-accent);
+
+    font-family: 'HelveticaNeueCyr-Medium';
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+}
