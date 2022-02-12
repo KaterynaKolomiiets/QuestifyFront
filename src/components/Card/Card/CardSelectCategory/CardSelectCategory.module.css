@@ -1,0 +1,61 @@
+.cardType {
+    font-family: 'HelveticaNeueCyr-Medium';
+    font-size: 11px;
+    line-height: 11px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    border-radius: 0px 25px 25px 0px;
+
+    width: 100px;
+    height: 35px;
+
+    padding: 5px;
+    padding-left: 20px;
+
+    margin-left: -20px;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+}
+
+.inectiveCard {
+    cursor: default;
+}
+
+.arrowDown {
+    color: var(--font-accent);
+    margin-left: 7px;
+
+    visibility: hidden;
+}
+
+.cardType:hover .arrowDown,
+.cardType:focus .arrowDown {
+    visibility: visible;
+}
+
+.learning {
+    background-color: var(--bg-card-learning);
+}
+
+.leisure {
+    background-color: var(--bg-card-leisure);
+}
+
+.family {
+    background-color: var(--bg-card-family);
+}
+
+.health {
+    background-color: var(--bg-card-health);
+}
+
+.stuff {
+    background-color: var(--bg-card-stuff);
+}
+
+.work {
+    background-color: var(--bg-card-work);
+}

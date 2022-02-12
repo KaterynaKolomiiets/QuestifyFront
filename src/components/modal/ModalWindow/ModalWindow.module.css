@@ -9,7 +9,6 @@
   padding-top: 30px;
   top: 50%;
   left: 50%;
-  /* margin-top: -100px; */
   margin-left: -140px;
   padding-top: 40px;
 }
@@ -126,7 +125,6 @@
   width: 280px;
   height: 150px;
   background-color: #fff;
-  /* padding-top: 15px; */
   padding: 20px 5px 5px 5px;
   align-items: center;
   text-align: center;

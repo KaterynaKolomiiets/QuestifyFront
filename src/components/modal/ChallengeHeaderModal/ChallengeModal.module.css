@@ -16,8 +16,6 @@
 }
 
 .backdrop {
-  /*   border: 2px green solid;
-  background-color: RGBA(0, 0, 0, 0.1); */
   position: fixed;
   top: 10px;
   left: 10px;
@@ -39,9 +37,7 @@
   width: 250px;
   top: 56px;
   right: 10%;
-  /*   left: -180%; */
   display: block;
-  /* cursor: auto; */
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -52,29 +48,12 @@
   font-weight: bold;
   font-size: 24px;
 }
-/* .cardModal {
-  position: absolute;
-  width: 100px;
-  height: 50px;
-  border: 1px red solid;
-} */
 
 @media screen and (min-width: 768px) {
   .modal {
-    /* padding: 15px 15px; */
-    /* left: -190%; */
-    /* height: 300px; */
     width: 300px;
     top: 65px;
     margin-left: -27px;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .modal {
-    /* padding: 25px 25px; */
-    /* left: -180%; */
-    /*     height: 400px; */
-    /*     width: 350px; */
   }
 }
 
@@ -83,8 +62,6 @@
   position: absolute;
   border: 10px solid transparent;
   border-bottom: 10px solid #7b8aa4;
-  /* left: 72%; */
-  /* top: -19px; */
   top: 0px;
   left: 10px;
 }

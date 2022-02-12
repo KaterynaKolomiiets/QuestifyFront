@@ -1,0 +1,10 @@
+.icon {
+  margin-left: auto;
+  cursor: pointer;
+  color: var(--font-accent);
+}
+
+.icon_inective {
+  margin-left: auto;
+  cursor: default;
+}

@@ -44,15 +44,15 @@
   flex-direction: column;
 }
 /* IPHONE LANDSCAPE MODE*/
-@media only screen and (min-width: 320px) and (orientation: landscape){
+@media only screen and (min-width: 320px) and (orientation: landscape) {
   .section {
     max-width: 100%;
   }
   .cardSet {
-    margin-left: -27px; 
+    margin-left: -27px;
     flex-direction: row;
   }
-  li{
+  li {
     width: calc((100% / 2) - 27px);
     margin-left: 27px;
   }
@@ -79,8 +79,6 @@
   }
 }
 
-
-
 @media screen and (min-width: 1280px) {
   .section {
     padding-left: 70px;
@@ -96,6 +94,3 @@
     margin-left: 27px;
   }
 }
-
-
-

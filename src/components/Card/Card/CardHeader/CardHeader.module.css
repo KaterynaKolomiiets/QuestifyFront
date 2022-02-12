@@ -1,0 +1,37 @@
+.cardCategoryName {
+  font-size: 16px;
+}
+
+.cardCategoryName {
+  font-family: 'HelveticaNeueCyr-Medium';
+  font-size: 16px;
+
+  color: var(--font-secondary);
+
+  margin-bottom: 20px;
+
+  display: flex;
+  align-items: center;
+}
+
+.setLevel {
+  cursor: pointer;
+}
+
+.cardCategoryCircle {
+  margin-right: 10px;
+}
+.firstOption {
+  color: var(--font-accent);
+  margin-right: 10px;
+}
+
+.secondOption {
+  color: var(--font-button-cancel);
+  margin-right: 10px;
+}
+
+.thirdOption {
+  color: var(--option-color);
+  margin-right: 10px;
+}

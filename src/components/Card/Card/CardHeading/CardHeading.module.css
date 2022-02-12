@@ -1,0 +1,17 @@
+.challengeHeader {
+    font-family: 'HelveticaNeueCyr-Light';
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0.02em;
+    text-align: center;
+    color: var(--font-secondary);
+    margin-bottom: 10px;
+}
+
+.taskHeader {
+    font-family: 'HelveticaNeueCyr-Medium';
+    font-size: 12px;
+    line-height: 12px;
+    visibility: hidden;
+    margin-bottom: 10px;
+}

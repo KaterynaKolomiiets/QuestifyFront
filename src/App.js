@@ -6,8 +6,6 @@ import { userRefresh } from './redux/user/operation';
 
 import { routes, PublicRoute, PrivateRoute } from './routes';
 
-import './App.css';
-
 const AuthPage = lazy(() =>
   import('./pages/AuthPage' /* webpackChunkName: 'AuthPage' */),
 );
@@ -23,14 +21,12 @@ const ChangePassword = lazy(() =>
 
 function App() {
   const dispatch = useDispatch(userRefresh);
-  // const isUserLoggedIn = useSelector(getIsLoggedIn);
   const isUserLoggedIn = localStorage.getItem('isloggedIn');
 
   useEffect(() => {
     if (isUserLoggedIn) {
       dispatch(userRefresh());
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   return (

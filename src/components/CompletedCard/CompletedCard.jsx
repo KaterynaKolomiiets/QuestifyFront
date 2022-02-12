@@ -4,18 +4,15 @@ import Icon from '../Icon';
 import './CompletedStyle.css';
 import s from './CompletedCard.module.css';
 
-
-const CompletedCard = ({ change, title,onedit, card }) => {
-
+const CompletedCard = ({ change, title, onedit, card }) => {
   return (
     <>
-     
-        <li className={s.card} >
+      <li className={s.card}>
         <div className={s.questBox}>
           <div className={s.contentBox}>
-            <p className={s.content} >COMPLETED:</p>
-            <p className={s.link} >
-              <span className={s.linkText} >{title}</span>
+            <p className={s.content}>COMPLETED:</p>
+            <p className={s.link}>
+              <span className={s.linkText}>{title}</span>
             </p>
           </div>
           <div className={s.awardBox}>
@@ -70,14 +67,13 @@ const CompletedCard = ({ change, title,onedit, card }) => {
               </CSSTransition>
             </div>
           </div>
-          <button className={s.button} onClick={change} >
+          <button className={s.button} onClick={change}>
             <span>Continue</span>
             <Icon className={s.arrow} name={'arrow-right'} />
           </button>
         </div>
       </li>
-      {/* )})} */}
-  </>
+    </>
   );
 };
 

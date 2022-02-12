@@ -40,7 +40,6 @@ const Header = () => {
     return () => {
       window.removeEventListener('keydown', modalEscape);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

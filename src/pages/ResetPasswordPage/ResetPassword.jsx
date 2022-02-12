@@ -1,69 +1,58 @@
+import s from './ResetPassword.module.css';
 
 import { useEffect, useRef, useState } from 'react';
-import Container from "../../components/Container";
-import s from "./ResetPassword.module.css";
-import { userResetPassword} from '../../redux/user/operation'
 import { useDispatch, useSelector } from 'react-redux';
-import { getError } from '../../redux/user/selectors';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useHistory } from 'react-router-dom';
 
+import { userResetPassword } from '../../redux/user/operation';
+import { getError } from '../../redux/user/selectors';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
+import Container from '../../components/Container';
 
 function ResetPassword() {
   const dispatch = useDispatch();
-  const error = useSelector(getError)
+  const error = useSelector(getError);
   const history = useHistory();
   const firstUpdate = useRef(true);
-  const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState("");
-  
+  const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
 
+  const changeEmailValue = event => setEmail(event.target.value);
 
-  const changeEmailValue = (event) => setEmail(event.target.value);
-
-  const validateEmail = (email) => {
+  const validateEmail = email => {
     const response =
       /^(([^<>()[\]\\.,;:\s@']+(\.[^<>()[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return response.test(email);
   };
 
-  
-
   const onSubmit = () => {
     !validateEmail(email)
-    ? setEmailError("Некорректно введен e-mail.")
-    : setEmailError("");
-      
+      ? setEmailError('Некорректно введен e-mail.')
+      : setEmailError('');
+
     if (validateEmail(email)) {
-      dispatch(userResetPassword({ email }))
-
+      dispatch(userResetPassword({ email }));
     }
-    
   };
-
 
   useEffect(() => {
     if (firstUpdate.current) {
       firstUpdate.current = false;
       return;
     }
-      
+
     if (error) {
-      return Notify.failure(`${error.message}`)
-    } else if (error === '' && firstUpdate.current === false) { 
+      return Notify.failure(`${error.message}`);
+    } else if (error === '' && firstUpdate.current === false) {
+      Notify.success('We sent link for change password on your email!');
 
-      Notify.success("We sent link for change password on your email!");
-      
       setTimeout(() => {
-        history.push('/auth')
+        history.push('/auth');
       }, 5000);
-      
-    } 
-    
-  }, [error])
+    }
+  }, [error]);
 
-
-  
   return (
     <div className={s.wrapper}>
       <Container>
@@ -79,28 +68,27 @@ function ResetPassword() {
             Please, type your email to reset password!
           </p>
 
-          {/* <resetForm showRegisterForm={ showRegisterForm }/> */}
           <form className={s.reset_form} autoComplete="off">
-          <input
-        type="email"
-        name="email"
-        value={email}
-        onChange={changeEmailValue}
-        pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
-        placeholder="Email"
-        className={s.reset_form_input}
-        required
-      />
-          <p className={s.errorMessage}>{emailError}</p>
-          
-          <button
-          className={s.reset_form_button}
-          type="button"
-          onClick={onSubmit}
-        >
-          go!
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={changeEmailValue}
+              pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
+              placeholder="Email"
+              className={s.reset_form_input}
+              required
+            />
+            <p className={s.errorMessage}>{emailError}</p>
+
+            <button
+              className={s.reset_form_button}
+              type="button"
+              onClick={onSubmit}
+            >
+              go!
             </button>
-            </form>
+          </form>
         </section>
       </Container>
     </div>

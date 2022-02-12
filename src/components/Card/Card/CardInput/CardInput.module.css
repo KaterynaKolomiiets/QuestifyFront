@@ -1,0 +1,30 @@
+.form {
+  margin: 0 auto;
+}
+
+.input {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background-color: inherit;
+  border-bottom: 1px solid var(--font-accent);
+  color: var(--font-input);
+  margin-top: 4px;
+  caret-color: var(--font-accent);
+
+  text-align: center;
+  font-family: 'HelveticaNeueCyr-Bold';
+  font-size: 16px;
+  line-height: 1.37;
+
+  width: 100%;
+}
+
+.input:hover,
+.input:focus {
+  outline: none;
+}
+
+.inputChallenge {
+  color: #ffffff;
+}
