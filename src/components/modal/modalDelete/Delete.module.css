@@ -7,6 +7,7 @@
     3px 4px 4px rgba(21, 57, 90, 0.03);
   border-radius: 10px;
   padding: 25px 30px 16px 30px;
+  z-index: 5;
 }
 
 .cancel {
